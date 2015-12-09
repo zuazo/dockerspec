@@ -24,4 +24,3 @@ RUN ["echo", "running"]
 ENTRYPOINT ["sleep"]
 CMD ["2", "2000"]
 ONBUILD RUN echo onbuild
-STOPSIGNAL SIGTERM

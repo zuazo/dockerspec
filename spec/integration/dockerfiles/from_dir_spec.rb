@@ -40,7 +40,6 @@ describe 'Build a Dockerfile from a directory' do
     it { should have_workdir '/opt' }
     it { should have_workdir %r{^/op} }
     it { should have_onbuild 'RUN echo onbuild' }
-    it { should have_stopsignal 'SIGTERM' }
 
     its(:maintainer) { should eq 'John Doe "john.doe@example.com"' }
     its(:cmd) { should eq %w(2 2000) }
@@ -55,7 +54,6 @@ describe 'Build a Dockerfile from a directory' do
     its(:user) { should eq 'nobody' }
     its(:workdir) { should eq '/opt' }
     its(:onbuilds) { should include 'RUN echo onbuild' }
-    its(:stopsignal) { should eq 'SIGTERM' }
 
     its(:size) { should be < 20 * 2**20 } # 20M
     its(:arch) { should eq 'amd64' }
