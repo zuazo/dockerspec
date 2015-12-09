@@ -3,9 +3,6 @@ MAINTAINER John Doe "john.doe@example.com"
 
 LABEL testing=docker serverspec=true description="My Container"
 
-ARG user1
-ARG buildno=1
-
 ENV PATH /usr/sbin:/usr/bin:/sbin:/bin
 
 ENV container=docker CRACKER="RANDOM;PATH=/tmp/bin:/sbin:/bin"
