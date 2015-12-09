@@ -26,7 +26,9 @@ This gem is designed to work out of the box on [Travis CI](https://travis-ci.org
 
 You can install the Ruby Gem with:
 
-    $ gem install dockerspec
+```
+$ gem install dockerspec
+```
 
 Or you can add this line to the *Gemfile* of your application:
 
@@ -38,7 +40,9 @@ gem 'dockerspec', '~> 0.1.0'
 
 And then execute:
 
-    $ bundle
+```
+$ bundle
+```
 
 **Warning:** As the gem is in its early development stages, [the API is very likely to break between minor versions](http://semver.org/).
 
@@ -94,7 +98,9 @@ gem 'dockerspec', '~> 0.1.0'
 
 2. Create the *spec/* directory:
 
-    $ mkdir spec
+```
+$ mkdir spec
+```
 
 3. Add your tests to a file with the *spec/myapp_spec.rb* format:
 
@@ -116,11 +122,15 @@ end
 
 4. Install the gems:
 
-    $ bundle
+```
+$ bundle
+```
 
 5. Run the tests:
 
-    $ bundle exec rspec
+```
+$ bundle exec rspec
+```
 
 ### Travis CI Configuration Example
 
