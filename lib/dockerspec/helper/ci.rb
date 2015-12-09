@@ -43,7 +43,7 @@ module Dockerspec
       # @api public
       #
       def travis_ci?
-        ENV['TRAVIS_CI'] == 'true'
+        ENV['TRAVIS'] == 'true'
       end
 
       #

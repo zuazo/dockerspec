@@ -24,7 +24,7 @@ class TestDockerHelperCI
 end
 
 describe Dockerspec::Helper::CI do
-  let(:env_vars) { %w(CI TRAVIS_CI CIRCLECI) }
+  let(:env_vars) { %w(CI TRAVIS CIRCLECI) }
   before { @env_orig = env_vars.each_with_object({}) { |k, m| m[k] = ENV[k] } }
   after { @env_orig.each { |k, v| ENV[k] = v } }
 
@@ -46,12 +46,12 @@ describe Dockerspec::Helper::CI do
     subject { TestDockerHelperCI.new.travis_ci? }
 
     context 'on Travis CI' do
-      before { ENV['TRAVIS_CI'] = 'true' }
+      before { ENV['TRAVIS'] = 'true' }
       it { should be true }
     end
 
     context 'outside Travis CI' do
-      before { ENV.delete('TRAVIS_CI') }
+      before { ENV.delete('TRAVIS') }
       it { should be false }
     end
   end
