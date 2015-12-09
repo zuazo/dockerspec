@@ -1,0 +1,9 @@
+*.gem
+Gemfile.lock
+coverage
+*.swp
+*.swo
+*~
+.inch
+.yardoc
+doc

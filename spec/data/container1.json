@@ -1,0 +1,103 @@
+{
+   "Os" : "linux",
+   "ContainerConfig" : {
+      "Tty" : false,
+      "AttachStdout" : false,
+      "MacAddress" : "",
+      "Env" : [
+         "PATH=/usr/sbin:/usr/bin:/sbin:/bin",
+         "container=docker",
+         "CRACKER=RANDOM;PATH=/tmp/bin:/sbin:/bin"
+      ],
+      "OpenStdin" : false,
+      "OnBuild" : [
+         "RUN echo onbuild"
+      ],
+      "StdinOnce" : false,
+      "Image" : "3076b83ce6c7e2282404a4e32abde5e75e4182b0ca388f26f301c182aa324e8b",
+      "ExposedPorts" : {
+         "80/tcp" : {}
+      },
+      "Domainname" : "",
+      "VolumeDriver" : "",
+      "Entrypoint" : [
+         "sleep"
+      ],
+      "Labels" : {
+         "serverspec" : "true",
+         "testing" : "docker"
+      },
+      "NetworkDisabled" : false,
+      "PublishService" : "",
+      "AttachStdin" : false,
+      "WorkingDir" : "/opt",
+      "User" : "nobody",
+      "Volumes" : {
+         "/var/tmp" : {},
+         "/tmp" : {}
+      },
+      "Hostname" : "e615e9fecf7f",
+      "AttachStderr" : false,
+      "Cmd" : [
+         "/bin/sh",
+         "-c",
+         "#(nop) ONBUILD RUN echo onbuild"
+      ]
+   },
+   "Config" : {
+      "StdinOnce" : false,
+      "Image" : "3076b83ce6c7e2282404a4e32abde5e75e4182b0ca388f26f301c182aa324e8b",
+      "ExposedPorts" : {
+         "80/tcp" : {}
+      },
+      "Domainname" : "",
+      "VolumeDriver" : "",
+      "AttachStdout" : false,
+      "Tty" : false,
+      "MacAddress" : "",
+      "Env" : [
+         "PATH=/usr/sbin:/usr/bin:/sbin:/bin",
+         "container=docker",
+         "CRACKER=RANDOM;PATH=/tmp/bin:/sbin:/bin"
+      ],
+      "OpenStdin" : false,
+      "OnBuild" : [
+         "RUN echo onbuild"
+      ],
+      "AttachStdin" : false,
+      "WorkingDir" : "/opt",
+      "User" : "nobody",
+      "Volumes" : {
+         "/tmp" : {},
+         "/var/tmp" : {}
+      },
+      "Hostname" : "e615e9fecf7f",
+      "AttachStderr" : false,
+      "Cmd" : [
+         "infinity"
+      ],
+      "Entrypoint" : [
+         "sleep"
+      ],
+      "Labels" : {
+         "serverspec" : "true",
+         "testing" : "docker"
+      },
+      "NetworkDisabled" : false,
+      "PublishService" : ""
+   },
+   "Created" : "2015-11-07T22:17:49.243247396Z",
+   "DockerVersion" : "1.8.1",
+   "Author" : "John Doe \"john.doe@example.com\"",
+   "Architecture" : "amd64",
+   "Comment" : "",
+   "Id" : "081924b5ef98ecb156770575ee497af5adc9518d77fde4467786b8bc4858bb7a",
+   "VirtualSize" : 125112632,
+   "GraphDriver" : {
+      "Data" : null,
+      "Name" : "aufs"
+   },
+   "Container" : "3340c90afda0b559004e434aa67e9a0a179363586dc133942d305f05b6296148",
+   "Size" : 0,
+   "Parent" : "3076b83ce6c7e2282404a4e32abde5e75e4182b0ca388f26f301c182aa324e8b"
+}

@@ -1,0 +1,652 @@
+{"stream"=>"Step 1 : FROM alpine:3.2\n"}
+{"status"=>"Pulling from library/alpine", "id"=>"3.2"}
+{"status"=>"Pulling fs layer", "progressDetail"=>{}, "id"=>"8a648f689ddb"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>32259, "total"=>2489689}, "progress"=>"[>                                                  ] 32.26 kB/2.49 MB", "id"=>"8a648f689ddb"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>64392, "total"=>2489689}, "progress"=>"[=>                                                 ] 64.39 kB/2.49 MB", "id"=>"8a648f689ddb"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>105352, "total"=>2489689}, "progress"=>"[==>                                                ] 105.4 kB/2.49 MB", "id"=>"8a648f689ddb"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>138120, "total"=>2489689}, "progress"=>"[==>                                                ] 138.1 kB/2.49 MB", "id"=>"8a648f689ddb"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>170888, "total"=>2489689}, "progress"=>"[===>                                               ] 170.9 kB/2.49 MB", "id"=>"8a648f689ddb"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>203656, "total"=>2489689}, "progress"=>"[====>                                              ] 203.7 kB/2.49 MB", "id"=>"8a648f689ddb"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>236424, "total"=>2489689}, "progress"=>"[====>                                              ] 236.4 kB/2.49 MB", "id"=>"8a648f689ddb"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>269192, "total"=>2489689}, "progress"=>"[=====>                                             ] 269.2 kB/2.49 MB", "id"=>"8a648f689ddb"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>301960, "total"=>2489689}, "progress"=>"[======>                                            ]   302 kB/2.49 MB", "id"=>"8a648f689ddb"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>334728, "total"=>2489689}, "progress"=>"[======>                                            ] 334.7 kB/2.49 MB", "id"=>"8a648f689ddb"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>367496, "total"=>2489689}, "progress"=>"[=======>                                           ] 367.5 kB/2.49 MB", "id"=>"8a648f689ddb"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>400264, "total"=>2489689}, "progress"=>"[========>                                          ] 400.3 kB/2.49 MB", "id"=>"8a648f689ddb"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>433032, "total"=>2489689}, "progress"=>"[========>                                          ]   433 kB/2.49 MB", "id"=>"8a648f689ddb"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>465800, "total"=>2489689}, "progress"=>"[=========>                                         ] 465.8 kB/2.49 MB", "id"=>"8a648f689ddb"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>498568, "total"=>2489689}, "progress"=>"[==========>                                        ] 498.6 kB/2.49 MB", "id"=>"8a648f689ddb"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>531336, "total"=>2489689}, "progress"=>"[==========>                                        ] 531.3 kB/2.49 MB", "id"=>"8a648f689ddb"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>564104, "total"=>2489689}, "progress"=>"[===========>                                       ] 564.1 kB/2.49 MB", "id"=>"8a648f689ddb"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>596872, "total"=>2489689}, "progress"=>"[===========>                                       ] 596.9 kB/2.49 MB", "id"=>"8a648f689ddb"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>629640, "total"=>2489689}, "progress"=>"[============>                                      ] 629.6 kB/2.49 MB", "id"=>"8a648f689ddb"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>662408, "total"=>2489689}, "progress"=>"[=============>                                     ] 662.4 kB/2.49 MB", "id"=>"8a648f689ddb"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>695176, "total"=>2489689}, "progress"=>"[=============>                                     ] 695.2 kB/2.49 MB", "id"=>"8a648f689ddb"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>727944, "total"=>2489689}, "progress"=>"[==============>                                    ] 727.9 kB/2.49 MB", "id"=>"8a648f689ddb"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>760712, "total"=>2489689}, "progress"=>"[===============>                                   ] 760.7 kB/2.49 MB", "id"=>"8a648f689ddb"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>793480, "total"=>2489689}, "progress"=>"[===============>                                   ] 793.5 kB/2.49 MB", "id"=>"8a648f689ddb"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>826248, "total"=>2489689}, "progress"=>"[================>                                  ] 826.2 kB/2.49 MB", "id"=>"8a648f689ddb"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>859016, "total"=>2489689}, "progress"=>"[=================>                                 ]   859 kB/2.49 MB", "id"=>"8a648f689ddb"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>891784, "total"=>2489689}, "progress"=>"[=================>                                 ] 891.8 kB/2.49 MB", "id"=>"8a648f689ddb"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>924552, "total"=>2489689}, "progress"=>"[==================>                                ] 924.6 kB/2.49 MB", "id"=>"8a648f689ddb"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>957320, "total"=>2489689}, "progress"=>"[===================>                               ] 957.3 kB/2.49 MB", "id"=>"8a648f689ddb"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>990088, "total"=>2489689}, "progress"=>"[===================>                               ] 990.1 kB/2.49 MB", "id"=>"8a648f689ddb"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>1022856, "total"=>2489689}, "progress"=>"[====================>                              ] 1.023 MB/2.49 MB", "id"=>"8a648f689ddb"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>1055624, "total"=>2489689}, "progress"=>"[=====================>                             ] 1.056 MB/2.49 MB", "id"=>"8a648f689ddb"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>1088392, "total"=>2489689}, "progress"=>"[=====================>                             ] 1.088 MB/2.49 MB", "id"=>"8a648f689ddb"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>1121160, "total"=>2489689}, "progress"=>"[======================>                            ] 1.121 MB/2.49 MB", "id"=>"8a648f689ddb"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>1153928, "total"=>2489689}, "progress"=>"[=======================>                           ] 1.154 MB/2.49 MB", "id"=>"8a648f689ddb"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>1186696, "total"=>2489689}, "progress"=>"[=======================>                           ] 1.187 MB/2.49 MB", "id"=>"8a648f689ddb"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>1219464, "total"=>2489689}, "progress"=>"[========================>                          ] 1.219 MB/2.49 MB", "id"=>"8a648f689ddb"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>1252232, "total"=>2489689}, "progress"=>"[=========================>                         ] 1.252 MB/2.49 MB", "id"=>"8a648f689ddb"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>1285000, "total"=>2489689}, "progress"=>"[=========================>                         ] 1.285 MB/2.49 MB", "id"=>"8a648f689ddb"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>1317768, "total"=>2489689}, "progress"=>"[==========================>                        ] 1.318 MB/2.49 MB", "id"=>"8a648f689ddb"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>1350536, "total"=>2489689}, "progress"=>"[===========================>                       ] 1.351 MB/2.49 MB", "id"=>"8a648f689ddb"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>1383304, "total"=>2489689}, "progress"=>"[===========================>                       ] 1.383 MB/2.49 MB", "id"=>"8a648f689ddb"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>1416072, "total"=>2489689}, "progress"=>"[============================>                      ] 1.416 MB/2.49 MB", "id"=>"8a648f689ddb"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>1448840, "total"=>2489689}, "progress"=>"[=============================>                     ] 1.449 MB/2.49 MB", "id"=>"8a648f689ddb"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>1481608, "total"=>2489689}, "progress"=>"[=============================>                     ] 1.482 MB/2.49 MB", "id"=>"8a648f689ddb"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>1514376, "total"=>2489689}, "progress"=>"[==============================>                    ] 1.514 MB/2.49 MB", "id"=>"8a648f689ddb"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>1547144, "total"=>2489689}, "progress"=>"[===============================>                   ] 1.547 MB/2.49 MB", "id"=>"8a648f689ddb"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>1579912, "total"=>2489689}, "progress"=>"[===============================>                   ]  1.58 MB/2.49 MB", "id"=>"8a648f689ddb"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>1612680, "total"=>2489689}, "progress"=>"[================================>                  ] 1.613 MB/2.49 MB", "id"=>"8a648f689ddb"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>1645448, "total"=>2489689}, "progress"=>"[=================================>                 ] 1.645 MB/2.49 MB", "id"=>"8a648f689ddb"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>1678216, "total"=>2489689}, "progress"=>"[=================================>                 ] 1.678 MB/2.49 MB", "id"=>"8a648f689ddb"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>1710984, "total"=>2489689}, "progress"=>"[==================================>                ] 1.711 MB/2.49 MB", "id"=>"8a648f689ddb"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>1743752, "total"=>2489689}, "progress"=>"[===================================>               ] 1.744 MB/2.49 MB", "id"=>"8a648f689ddb"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>1776520, "total"=>2489689}, "progress"=>"[===================================>               ] 1.777 MB/2.49 MB", "id"=>"8a648f689ddb"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>1809288, "total"=>2489689}, "progress"=>"[====================================>              ] 1.809 MB/2.49 MB", "id"=>"8a648f689ddb"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>1842056, "total"=>2489689}, "progress"=>"[====================================>              ] 1.842 MB/2.49 MB", "id"=>"8a648f689ddb"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>1874824, "total"=>2489689}, "progress"=>"[=====================================>             ] 1.875 MB/2.49 MB", "id"=>"8a648f689ddb"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>1907592, "total"=>2489689}, "progress"=>"[======================================>            ] 1.908 MB/2.49 MB", "id"=>"8a648f689ddb"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>1940360, "total"=>2489689}, "progress"=>"[======================================>            ]  1.94 MB/2.49 MB", "id"=>"8a648f689ddb"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>1973128, "total"=>2489689}, "progress"=>"[=======================================>           ] 1.973 MB/2.49 MB", "id"=>"8a648f689ddb"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>2005896, "total"=>2489689}, "progress"=>"[========================================>          ] 2.006 MB/2.49 MB", "id"=>"8a648f689ddb"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>2038664, "total"=>2489689}, "progress"=>"[========================================>          ] 2.039 MB/2.49 MB", "id"=>"8a648f689ddb"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>2071432, "total"=>2489689}, "progress"=>"[=========================================>         ] 2.071 MB/2.49 MB", "id"=>"8a648f689ddb"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>2104200, "total"=>2489689}, "progress"=>"[==========================================>        ] 2.104 MB/2.49 MB", "id"=>"8a648f689ddb"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>2136968, "total"=>2489689}, "progress"=>"[==========================================>        ] 2.137 MB/2.49 MB", "id"=>"8a648f689ddb"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>2169736, "total"=>2489689}, "progress"=>"[===========================================>       ]  2.17 MB/2.49 MB", "id"=>"8a648f689ddb"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>2202504, "total"=>2489689}, "progress"=>"[============================================>      ] 2.203 MB/2.49 MB", "id"=>"8a648f689ddb"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>2235272, "total"=>2489689}, "progress"=>"[============================================>      ] 2.235 MB/2.49 MB", "id"=>"8a648f689ddb"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>2268040, "total"=>2489689}, "progress"=>"[=============================================>     ] 2.268 MB/2.49 MB", "id"=>"8a648f689ddb"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>2300808, "total"=>2489689}, "progress"=>"[==============================================>    ] 2.301 MB/2.49 MB", "id"=>"8a648f689ddb"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>2333576, "total"=>2489689}, "progress"=>"[==============================================>    ] 2.334 MB/2.49 MB", "id"=>"8a648f689ddb"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>2366344, "total"=>2489689}, "progress"=>"[===============================================>   ] 2.366 MB/2.49 MB", "id"=>"8a648f689ddb"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>2399112, "total"=>2489689}, "progress"=>"[================================================>  ] 2.399 MB/2.49 MB", "id"=>"8a648f689ddb"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>2431880, "total"=>2489689}, "progress"=>"[================================================>  ] 2.432 MB/2.49 MB", "id"=>"8a648f689ddb"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>2464648, "total"=>2489689}, "progress"=>"[=================================================> ] 2.465 MB/2.49 MB", "id"=>"8a648f689ddb"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>2489689, "total"=>2489689}, "progress"=>"[==================================================>]  2.49 MB/2.49 MB", "id"=>"8a648f689ddb"}
+{"status"=>"Verifying Checksum", "progressDetail"=>{}, "id"=>"8a648f689ddb"}
+{"status"=>"Download complete", "progressDetail"=>{}, "id"=>"8a648f689ddb"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>32768, "total"=>2489689}, "progress"=>"[>                                                  ] 32.77 kB/2.49 MB", "id"=>"8a648f689ddb"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>65536, "total"=>2489689}, "progress"=>"[=>                                                 ] 65.54 kB/2.49 MB", "id"=>"8a648f689ddb"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>98304, "total"=>2489689}, "progress"=>"[=>                                                 ]  98.3 kB/2.49 MB", "id"=>"8a648f689ddb"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>131072, "total"=>2489689}, "progress"=>"[==>                                                ] 131.1 kB/2.49 MB", "id"=>"8a648f689ddb"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>163840, "total"=>2489689}, "progress"=>"[===>                                               ] 163.8 kB/2.49 MB", "id"=>"8a648f689ddb"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>196608, "total"=>2489689}, "progress"=>"[===>                                               ] 196.6 kB/2.49 MB", "id"=>"8a648f689ddb"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>229376, "total"=>2489689}, "progress"=>"[====>                                              ] 229.4 kB/2.49 MB", "id"=>"8a648f689ddb"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>262144, "total"=>2489689}, "progress"=>"[=====>                                             ] 262.1 kB/2.49 MB", "id"=>"8a648f689ddb"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>294912, "total"=>2489689}, "progress"=>"[=====>                                             ] 294.9 kB/2.49 MB", "id"=>"8a648f689ddb"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>327680, "total"=>2489689}, "progress"=>"[======>                                            ] 327.7 kB/2.49 MB", "id"=>"8a648f689ddb"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>360448, "total"=>2489689}, "progress"=>"[=======>                                           ] 360.4 kB/2.49 MB", "id"=>"8a648f689ddb"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>393216, "total"=>2489689}, "progress"=>"[=======>                                           ] 393.2 kB/2.49 MB", "id"=>"8a648f689ddb"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>425984, "total"=>2489689}, "progress"=>"[========>                                          ]   426 kB/2.49 MB", "id"=>"8a648f689ddb"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>458752, "total"=>2489689}, "progress"=>"[=========>                                         ] 458.8 kB/2.49 MB", "id"=>"8a648f689ddb"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>491520, "total"=>2489689}, "progress"=>"[=========>                                         ] 491.5 kB/2.49 MB", "id"=>"8a648f689ddb"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>524288, "total"=>2489689}, "progress"=>"[==========>                                        ] 524.3 kB/2.49 MB", "id"=>"8a648f689ddb"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>557056, "total"=>2489689}, "progress"=>"[===========>                                       ] 557.1 kB/2.49 MB", "id"=>"8a648f689ddb"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>589824, "total"=>2489689}, "progress"=>"[===========>                                       ] 589.8 kB/2.49 MB", "id"=>"8a648f689ddb"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>622592, "total"=>2489689}, "progress"=>"[============>                                      ] 622.6 kB/2.49 MB", "id"=>"8a648f689ddb"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>655360, "total"=>2489689}, "progress"=>"[=============>                                     ] 655.4 kB/2.49 MB", "id"=>"8a648f689ddb"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>688128, "total"=>2489689}, "progress"=>"[=============>                                     ] 688.1 kB/2.49 MB", "id"=>"8a648f689ddb"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>720896, "total"=>2489689}, "progress"=>"[==============>                                    ] 720.9 kB/2.49 MB", "id"=>"8a648f689ddb"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>753664, "total"=>2489689}, "progress"=>"[===============>                                   ] 753.7 kB/2.49 MB", "id"=>"8a648f689ddb"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>786432, "total"=>2489689}, "progress"=>"[===============>                                   ] 786.4 kB/2.49 MB", "id"=>"8a648f689ddb"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>819200, "total"=>2489689}, "progress"=>"[================>                                  ] 819.2 kB/2.49 MB", "id"=>"8a648f689ddb"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>851968, "total"=>2489689}, "progress"=>"[=================>                                 ]   852 kB/2.49 MB", "id"=>"8a648f689ddb"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>884736, "total"=>2489689}, "progress"=>"[=================>                                 ] 884.7 kB/2.49 MB", "id"=>"8a648f689ddb"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>917504, "total"=>2489689}, "progress"=>"[==================>                                ] 917.5 kB/2.49 MB", "id"=>"8a648f689ddb"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>950272, "total"=>2489689}, "progress"=>"[===================>                               ] 950.3 kB/2.49 MB", "id"=>"8a648f689ddb"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>983040, "total"=>2489689}, "progress"=>"[===================>                               ]   983 kB/2.49 MB", "id"=>"8a648f689ddb"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>1015808, "total"=>2489689}, "progress"=>"[====================>                              ] 1.016 MB/2.49 MB", "id"=>"8a648f689ddb"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>1048576, "total"=>2489689}, "progress"=>"[=====================>                             ] 1.049 MB/2.49 MB", "id"=>"8a648f689ddb"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>1081344, "total"=>2489689}, "progress"=>"[=====================>                             ] 1.081 MB/2.49 MB", "id"=>"8a648f689ddb"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>1114112, "total"=>2489689}, "progress"=>"[======================>                            ] 1.114 MB/2.49 MB", "id"=>"8a648f689ddb"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>1146880, "total"=>2489689}, "progress"=>"[=======================>                           ] 1.147 MB/2.49 MB", "id"=>"8a648f689ddb"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>1179648, "total"=>2489689}, "progress"=>"[=======================>                           ]  1.18 MB/2.49 MB", "id"=>"8a648f689ddb"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>1212416, "total"=>2489689}, "progress"=>"[========================>                          ] 1.212 MB/2.49 MB", "id"=>"8a648f689ddb"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>1245184, "total"=>2489689}, "progress"=>"[=========================>                         ] 1.245 MB/2.49 MB", "id"=>"8a648f689ddb"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>1277952, "total"=>2489689}, "progress"=>"[=========================>                         ] 1.278 MB/2.49 MB", "id"=>"8a648f689ddb"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>1310720, "total"=>2489689}, "progress"=>"[==========================>                        ] 1.311 MB/2.49 MB", "id"=>"8a648f689ddb"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>1343488, "total"=>2489689}, "progress"=>"[==========================>                        ] 1.343 MB/2.49 MB", "id"=>"8a648f689ddb"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>1376256, "total"=>2489689}, "progress"=>"[===========================>                       ] 1.376 MB/2.49 MB", "id"=>"8a648f689ddb"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>1409024, "total"=>2489689}, "progress"=>"[============================>                      ] 1.409 MB/2.49 MB", "id"=>"8a648f689ddb"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>1441792, "total"=>2489689}, "progress"=>"[============================>                      ] 1.442 MB/2.49 MB", "id"=>"8a648f689ddb"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>1474560, "total"=>2489689}, "progress"=>"[=============================>                     ] 1.475 MB/2.49 MB", "id"=>"8a648f689ddb"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>1507328, "total"=>2489689}, "progress"=>"[==============================>                    ] 1.507 MB/2.49 MB", "id"=>"8a648f689ddb"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>1540096, "total"=>2489689}, "progress"=>"[==============================>                    ]  1.54 MB/2.49 MB", "id"=>"8a648f689ddb"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>1572864, "total"=>2489689}, "progress"=>"[===============================>                   ] 1.573 MB/2.49 MB", "id"=>"8a648f689ddb"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>1605632, "total"=>2489689}, "progress"=>"[================================>                  ] 1.606 MB/2.49 MB", "id"=>"8a648f689ddb"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>1638400, "total"=>2489689}, "progress"=>"[================================>                  ] 1.638 MB/2.49 MB", "id"=>"8a648f689ddb"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>1671168, "total"=>2489689}, "progress"=>"[=================================>                 ] 1.671 MB/2.49 MB", "id"=>"8a648f689ddb"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>1703936, "total"=>2489689}, "progress"=>"[==================================>                ] 1.704 MB/2.49 MB", "id"=>"8a648f689ddb"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>1736704, "total"=>2489689}, "progress"=>"[==================================>                ] 1.737 MB/2.49 MB", "id"=>"8a648f689ddb"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>1769472, "total"=>2489689}, "progress"=>"[===================================>               ] 1.769 MB/2.49 MB", "id"=>"8a648f689ddb"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>1802240, "total"=>2489689}, "progress"=>"[====================================>              ] 1.802 MB/2.49 MB", "id"=>"8a648f689ddb"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>1835008, "total"=>2489689}, "progress"=>"[====================================>              ] 1.835 MB/2.49 MB", "id"=>"8a648f689ddb"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>1867776, "total"=>2489689}, "progress"=>"[=====================================>             ] 1.868 MB/2.49 MB", "id"=>"8a648f689ddb"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>1900544, "total"=>2489689}, "progress"=>"[======================================>            ] 1.901 MB/2.49 MB", "id"=>"8a648f689ddb"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>1933312, "total"=>2489689}, "progress"=>"[======================================>            ] 1.933 MB/2.49 MB", "id"=>"8a648f689ddb"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>1966080, "total"=>2489689}, "progress"=>"[=======================================>           ] 1.966 MB/2.49 MB", "id"=>"8a648f689ddb"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>1998848, "total"=>2489689}, "progress"=>"[========================================>          ] 1.999 MB/2.49 MB", "id"=>"8a648f689ddb"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>2031616, "total"=>2489689}, "progress"=>"[========================================>          ] 2.032 MB/2.49 MB", "id"=>"8a648f689ddb"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>2064384, "total"=>2489689}, "progress"=>"[=========================================>         ] 2.064 MB/2.49 MB", "id"=>"8a648f689ddb"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>2097152, "total"=>2489689}, "progress"=>"[==========================================>        ] 2.097 MB/2.49 MB", "id"=>"8a648f689ddb"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>2129920, "total"=>2489689}, "progress"=>"[==========================================>        ]  2.13 MB/2.49 MB", "id"=>"8a648f689ddb"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>2162688, "total"=>2489689}, "progress"=>"[===========================================>       ] 2.163 MB/2.49 MB", "id"=>"8a648f689ddb"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>2195456, "total"=>2489689}, "progress"=>"[============================================>      ] 2.195 MB/2.49 MB", "id"=>"8a648f689ddb"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>2228224, "total"=>2489689}, "progress"=>"[============================================>      ] 2.228 MB/2.49 MB", "id"=>"8a648f689ddb"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>2260992, "total"=>2489689}, "progress"=>"[=============================================>     ] 2.261 MB/2.49 MB", "id"=>"8a648f689ddb"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>2293760, "total"=>2489689}, "progress"=>"[==============================================>    ] 2.294 MB/2.49 MB", "id"=>"8a648f689ddb"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>2326528, "total"=>2489689}, "progress"=>"[==============================================>    ] 2.327 MB/2.49 MB", "id"=>"8a648f689ddb"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>2359296, "total"=>2489689}, "progress"=>"[===============================================>   ] 2.359 MB/2.49 MB", "id"=>"8a648f689ddb"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>2392064, "total"=>2489689}, "progress"=>"[================================================>  ] 2.392 MB/2.49 MB", "id"=>"8a648f689ddb"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>2424832, "total"=>2489689}, "progress"=>"[================================================>  ] 2.425 MB/2.49 MB", "id"=>"8a648f689ddb"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>2457600, "total"=>2489689}, "progress"=>"[=================================================> ] 2.458 MB/2.49 MB", "id"=>"8a648f689ddb"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>2489689, "total"=>2489689}, "progress"=>"[==================================================>]  2.49 MB/2.49 MB", "id"=>"8a648f689ddb"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>2489689, "total"=>2489689}, "progress"=>"[==================================================>]  2.49 MB/2.49 MB", "id"=>"8a648f689ddb"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>2489689, "total"=>2489689}, "progress"=>"[==================================================>]  2.49 MB/2.49 MB", "id"=>"8a648f689ddb"}
+{"status"=>"Pull complete", "progressDetail"=>{}, "id"=>"8a648f689ddb"}
+{"status"=>"Digest: sha256:35263e39831e23388d2a617fc485ca8503215924f7e6373e4f5abd377d6fa551"}
+{"status"=>"Status: Downloaded newer image for alpine:3.2"}
+{"stream"=>" ---> 8a648f689ddb\n"}
+{"stream"=>"Step 2 : MAINTAINER John Doe \"john.doe@example.com\"\n"}
+{"stream"=>" ---> Running in 834c7d097fad\n"}
+{"stream"=>" ---> 5f9165341e19\n"}
+{"stream"=>"Removing intermediate container 834c7d097fad\n"}
+{"stream"=>"Step 3 : LABEL testing docker serverspec true description \"My Container\"\n"}
+{"stream"=>" ---> Running in bd6292c198b6\n"}
+{"stream"=>" ---> 6a59f8f91f8e\n"}
+{"stream"=>"Removing intermediate container bd6292c198b6\n"}
+{"stream"=>"Step 4 : ARG user1\n"}
+{"stream"=>" ---> Running in 5e8212146b3c\n"}
+{"stream"=>" ---> 76eb5930661e\n"}
+{"stream"=>"Removing intermediate container 5e8212146b3c\n"}
+{"stream"=>"Step 5 : ARG buildno=1\n"}
+{"stream"=>" ---> Running in 2a5ab690549d\n"}
+{"stream"=>" ---> d58474a01a47\n"}
+{"stream"=>"Removing intermediate container 2a5ab690549d\n"}
+{"stream"=>"Step 6 : ENV PATH /usr/sbin:/usr/bin:/sbin:/bin\n"}
+{"stream"=>" ---> Running in 27e6b6c50531\n"}
+{"stream"=>" ---> 3a9d1d762160\n"}
+{"stream"=>"Removing intermediate container 27e6b6c50531\n"}
+{"stream"=>"Step 7 : ENV container docker CRACKER \"RANDOM;PATH=/tmp/bin:/sbin:/bin\"\n"}
+{"stream"=>" ---> Running in 33b07106c77c\n"}
+{"stream"=>" ---> e60c6c5086dc\n"}
+{"stream"=>"Removing intermediate container 33b07106c77c\n"}
+{"stream"=>"Step 8 : WORKDIR /opt\n"}
+{"stream"=>" ---> Running in 3a865c400121\n"}
+{"stream"=>" ---> 0b13877e30fd\n"}
+{"stream"=>"Removing intermediate container 3a865c400121\n"}
+{"stream"=>"Step 9 : USER nobody\n"}
+{"stream"=>" ---> Running in 0ce653cd4227\n"}
+{"stream"=>" ---> ab2d54d0d38b\n"}
+{"stream"=>"Removing intermediate container 0ce653cd4227\n"}
+{"stream"=>"Step 10 : EXPOSE 80\n"}
+{"stream"=>" ---> Running in 7b36ec1bb090\n"}
+{"stream"=>" ---> b366dd3655b5\n"}
+{"stream"=>"Removing intermediate container 7b36ec1bb090\n"}
+{"stream"=>"Step 11 : VOLUME /volume1 /volume2\n"}
+{"stream"=>" ---> Running in bfe6a5258374\n"}
+{"stream"=>" ---> 404a1bb7f8fb\n"}
+{"stream"=>"Removing intermediate container bfe6a5258374\n"}
+{"stream"=>"Step 12 : ADD files/file_example1 /tmp/file_example1\n"}
+{"stream"=>" ---> 1adaa22ff122\n"}
+{"stream"=>"Removing intermediate container 7e0976463308\n"}
+{"stream"=>"Step 13 : COPY files/file_example2 /tmp/file_example2\n"}
+{"stream"=>" ---> 8b7d06069d28\n"}
+{"stream"=>"Removing intermediate container 8aa0ca7e6093\n"}
+{"stream"=>"Step 14 : RUN echo running\n"}
+{"stream"=>" ---> Running in 06bfd0c46032\n"}
+{"stream"=>"running\n"}
+{"stream"=>" ---> a17bb5cae01f\n"}
+{"stream"=>"Removing intermediate container 06bfd0c46032\n"}
+{"stream"=>"Step 15 : ENTRYPOINT sleep\n"}
+{"stream"=>" ---> Running in b46dfd667afb\n"}
+{"stream"=>" ---> 75543dd134b5\n"}
+{"stream"=>"Removing intermediate container b46dfd667afb\n"}
+{"stream"=>"Step 16 : CMD 2 2000\n"}
+{"stream"=>" ---> Running in aabec8075e64\n"}
+{"stream"=>" ---> f51af107826c\n"}
+{"stream"=>"Removing intermediate container aabec8075e64\n"}
+{"stream"=>"Step 17 : ONBUILD run echo onbuild\n"}
+{"stream"=>" ---> Running in c02c2173883c\n"}
+{"stream"=>" ---> e14e4bcfd68d\n"}
+{"stream"=>"Removing intermediate container c02c2173883c\n"}
+{"stream"=>"Step 18 : STOPSIGNAL SIGTERM\n"}
+{"stream"=>" ---> Running in 91f762e66c65\n"}
+{"stream"=>" ---> 1ba63da849d9\n"}
+{"stream"=>"Removing intermediate container 91f762e66c65\n"}
+{"stream"=>"Successfully built 1ba63da849d9\n"}
+{"stream"=>"Step 1 : FROM alpine:3.2\n"}
+{"stream"=>" ---> 8a648f689ddb\n"}
+{"stream"=>"Successfully built 8a648f689ddb\n"}
+{"stream"=>"Step 1 : FROM nginx:1.9\n"}
+{"status"=>"Pulling from library/nginx", "id"=>"1.9"}
+{"status"=>"Pulling fs layer", "progressDetail"=>{}, "id"=>"1565e86129b8"}
+{"status"=>"Pulling fs layer", "progressDetail"=>{}, "id"=>"a604b236bcde"}
+{"status"=>"Pulling fs layer", "progressDetail"=>{}, "id"=>"84cef7523477"}
+{"status"=>"Pulling fs layer", "progressDetail"=>{}, "id"=>"fd07be91d48e"}
+{"status"=>"Pulling fs layer", "progressDetail"=>{}, "id"=>"fb36adbd81bf"}
+{"status"=>"Pulling fs layer", "progressDetail"=>{}, "id"=>"097ca86c0784"}
+{"status"=>"Pulling fs layer", "progressDetail"=>{}, "id"=>"8e0912ce0c1b"}
+{"status"=>"Pulling fs layer", "progressDetail"=>{}, "id"=>"306fa48b674e"}
+{"status"=>"Pulling fs layer", "progressDetail"=>{}, "id"=>"e51a2e0cfd66"}
+{"status"=>"Pulling fs layer", "progressDetail"=>{}, "id"=>"8ccac0b28146"}
+{"status"=>"Pulling fs layer", "progressDetail"=>{}, "id"=>"20ea32821467"}
+{"status"=>"Pulling fs layer", "progressDetail"=>{}, "id"=>"198a73cfd686"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>32, "total"=>32}, "progress"=>"[==================================================>]     32 B/32 B", "id"=>"198a73cfd686"}
+{"status"=>"Verifying Checksum", "progressDetail"=>{}, "id"=>"198a73cfd686"}
+{"status"=>"Download complete", "progressDetail"=>{}, "id"=>"198a73cfd686"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>2233, "total"=>2233}, "progress"=>"[==================================================>] 2.233 kB/2.233 kB", "id"=>"fd07be91d48e"}
+{"status"=>"Verifying Checksum", "progressDetail"=>{}, "id"=>"fd07be91d48e"}
+{"status"=>"Download complete", "progressDetail"=>{}, "id"=>"fd07be91d48e"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>174, "total"=>174}, "progress"=>"[==================================================>]    174 B/174 B", "id"=>"306fa48b674e"}
+{"status"=>"Verifying Checksum", "progressDetail"=>{}, "id"=>"306fa48b674e"}
+{"status"=>"Download complete", "progressDetail"=>{}, "id"=>"306fa48b674e"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>32, "total"=>32}, "progress"=>"[==================================================>]     32 B/32 B", "id"=>"097ca86c0784"}
+{"status"=>"Verifying Checksum", "progressDetail"=>{}, "id"=>"097ca86c0784"}
+{"status"=>"Download complete", "progressDetail"=>{}, "id"=>"097ca86c0784"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>172, "total"=>172}, "progress"=>"[==================================================>]    172 B/172 B", "id"=>"e51a2e0cfd66"}
+{"status"=>"Verifying Checksum", "progressDetail"=>{}, "id"=>"e51a2e0cfd66"}
+{"status"=>"Download complete", "progressDetail"=>{}, "id"=>"e51a2e0cfd66"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>32, "total"=>32}, "progress"=>"[==================================================>]     32 B/32 B", "id"=>"84cef7523477"}
+{"status"=>"Verifying Checksum", "progressDetail"=>{}, "id"=>"84cef7523477"}
+{"status"=>"Download complete", "progressDetail"=>{}, "id"=>"84cef7523477"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>32, "total"=>32}, "progress"=>"[==================================================>]     32 B/32 B", "id"=>"20ea32821467"}
+{"status"=>"Verifying Checksum", "progressDetail"=>{}, "id"=>"20ea32821467"}
+{"status"=>"Download complete", "progressDetail"=>{}, "id"=>"20ea32821467"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>32, "total"=>32}, "progress"=>"[==================================================>]     32 B/32 B", "id"=>"8ccac0b28146"}
+{"status"=>"Verifying Checksum", "progressDetail"=>{}, "id"=>"8ccac0b28146"}
+{"status"=>"Download complete", "progressDetail"=>{}, "id"=>"8ccac0b28146"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>245, "total"=>245}, "progress"=>"[==================================================>]    245 B/245 B", "id"=>"fb36adbd81bf"}
+{"status"=>"Verifying Checksum", "progressDetail"=>{}, "id"=>"fb36adbd81bf"}
+{"status"=>"Download complete", "progressDetail"=>{}, "id"=>"fb36adbd81bf"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>32, "total"=>32}, "progress"=>"[==================================================>]     32 B/32 B", "id"=>"a604b236bcde"}
+{"status"=>"Verifying Checksum", "progressDetail"=>{}, "id"=>"a604b236bcde"}
+{"status"=>"Download complete", "progressDetail"=>{}, "id"=>"a604b236bcde"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>48645, "total"=>3385947}, "progress"=>"[>                                                  ] 48.65 kB/3.386 MB", "id"=>"8e0912ce0c1b"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>97455, "total"=>3385947}, "progress"=>"[=>                                                 ] 97.45 kB/3.386 MB", "id"=>"8e0912ce0c1b"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>142228, "total"=>3385947}, "progress"=>"[==>                                                ] 142.2 kB/3.386 MB", "id"=>"8e0912ce0c1b"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>191380, "total"=>3385947}, "progress"=>"[==>                                                ] 191.4 kB/3.386 MB", "id"=>"8e0912ce0c1b"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>240532, "total"=>3385947}, "progress"=>"[===>                                               ] 240.5 kB/3.386 MB", "id"=>"8e0912ce0c1b"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>289684, "total"=>3385947}, "progress"=>"[====>                                              ] 289.7 kB/3.386 MB", "id"=>"8e0912ce0c1b"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>338836, "total"=>3385947}, "progress"=>"[=====>                                             ] 338.8 kB/3.386 MB", "id"=>"8e0912ce0c1b"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>387988, "total"=>3385947}, "progress"=>"[=====>                                             ]   388 kB/3.386 MB", "id"=>"8e0912ce0c1b"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>437140, "total"=>3385947}, "progress"=>"[======>                                            ] 437.1 kB/3.386 MB", "id"=>"8e0912ce0c1b"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>486292, "total"=>3385947}, "progress"=>"[=======>                                           ] 486.3 kB/3.386 MB", "id"=>"8e0912ce0c1b"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>535444, "total"=>3385947}, "progress"=>"[=======>                                           ] 535.4 kB/3.386 MB", "id"=>"8e0912ce0c1b"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>527239, "total"=>51352982}, "progress"=>"[>                                                  ] 527.2 kB/51.35 MB", "id"=>"1565e86129b8"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>584596, "total"=>3385947}, "progress"=>"[========>                                          ] 584.6 kB/3.386 MB", "id"=>"8e0912ce0c1b"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>633748, "total"=>3385947}, "progress"=>"[=========>                                         ] 633.7 kB/3.386 MB", "id"=>"8e0912ce0c1b"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>682900, "total"=>3385947}, "progress"=>"[==========>                                        ] 682.9 kB/3.386 MB", "id"=>"8e0912ce0c1b"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>732052, "total"=>3385947}, "progress"=>"[==========>                                        ] 732.1 kB/3.386 MB", "id"=>"8e0912ce0c1b"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>781204, "total"=>3385947}, "progress"=>"[===========>                                       ] 781.2 kB/3.386 MB", "id"=>"8e0912ce0c1b"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>830356, "total"=>3385947}, "progress"=>"[============>                                      ] 830.4 kB/3.386 MB", "id"=>"8e0912ce0c1b"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>879508, "total"=>3385947}, "progress"=>"[============>                                      ] 879.5 kB/3.386 MB", "id"=>"8e0912ce0c1b"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>928660, "total"=>3385947}, "progress"=>"[=============>                                     ] 928.7 kB/3.386 MB", "id"=>"8e0912ce0c1b"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>977812, "total"=>3385947}, "progress"=>"[==============>                                    ] 977.8 kB/3.386 MB", "id"=>"8e0912ce0c1b"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>1026964, "total"=>3385947}, "progress"=>"[===============>                                   ] 1.027 MB/3.386 MB", "id"=>"8e0912ce0c1b"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>1051527, "total"=>51352982}, "progress"=>"[=>                                                 ] 1.052 MB/51.35 MB", "id"=>"1565e86129b8"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>1076116, "total"=>3385947}, "progress"=>"[===============>                                   ] 1.076 MB/3.386 MB", "id"=>"8e0912ce0c1b"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>1125268, "total"=>3385947}, "progress"=>"[================>                                  ] 1.125 MB/3.386 MB", "id"=>"8e0912ce0c1b"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>1174420, "total"=>3385947}, "progress"=>"[=================>                                 ] 1.174 MB/3.386 MB", "id"=>"8e0912ce0c1b"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>1223572, "total"=>3385947}, "progress"=>"[==================>                                ] 1.224 MB/3.386 MB", "id"=>"8e0912ce0c1b"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>1272724, "total"=>3385947}, "progress"=>"[==================>                                ] 1.273 MB/3.386 MB", "id"=>"8e0912ce0c1b"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>1321876, "total"=>3385947}, "progress"=>"[===================>                               ] 1.322 MB/3.386 MB", "id"=>"8e0912ce0c1b"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>1371028, "total"=>3385947}, "progress"=>"[====================>                              ] 1.371 MB/3.386 MB", "id"=>"8e0912ce0c1b"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>1420180, "total"=>3385947}, "progress"=>"[====================>                              ]  1.42 MB/3.386 MB", "id"=>"8e0912ce0c1b"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>1469332, "total"=>3385947}, "progress"=>"[=====================>                             ] 1.469 MB/3.386 MB", "id"=>"8e0912ce0c1b"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>1518484, "total"=>3385947}, "progress"=>"[======================>                            ] 1.518 MB/3.386 MB", "id"=>"8e0912ce0c1b"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>1567636, "total"=>3385947}, "progress"=>"[=======================>                           ] 1.568 MB/3.386 MB", "id"=>"8e0912ce0c1b"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>1616788, "total"=>3385947}, "progress"=>"[=======================>                           ] 1.617 MB/3.386 MB", "id"=>"8e0912ce0c1b"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>1665940, "total"=>3385947}, "progress"=>"[========================>                          ] 1.666 MB/3.386 MB", "id"=>"8e0912ce0c1b"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>1715092, "total"=>3385947}, "progress"=>"[=========================>                         ] 1.715 MB/3.386 MB", "id"=>"8e0912ce0c1b"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>1575815, "total"=>51352982}, "progress"=>"[=>                                                 ] 1.576 MB/51.35 MB", "id"=>"1565e86129b8"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>1764244, "total"=>3385947}, "progress"=>"[==========================>                        ] 1.764 MB/3.386 MB", "id"=>"8e0912ce0c1b"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>1813396, "total"=>3385947}, "progress"=>"[==========================>                        ] 1.813 MB/3.386 MB", "id"=>"8e0912ce0c1b"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>1862548, "total"=>3385947}, "progress"=>"[===========================>                       ] 1.863 MB/3.386 MB", "id"=>"8e0912ce0c1b"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>1911700, "total"=>3385947}, "progress"=>"[============================>                      ] 1.912 MB/3.386 MB", "id"=>"8e0912ce0c1b"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>1960852, "total"=>3385947}, "progress"=>"[============================>                      ] 1.961 MB/3.386 MB", "id"=>"8e0912ce0c1b"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>2010004, "total"=>3385947}, "progress"=>"[=============================>                     ]  2.01 MB/3.386 MB", "id"=>"8e0912ce0c1b"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>2059156, "total"=>3385947}, "progress"=>"[==============================>                    ] 2.059 MB/3.386 MB", "id"=>"8e0912ce0c1b"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>2108308, "total"=>3385947}, "progress"=>"[===============================>                   ] 2.108 MB/3.386 MB", "id"=>"8e0912ce0c1b"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>2157460, "total"=>3385947}, "progress"=>"[===============================>                   ] 2.157 MB/3.386 MB", "id"=>"8e0912ce0c1b"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>2206612, "total"=>3385947}, "progress"=>"[================================>                  ] 2.207 MB/3.386 MB", "id"=>"8e0912ce0c1b"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>2255764, "total"=>3385947}, "progress"=>"[=================================>                 ] 2.256 MB/3.386 MB", "id"=>"8e0912ce0c1b"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>2304916, "total"=>3385947}, "progress"=>"[==================================>                ] 2.305 MB/3.386 MB", "id"=>"8e0912ce0c1b"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>2354068, "total"=>3385947}, "progress"=>"[==================================>                ] 2.354 MB/3.386 MB", "id"=>"8e0912ce0c1b"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>2403220, "total"=>3385947}, "progress"=>"[===================================>               ] 2.403 MB/3.386 MB", "id"=>"8e0912ce0c1b"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>2452372, "total"=>3385947}, "progress"=>"[====================================>              ] 2.452 MB/3.386 MB", "id"=>"8e0912ce0c1b"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>2100103, "total"=>51352982}, "progress"=>"[==>                                                ]   2.1 MB/51.35 MB", "id"=>"1565e86129b8"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>2501524, "total"=>3385947}, "progress"=>"[====================================>              ] 2.502 MB/3.386 MB", "id"=>"8e0912ce0c1b"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>2550676, "total"=>3385947}, "progress"=>"[=====================================>             ] 2.551 MB/3.386 MB", "id"=>"8e0912ce0c1b"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>2599828, "total"=>3385947}, "progress"=>"[======================================>            ]   2.6 MB/3.386 MB", "id"=>"8e0912ce0c1b"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>2648980, "total"=>3385947}, "progress"=>"[=======================================>           ] 2.649 MB/3.386 MB", "id"=>"8e0912ce0c1b"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>2698132, "total"=>3385947}, "progress"=>"[=======================================>           ] 2.698 MB/3.386 MB", "id"=>"8e0912ce0c1b"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>2747284, "total"=>3385947}, "progress"=>"[========================================>          ] 2.747 MB/3.386 MB", "id"=>"8e0912ce0c1b"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>2796436, "total"=>3385947}, "progress"=>"[=========================================>         ] 2.796 MB/3.386 MB", "id"=>"8e0912ce0c1b"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>2845588, "total"=>3385947}, "progress"=>"[==========================================>        ] 2.846 MB/3.386 MB", "id"=>"8e0912ce0c1b"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>2894740, "total"=>3385947}, "progress"=>"[==========================================>        ] 2.895 MB/3.386 MB", "id"=>"8e0912ce0c1b"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>2943892, "total"=>3385947}, "progress"=>"[===========================================>       ] 2.944 MB/3.386 MB", "id"=>"8e0912ce0c1b"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>2993044, "total"=>3385947}, "progress"=>"[============================================>      ] 2.993 MB/3.386 MB", "id"=>"8e0912ce0c1b"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>2624391, "total"=>51352982}, "progress"=>"[==>                                                ] 2.624 MB/51.35 MB", "id"=>"1565e86129b8"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>3042196, "total"=>3385947}, "progress"=>"[============================================>      ] 3.042 MB/3.386 MB", "id"=>"8e0912ce0c1b"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>3091348, "total"=>3385947}, "progress"=>"[=============================================>     ] 3.091 MB/3.386 MB", "id"=>"8e0912ce0c1b"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>3140500, "total"=>3385947}, "progress"=>"[==============================================>    ]  3.14 MB/3.386 MB", "id"=>"8e0912ce0c1b"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>3189652, "total"=>3385947}, "progress"=>"[===============================================>   ]  3.19 MB/3.386 MB", "id"=>"8e0912ce0c1b"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>3238804, "total"=>3385947}, "progress"=>"[===============================================>   ] 3.239 MB/3.386 MB", "id"=>"8e0912ce0c1b"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>3287956, "total"=>3385947}, "progress"=>"[================================================>  ] 3.288 MB/3.386 MB", "id"=>"8e0912ce0c1b"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>3337108, "total"=>3385947}, "progress"=>"[=================================================> ] 3.337 MB/3.386 MB", "id"=>"8e0912ce0c1b"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>3385947, "total"=>3385947}, "progress"=>"[==================================================>] 3.386 MB/3.386 MB", "id"=>"8e0912ce0c1b"}
+{"status"=>"Verifying Checksum", "progressDetail"=>{}, "id"=>"8e0912ce0c1b"}
+{"status"=>"Download complete", "progressDetail"=>{}, "id"=>"8e0912ce0c1b"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>3148679, "total"=>51352982}, "progress"=>"[===>                                               ] 3.149 MB/51.35 MB", "id"=>"1565e86129b8"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>3672967, "total"=>51352982}, "progress"=>"[===>                                               ] 3.673 MB/51.35 MB", "id"=>"1565e86129b8"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>4197255, "total"=>51352982}, "progress"=>"[====>                                              ] 4.197 MB/51.35 MB", "id"=>"1565e86129b8"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>4721543, "total"=>51352982}, "progress"=>"[====>                                              ] 4.722 MB/51.35 MB", "id"=>"1565e86129b8"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>5245831, "total"=>51352982}, "progress"=>"[=====>                                             ] 5.246 MB/51.35 MB", "id"=>"1565e86129b8"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>5770119, "total"=>51352982}, "progress"=>"[=====>                                             ]  5.77 MB/51.35 MB", "id"=>"1565e86129b8"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>6294407, "total"=>51352982}, "progress"=>"[======>                                            ] 6.294 MB/51.35 MB", "id"=>"1565e86129b8"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>6818695, "total"=>51352982}, "progress"=>"[======>                                            ] 6.819 MB/51.35 MB", "id"=>"1565e86129b8"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>7342983, "total"=>51352982}, "progress"=>"[=======>                                           ] 7.343 MB/51.35 MB", "id"=>"1565e86129b8"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>7867271, "total"=>51352982}, "progress"=>"[=======>                                           ] 7.867 MB/51.35 MB", "id"=>"1565e86129b8"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>8391559, "total"=>51352982}, "progress"=>"[========>                                          ] 8.392 MB/51.35 MB", "id"=>"1565e86129b8"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>8911751, "total"=>51352982}, "progress"=>"[========>                                          ] 8.912 MB/51.35 MB", "id"=>"1565e86129b8"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>9436039, "total"=>51352982}, "progress"=>"[=========>                                         ] 9.436 MB/51.35 MB", "id"=>"1565e86129b8"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>9960327, "total"=>51352982}, "progress"=>"[=========>                                         ]  9.96 MB/51.35 MB", "id"=>"1565e86129b8"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>10480519, "total"=>51352982}, "progress"=>"[==========>                                        ] 10.48 MB/51.35 MB", "id"=>"1565e86129b8"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>11004807, "total"=>51352982}, "progress"=>"[==========>                                        ]    11 MB/51.35 MB", "id"=>"1565e86129b8"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>11520903, "total"=>51352982}, "progress"=>"[===========>                                       ] 11.52 MB/51.35 MB", "id"=>"1565e86129b8"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>12045191, "total"=>51352982}, "progress"=>"[===========>                                       ] 12.05 MB/51.35 MB", "id"=>"1565e86129b8"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>12569479, "total"=>51352982}, "progress"=>"[============>                                      ] 12.57 MB/51.35 MB", "id"=>"1565e86129b8"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>13093767, "total"=>51352982}, "progress"=>"[============>                                      ] 13.09 MB/51.35 MB", "id"=>"1565e86129b8"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>13613959, "total"=>51352982}, "progress"=>"[=============>                                     ] 13.61 MB/51.35 MB", "id"=>"1565e86129b8"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>14138247, "total"=>51352982}, "progress"=>"[=============>                                     ] 14.14 MB/51.35 MB", "id"=>"1565e86129b8"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>14666631, "total"=>51352982}, "progress"=>"[==============>                                    ] 14.67 MB/51.35 MB", "id"=>"1565e86129b8"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>15190919, "total"=>51352982}, "progress"=>"[==============>                                    ] 15.19 MB/51.35 MB", "id"=>"1565e86129b8"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>15715207, "total"=>51352982}, "progress"=>"[===============>                                   ] 15.72 MB/51.35 MB", "id"=>"1565e86129b8"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>16243591, "total"=>51352982}, "progress"=>"[===============>                                   ] 16.24 MB/51.35 MB", "id"=>"1565e86129b8"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>16759687, "total"=>51352982}, "progress"=>"[================>                                  ] 16.76 MB/51.35 MB", "id"=>"1565e86129b8"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>17279879, "total"=>51352982}, "progress"=>"[================>                                  ] 17.28 MB/51.35 MB", "id"=>"1565e86129b8"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>17795975, "total"=>51352982}, "progress"=>"[=================>                                 ]  17.8 MB/51.35 MB", "id"=>"1565e86129b8"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>18316167, "total"=>51352982}, "progress"=>"[=================>                                 ] 18.32 MB/51.35 MB", "id"=>"1565e86129b8"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>18836359, "total"=>51352982}, "progress"=>"[==================>                                ] 18.84 MB/51.35 MB", "id"=>"1565e86129b8"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>19364743, "total"=>51352982}, "progress"=>"[==================>                                ] 19.36 MB/51.35 MB", "id"=>"1565e86129b8"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>19880839, "total"=>51352982}, "progress"=>"[===================>                               ] 19.88 MB/51.35 MB", "id"=>"1565e86129b8"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>20405127, "total"=>51352982}, "progress"=>"[===================>                               ] 20.41 MB/51.35 MB", "id"=>"1565e86129b8"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>20925319, "total"=>51352982}, "progress"=>"[====================>                              ] 20.93 MB/51.35 MB", "id"=>"1565e86129b8"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>21445511, "total"=>51352982}, "progress"=>"[====================>                              ] 21.45 MB/51.35 MB", "id"=>"1565e86129b8"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>21961607, "total"=>51352982}, "progress"=>"[=====================>                             ] 21.96 MB/51.35 MB", "id"=>"1565e86129b8"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>22477703, "total"=>51352982}, "progress"=>"[=====================>                             ] 22.48 MB/51.35 MB", "id"=>"1565e86129b8"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>22993799, "total"=>51352982}, "progress"=>"[======================>                            ] 22.99 MB/51.35 MB", "id"=>"1565e86129b8"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>23513991, "total"=>51352982}, "progress"=>"[======================>                            ] 23.51 MB/51.35 MB", "id"=>"1565e86129b8"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>24038279, "total"=>51352982}, "progress"=>"[=======================>                           ] 24.04 MB/51.35 MB", "id"=>"1565e86129b8"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>24566663, "total"=>51352982}, "progress"=>"[=======================>                           ] 24.57 MB/51.35 MB", "id"=>"1565e86129b8"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>25095047, "total"=>51352982}, "progress"=>"[========================>                          ]  25.1 MB/51.35 MB", "id"=>"1565e86129b8"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>25615239, "total"=>51352982}, "progress"=>"[========================>                          ] 25.62 MB/51.35 MB", "id"=>"1565e86129b8"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>26135431, "total"=>51352982}, "progress"=>"[=========================>                         ] 26.14 MB/51.35 MB", "id"=>"1565e86129b8"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>26659719, "total"=>51352982}, "progress"=>"[=========================>                         ] 26.66 MB/51.35 MB", "id"=>"1565e86129b8"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>27175815, "total"=>51352982}, "progress"=>"[==========================>                        ] 27.18 MB/51.35 MB", "id"=>"1565e86129b8"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>27700103, "total"=>51352982}, "progress"=>"[==========================>                        ]  27.7 MB/51.35 MB", "id"=>"1565e86129b8"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>28228487, "total"=>51352982}, "progress"=>"[===========================>                       ] 28.23 MB/51.35 MB", "id"=>"1565e86129b8"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>28756871, "total"=>51352982}, "progress"=>"[===========================>                       ] 28.76 MB/51.35 MB", "id"=>"1565e86129b8"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>29277063, "total"=>51352982}, "progress"=>"[============================>                      ] 29.28 MB/51.35 MB", "id"=>"1565e86129b8"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>29805447, "total"=>51352982}, "progress"=>"[=============================>                     ] 29.81 MB/51.35 MB", "id"=>"1565e86129b8"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>30329735, "total"=>51352982}, "progress"=>"[=============================>                     ] 30.33 MB/51.35 MB", "id"=>"1565e86129b8"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>30849927, "total"=>51352982}, "progress"=>"[==============================>                    ] 30.85 MB/51.35 MB", "id"=>"1565e86129b8"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>31378311, "total"=>51352982}, "progress"=>"[==============================>                    ] 31.38 MB/51.35 MB", "id"=>"1565e86129b8"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>31898503, "total"=>51352982}, "progress"=>"[===============================>                   ]  31.9 MB/51.35 MB", "id"=>"1565e86129b8"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>32426887, "total"=>51352982}, "progress"=>"[===============================>                   ] 32.43 MB/51.35 MB", "id"=>"1565e86129b8"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>32947079, "total"=>51352982}, "progress"=>"[================================>                  ] 32.95 MB/51.35 MB", "id"=>"1565e86129b8"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>33471367, "total"=>51352982}, "progress"=>"[================================>                  ] 33.47 MB/51.35 MB", "id"=>"1565e86129b8"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>33995655, "total"=>51352982}, "progress"=>"[=================================>                 ]    34 MB/51.35 MB", "id"=>"1565e86129b8"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>34515847, "total"=>51352982}, "progress"=>"[=================================>                 ] 34.52 MB/51.35 MB", "id"=>"1565e86129b8"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>35044231, "total"=>51352982}, "progress"=>"[==================================>                ] 35.04 MB/51.35 MB", "id"=>"1565e86129b8"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>35564423, "total"=>51352982}, "progress"=>"[==================================>                ] 35.56 MB/51.35 MB", "id"=>"1565e86129b8"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>36092807, "total"=>51352982}, "progress"=>"[===================================>               ] 36.09 MB/51.35 MB", "id"=>"1565e86129b8"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>36617095, "total"=>51352982}, "progress"=>"[===================================>               ] 36.62 MB/51.35 MB", "id"=>"1565e86129b8"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>37141383, "total"=>51352982}, "progress"=>"[====================================>              ] 37.14 MB/51.35 MB", "id"=>"1565e86129b8"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>37661575, "total"=>51352982}, "progress"=>"[====================================>              ] 37.66 MB/51.35 MB", "id"=>"1565e86129b8"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>38177671, "total"=>51352982}, "progress"=>"[=====================================>             ] 38.18 MB/51.35 MB", "id"=>"1565e86129b8"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>38697863, "total"=>51352982}, "progress"=>"[=====================================>             ]  38.7 MB/51.35 MB", "id"=>"1565e86129b8"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>39226247, "total"=>51352982}, "progress"=>"[======================================>            ] 39.23 MB/51.35 MB", "id"=>"1565e86129b8"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>39746439, "total"=>51352982}, "progress"=>"[======================================>            ] 39.75 MB/51.35 MB", "id"=>"1565e86129b8"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>40270727, "total"=>51352982}, "progress"=>"[=======================================>           ] 40.27 MB/51.35 MB", "id"=>"1565e86129b8"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>40795015, "total"=>51352982}, "progress"=>"[=======================================>           ]  40.8 MB/51.35 MB", "id"=>"1565e86129b8"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>41311111, "total"=>51352982}, "progress"=>"[========================================>          ] 41.31 MB/51.35 MB", "id"=>"1565e86129b8"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>41827207, "total"=>51352982}, "progress"=>"[========================================>          ] 41.83 MB/51.35 MB", "id"=>"1565e86129b8"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>42343303, "total"=>51352982}, "progress"=>"[=========================================>         ] 42.34 MB/51.35 MB", "id"=>"1565e86129b8"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>42859399, "total"=>51352982}, "progress"=>"[=========================================>         ] 42.86 MB/51.35 MB", "id"=>"1565e86129b8"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>43375495, "total"=>51352982}, "progress"=>"[==========================================>        ] 43.38 MB/51.35 MB", "id"=>"1565e86129b8"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>43891591, "total"=>51352982}, "progress"=>"[==========================================>        ] 43.89 MB/51.35 MB", "id"=>"1565e86129b8"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>44415879, "total"=>51352982}, "progress"=>"[===========================================>       ] 44.42 MB/51.35 MB", "id"=>"1565e86129b8"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>44936071, "total"=>51352982}, "progress"=>"[===========================================>       ] 44.94 MB/51.35 MB", "id"=>"1565e86129b8"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>45464455, "total"=>51352982}, "progress"=>"[============================================>      ] 45.46 MB/51.35 MB", "id"=>"1565e86129b8"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>45984647, "total"=>51352982}, "progress"=>"[============================================>      ] 45.98 MB/51.35 MB", "id"=>"1565e86129b8"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>46508935, "total"=>51352982}, "progress"=>"[=============================================>     ] 46.51 MB/51.35 MB", "id"=>"1565e86129b8"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>47037319, "total"=>51352982}, "progress"=>"[=============================================>     ] 47.04 MB/51.35 MB", "id"=>"1565e86129b8"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>47557511, "total"=>51352982}, "progress"=>"[==============================================>    ] 47.56 MB/51.35 MB", "id"=>"1565e86129b8"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>48085895, "total"=>51352982}, "progress"=>"[==============================================>    ] 48.09 MB/51.35 MB", "id"=>"1565e86129b8"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>48606087, "total"=>51352982}, "progress"=>"[===============================================>   ] 48.61 MB/51.35 MB", "id"=>"1565e86129b8"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>49134471, "total"=>51352982}, "progress"=>"[===============================================>   ] 49.13 MB/51.35 MB", "id"=>"1565e86129b8"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>49650567, "total"=>51352982}, "progress"=>"[================================================>  ] 49.65 MB/51.35 MB", "id"=>"1565e86129b8"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>50166663, "total"=>51352982}, "progress"=>"[================================================>  ] 50.17 MB/51.35 MB", "id"=>"1565e86129b8"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>50682759, "total"=>51352982}, "progress"=>"[=================================================> ] 50.68 MB/51.35 MB", "id"=>"1565e86129b8"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>51198855, "total"=>51352982}, "progress"=>"[=================================================> ]  51.2 MB/51.35 MB", "id"=>"1565e86129b8"}
+{"status"=>"Downloading", "progressDetail"=>{"current"=>51352982, "total"=>51352982}, "progress"=>"[==================================================>] 51.35 MB/51.35 MB", "id"=>"1565e86129b8"}
+{"status"=>"Verifying Checksum", "progressDetail"=>{}, "id"=>"1565e86129b8"}
+{"status"=>"Download complete", "progressDetail"=>{}, "id"=>"1565e86129b8"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>524288, "total"=>51352982}, "progress"=>"[>                                                  ] 524.3 kB/51.35 MB", "id"=>"1565e86129b8"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>1048576, "total"=>51352982}, "progress"=>"[=>                                                 ] 1.049 MB/51.35 MB", "id"=>"1565e86129b8"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>1572864, "total"=>51352982}, "progress"=>"[=>                                                 ] 1.573 MB/51.35 MB", "id"=>"1565e86129b8"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>2097152, "total"=>51352982}, "progress"=>"[==>                                                ] 2.097 MB/51.35 MB", "id"=>"1565e86129b8"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>2621440, "total"=>51352982}, "progress"=>"[==>                                                ] 2.621 MB/51.35 MB", "id"=>"1565e86129b8"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>3145728, "total"=>51352982}, "progress"=>"[===>                                               ] 3.146 MB/51.35 MB", "id"=>"1565e86129b8"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>3670016, "total"=>51352982}, "progress"=>"[===>                                               ]  3.67 MB/51.35 MB", "id"=>"1565e86129b8"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>4194304, "total"=>51352982}, "progress"=>"[====>                                              ] 4.194 MB/51.35 MB", "id"=>"1565e86129b8"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>4718592, "total"=>51352982}, "progress"=>"[====>                                              ] 4.719 MB/51.35 MB", "id"=>"1565e86129b8"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>5242880, "total"=>51352982}, "progress"=>"[=====>                                             ] 5.243 MB/51.35 MB", "id"=>"1565e86129b8"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>5767168, "total"=>51352982}, "progress"=>"[=====>                                             ] 5.767 MB/51.35 MB", "id"=>"1565e86129b8"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>6291456, "total"=>51352982}, "progress"=>"[======>                                            ] 6.291 MB/51.35 MB", "id"=>"1565e86129b8"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>6815744, "total"=>51352982}, "progress"=>"[======>                                            ] 6.816 MB/51.35 MB", "id"=>"1565e86129b8"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>7340032, "total"=>51352982}, "progress"=>"[=======>                                           ]  7.34 MB/51.35 MB", "id"=>"1565e86129b8"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>7864320, "total"=>51352982}, "progress"=>"[=======>                                           ] 7.864 MB/51.35 MB", "id"=>"1565e86129b8"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>8388608, "total"=>51352982}, "progress"=>"[========>                                          ] 8.389 MB/51.35 MB", "id"=>"1565e86129b8"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>8912896, "total"=>51352982}, "progress"=>"[========>                                          ] 8.913 MB/51.35 MB", "id"=>"1565e86129b8"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>9437184, "total"=>51352982}, "progress"=>"[=========>                                         ] 9.437 MB/51.35 MB", "id"=>"1565e86129b8"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>9961472, "total"=>51352982}, "progress"=>"[=========>                                         ] 9.961 MB/51.35 MB", "id"=>"1565e86129b8"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>10485760, "total"=>51352982}, "progress"=>"[==========>                                        ] 10.49 MB/51.35 MB", "id"=>"1565e86129b8"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>11010048, "total"=>51352982}, "progress"=>"[==========>                                        ] 11.01 MB/51.35 MB", "id"=>"1565e86129b8"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>11534336, "total"=>51352982}, "progress"=>"[===========>                                       ] 11.53 MB/51.35 MB", "id"=>"1565e86129b8"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>12058624, "total"=>51352982}, "progress"=>"[===========>                                       ] 12.06 MB/51.35 MB", "id"=>"1565e86129b8"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>12582912, "total"=>51352982}, "progress"=>"[============>                                      ] 12.58 MB/51.35 MB", "id"=>"1565e86129b8"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>13107200, "total"=>51352982}, "progress"=>"[============>                                      ] 13.11 MB/51.35 MB", "id"=>"1565e86129b8"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>13631488, "total"=>51352982}, "progress"=>"[=============>                                     ] 13.63 MB/51.35 MB", "id"=>"1565e86129b8"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>14155776, "total"=>51352982}, "progress"=>"[=============>                                     ] 14.16 MB/51.35 MB", "id"=>"1565e86129b8"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>14680064, "total"=>51352982}, "progress"=>"[==============>                                    ] 14.68 MB/51.35 MB", "id"=>"1565e86129b8"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>15204352, "total"=>51352982}, "progress"=>"[==============>                                    ]  15.2 MB/51.35 MB", "id"=>"1565e86129b8"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>15728640, "total"=>51352982}, "progress"=>"[===============>                                   ] 15.73 MB/51.35 MB", "id"=>"1565e86129b8"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>16252928, "total"=>51352982}, "progress"=>"[===============>                                   ] 16.25 MB/51.35 MB", "id"=>"1565e86129b8"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>16777216, "total"=>51352982}, "progress"=>"[================>                                  ] 16.78 MB/51.35 MB", "id"=>"1565e86129b8"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>17301504, "total"=>51352982}, "progress"=>"[================>                                  ]  17.3 MB/51.35 MB", "id"=>"1565e86129b8"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>17825792, "total"=>51352982}, "progress"=>"[=================>                                 ] 17.83 MB/51.35 MB", "id"=>"1565e86129b8"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>18350080, "total"=>51352982}, "progress"=>"[=================>                                 ] 18.35 MB/51.35 MB", "id"=>"1565e86129b8"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>18874368, "total"=>51352982}, "progress"=>"[==================>                                ] 18.87 MB/51.35 MB", "id"=>"1565e86129b8"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>19398656, "total"=>51352982}, "progress"=>"[==================>                                ]  19.4 MB/51.35 MB", "id"=>"1565e86129b8"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>19922944, "total"=>51352982}, "progress"=>"[===================>                               ] 19.92 MB/51.35 MB", "id"=>"1565e86129b8"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>20447232, "total"=>51352982}, "progress"=>"[===================>                               ] 20.45 MB/51.35 MB", "id"=>"1565e86129b8"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>20971520, "total"=>51352982}, "progress"=>"[====================>                              ] 20.97 MB/51.35 MB", "id"=>"1565e86129b8"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>21495808, "total"=>51352982}, "progress"=>"[====================>                              ]  21.5 MB/51.35 MB", "id"=>"1565e86129b8"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>22020096, "total"=>51352982}, "progress"=>"[=====================>                             ] 22.02 MB/51.35 MB", "id"=>"1565e86129b8"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>22544384, "total"=>51352982}, "progress"=>"[=====================>                             ] 22.54 MB/51.35 MB", "id"=>"1565e86129b8"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>23068672, "total"=>51352982}, "progress"=>"[======================>                            ] 23.07 MB/51.35 MB", "id"=>"1565e86129b8"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>23592960, "total"=>51352982}, "progress"=>"[======================>                            ] 23.59 MB/51.35 MB", "id"=>"1565e86129b8"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>24117248, "total"=>51352982}, "progress"=>"[=======================>                           ] 24.12 MB/51.35 MB", "id"=>"1565e86129b8"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>24641536, "total"=>51352982}, "progress"=>"[=======================>                           ] 24.64 MB/51.35 MB", "id"=>"1565e86129b8"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>25165824, "total"=>51352982}, "progress"=>"[========================>                          ] 25.17 MB/51.35 MB", "id"=>"1565e86129b8"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>25690112, "total"=>51352982}, "progress"=>"[=========================>                         ] 25.69 MB/51.35 MB", "id"=>"1565e86129b8"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>26214400, "total"=>51352982}, "progress"=>"[=========================>                         ] 26.21 MB/51.35 MB", "id"=>"1565e86129b8"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>26738688, "total"=>51352982}, "progress"=>"[==========================>                        ] 26.74 MB/51.35 MB", "id"=>"1565e86129b8"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>27262976, "total"=>51352982}, "progress"=>"[==========================>                        ] 27.26 MB/51.35 MB", "id"=>"1565e86129b8"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>27787264, "total"=>51352982}, "progress"=>"[===========================>                       ] 27.79 MB/51.35 MB", "id"=>"1565e86129b8"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>28311552, "total"=>51352982}, "progress"=>"[===========================>                       ] 28.31 MB/51.35 MB", "id"=>"1565e86129b8"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>28835840, "total"=>51352982}, "progress"=>"[============================>                      ] 28.84 MB/51.35 MB", "id"=>"1565e86129b8"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>29360128, "total"=>51352982}, "progress"=>"[============================>                      ] 29.36 MB/51.35 MB", "id"=>"1565e86129b8"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>29884416, "total"=>51352982}, "progress"=>"[=============================>                     ] 29.88 MB/51.35 MB", "id"=>"1565e86129b8"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>30408704, "total"=>51352982}, "progress"=>"[=============================>                     ] 30.41 MB/51.35 MB", "id"=>"1565e86129b8"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>30932992, "total"=>51352982}, "progress"=>"[==============================>                    ] 30.93 MB/51.35 MB", "id"=>"1565e86129b8"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>31457280, "total"=>51352982}, "progress"=>"[==============================>                    ] 31.46 MB/51.35 MB", "id"=>"1565e86129b8"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>31981568, "total"=>51352982}, "progress"=>"[===============================>                   ] 31.98 MB/51.35 MB", "id"=>"1565e86129b8"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>32505856, "total"=>51352982}, "progress"=>"[===============================>                   ] 32.51 MB/51.35 MB", "id"=>"1565e86129b8"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>33030144, "total"=>51352982}, "progress"=>"[================================>                  ] 33.03 MB/51.35 MB", "id"=>"1565e86129b8"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>33554432, "total"=>51352982}, "progress"=>"[================================>                  ] 33.55 MB/51.35 MB", "id"=>"1565e86129b8"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>34078720, "total"=>51352982}, "progress"=>"[=================================>                 ] 34.08 MB/51.35 MB", "id"=>"1565e86129b8"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>34603008, "total"=>51352982}, "progress"=>"[=================================>                 ]  34.6 MB/51.35 MB", "id"=>"1565e86129b8"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>35127296, "total"=>51352982}, "progress"=>"[==================================>                ] 35.13 MB/51.35 MB", "id"=>"1565e86129b8"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>35651584, "total"=>51352982}, "progress"=>"[==================================>                ] 35.65 MB/51.35 MB", "id"=>"1565e86129b8"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>36175872, "total"=>51352982}, "progress"=>"[===================================>               ] 36.18 MB/51.35 MB", "id"=>"1565e86129b8"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>36700160, "total"=>51352982}, "progress"=>"[===================================>               ]  36.7 MB/51.35 MB", "id"=>"1565e86129b8"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>37224448, "total"=>51352982}, "progress"=>"[====================================>              ] 37.22 MB/51.35 MB", "id"=>"1565e86129b8"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>37748736, "total"=>51352982}, "progress"=>"[====================================>              ] 37.75 MB/51.35 MB", "id"=>"1565e86129b8"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>38273024, "total"=>51352982}, "progress"=>"[=====================================>             ] 38.27 MB/51.35 MB", "id"=>"1565e86129b8"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>38797312, "total"=>51352982}, "progress"=>"[=====================================>             ]  38.8 MB/51.35 MB", "id"=>"1565e86129b8"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>39321600, "total"=>51352982}, "progress"=>"[======================================>            ] 39.32 MB/51.35 MB", "id"=>"1565e86129b8"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>39845888, "total"=>51352982}, "progress"=>"[======================================>            ] 39.85 MB/51.35 MB", "id"=>"1565e86129b8"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>40370176, "total"=>51352982}, "progress"=>"[=======================================>           ] 40.37 MB/51.35 MB", "id"=>"1565e86129b8"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>40894464, "total"=>51352982}, "progress"=>"[=======================================>           ] 40.89 MB/51.35 MB", "id"=>"1565e86129b8"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>41418752, "total"=>51352982}, "progress"=>"[========================================>          ] 41.42 MB/51.35 MB", "id"=>"1565e86129b8"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>41943040, "total"=>51352982}, "progress"=>"[========================================>          ] 41.94 MB/51.35 MB", "id"=>"1565e86129b8"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>42467328, "total"=>51352982}, "progress"=>"[=========================================>         ] 42.47 MB/51.35 MB", "id"=>"1565e86129b8"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>42991616, "total"=>51352982}, "progress"=>"[=========================================>         ] 42.99 MB/51.35 MB", "id"=>"1565e86129b8"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>43515904, "total"=>51352982}, "progress"=>"[==========================================>        ] 43.52 MB/51.35 MB", "id"=>"1565e86129b8"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>44040192, "total"=>51352982}, "progress"=>"[==========================================>        ] 44.04 MB/51.35 MB", "id"=>"1565e86129b8"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>44564480, "total"=>51352982}, "progress"=>"[===========================================>       ] 44.56 MB/51.35 MB", "id"=>"1565e86129b8"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>45088768, "total"=>51352982}, "progress"=>"[===========================================>       ] 45.09 MB/51.35 MB", "id"=>"1565e86129b8"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>45613056, "total"=>51352982}, "progress"=>"[============================================>      ] 45.61 MB/51.35 MB", "id"=>"1565e86129b8"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>46137344, "total"=>51352982}, "progress"=>"[============================================>      ] 46.14 MB/51.35 MB", "id"=>"1565e86129b8"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>46661632, "total"=>51352982}, "progress"=>"[=============================================>     ] 46.66 MB/51.35 MB", "id"=>"1565e86129b8"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>47185920, "total"=>51352982}, "progress"=>"[=============================================>     ] 47.19 MB/51.35 MB", "id"=>"1565e86129b8"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>47710208, "total"=>51352982}, "progress"=>"[==============================================>    ] 47.71 MB/51.35 MB", "id"=>"1565e86129b8"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>48234496, "total"=>51352982}, "progress"=>"[==============================================>    ] 48.23 MB/51.35 MB", "id"=>"1565e86129b8"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>48758784, "total"=>51352982}, "progress"=>"[===============================================>   ] 48.76 MB/51.35 MB", "id"=>"1565e86129b8"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>49283072, "total"=>51352982}, "progress"=>"[===============================================>   ] 49.28 MB/51.35 MB", "id"=>"1565e86129b8"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>49807360, "total"=>51352982}, "progress"=>"[================================================>  ] 49.81 MB/51.35 MB", "id"=>"1565e86129b8"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>50331648, "total"=>51352982}, "progress"=>"[=================================================> ] 50.33 MB/51.35 MB", "id"=>"1565e86129b8"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>50855936, "total"=>51352982}, "progress"=>"[=================================================> ] 50.86 MB/51.35 MB", "id"=>"1565e86129b8"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>51352982, "total"=>51352982}, "progress"=>"[==================================================>] 51.35 MB/51.35 MB", "id"=>"1565e86129b8"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>51352982, "total"=>51352982}, "progress"=>"[==================================================>] 51.35 MB/51.35 MB", "id"=>"1565e86129b8"}
+{"status"=>"Pull complete", "progressDetail"=>{}, "id"=>"1565e86129b8"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>32, "total"=>32}, "progress"=>"[==================================================>]     32 B/32 B", "id"=>"a604b236bcde"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>32, "total"=>32}, "progress"=>"[==================================================>]     32 B/32 B", "id"=>"a604b236bcde"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>32, "total"=>32}, "progress"=>"[==================================================>]     32 B/32 B", "id"=>"a604b236bcde"}
+{"status"=>"Pull complete", "progressDetail"=>{}, "id"=>"a604b236bcde"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>32, "total"=>32}, "progress"=>"[==================================================>]     32 B/32 B", "id"=>"84cef7523477"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>32, "total"=>32}, "progress"=>"[==================================================>]     32 B/32 B", "id"=>"84cef7523477"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>32, "total"=>32}, "progress"=>"[==================================================>]     32 B/32 B", "id"=>"84cef7523477"}
+{"status"=>"Pull complete", "progressDetail"=>{}, "id"=>"84cef7523477"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>2233, "total"=>2233}, "progress"=>"[==================================================>] 2.233 kB/2.233 kB", "id"=>"fd07be91d48e"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>2233, "total"=>2233}, "progress"=>"[==================================================>] 2.233 kB/2.233 kB", "id"=>"fd07be91d48e"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>2233, "total"=>2233}, "progress"=>"[==================================================>] 2.233 kB/2.233 kB", "id"=>"fd07be91d48e"}
+{"status"=>"Pull complete", "progressDetail"=>{}, "id"=>"fd07be91d48e"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>245, "total"=>245}, "progress"=>"[==================================================>]    245 B/245 B", "id"=>"fb36adbd81bf"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>245, "total"=>245}, "progress"=>"[==================================================>]    245 B/245 B", "id"=>"fb36adbd81bf"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>245, "total"=>245}, "progress"=>"[==================================================>]    245 B/245 B", "id"=>"fb36adbd81bf"}
+{"status"=>"Pull complete", "progressDetail"=>{}, "id"=>"fb36adbd81bf"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>32, "total"=>32}, "progress"=>"[==================================================>]     32 B/32 B", "id"=>"097ca86c0784"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>32, "total"=>32}, "progress"=>"[==================================================>]     32 B/32 B", "id"=>"097ca86c0784"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>32, "total"=>32}, "progress"=>"[==================================================>]     32 B/32 B", "id"=>"097ca86c0784"}
+{"status"=>"Pull complete", "progressDetail"=>{}, "id"=>"097ca86c0784"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>65536, "total"=>3385947}, "progress"=>"[>                                                  ] 65.54 kB/3.386 MB", "id"=>"8e0912ce0c1b"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>131072, "total"=>3385947}, "progress"=>"[=>                                                 ] 131.1 kB/3.386 MB", "id"=>"8e0912ce0c1b"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>196608, "total"=>3385947}, "progress"=>"[==>                                                ] 196.6 kB/3.386 MB", "id"=>"8e0912ce0c1b"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>262144, "total"=>3385947}, "progress"=>"[===>                                               ] 262.1 kB/3.386 MB", "id"=>"8e0912ce0c1b"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>327680, "total"=>3385947}, "progress"=>"[====>                                              ] 327.7 kB/3.386 MB", "id"=>"8e0912ce0c1b"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>393216, "total"=>3385947}, "progress"=>"[=====>                                             ] 393.2 kB/3.386 MB", "id"=>"8e0912ce0c1b"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>458752, "total"=>3385947}, "progress"=>"[======>                                            ] 458.8 kB/3.386 MB", "id"=>"8e0912ce0c1b"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>524288, "total"=>3385947}, "progress"=>"[=======>                                           ] 524.3 kB/3.386 MB", "id"=>"8e0912ce0c1b"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>589824, "total"=>3385947}, "progress"=>"[========>                                          ] 589.8 kB/3.386 MB", "id"=>"8e0912ce0c1b"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>655360, "total"=>3385947}, "progress"=>"[=========>                                         ] 655.4 kB/3.386 MB", "id"=>"8e0912ce0c1b"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>720896, "total"=>3385947}, "progress"=>"[==========>                                        ] 720.9 kB/3.386 MB", "id"=>"8e0912ce0c1b"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>786432, "total"=>3385947}, "progress"=>"[===========>                                       ] 786.4 kB/3.386 MB", "id"=>"8e0912ce0c1b"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>851968, "total"=>3385947}, "progress"=>"[============>                                      ]   852 kB/3.386 MB", "id"=>"8e0912ce0c1b"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>917504, "total"=>3385947}, "progress"=>"[=============>                                     ] 917.5 kB/3.386 MB", "id"=>"8e0912ce0c1b"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>983040, "total"=>3385947}, "progress"=>"[==============>                                    ]   983 kB/3.386 MB", "id"=>"8e0912ce0c1b"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>1048576, "total"=>3385947}, "progress"=>"[===============>                                   ] 1.049 MB/3.386 MB", "id"=>"8e0912ce0c1b"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>1114112, "total"=>3385947}, "progress"=>"[================>                                  ] 1.114 MB/3.386 MB", "id"=>"8e0912ce0c1b"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>1179648, "total"=>3385947}, "progress"=>"[=================>                                 ]  1.18 MB/3.386 MB", "id"=>"8e0912ce0c1b"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>1245184, "total"=>3385947}, "progress"=>"[==================>                                ] 1.245 MB/3.386 MB", "id"=>"8e0912ce0c1b"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>1310720, "total"=>3385947}, "progress"=>"[===================>                               ] 1.311 MB/3.386 MB", "id"=>"8e0912ce0c1b"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>1376256, "total"=>3385947}, "progress"=>"[====================>                              ] 1.376 MB/3.386 MB", "id"=>"8e0912ce0c1b"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>1441792, "total"=>3385947}, "progress"=>"[=====================>                             ] 1.442 MB/3.386 MB", "id"=>"8e0912ce0c1b"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>1507328, "total"=>3385947}, "progress"=>"[======================>                            ] 1.507 MB/3.386 MB", "id"=>"8e0912ce0c1b"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>1572864, "total"=>3385947}, "progress"=>"[=======================>                           ] 1.573 MB/3.386 MB", "id"=>"8e0912ce0c1b"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>1638400, "total"=>3385947}, "progress"=>"[========================>                          ] 1.638 MB/3.386 MB", "id"=>"8e0912ce0c1b"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>1703936, "total"=>3385947}, "progress"=>"[=========================>                         ] 1.704 MB/3.386 MB", "id"=>"8e0912ce0c1b"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>1769472, "total"=>3385947}, "progress"=>"[==========================>                        ] 1.769 MB/3.386 MB", "id"=>"8e0912ce0c1b"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>1835008, "total"=>3385947}, "progress"=>"[===========================>                       ] 1.835 MB/3.386 MB", "id"=>"8e0912ce0c1b"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>1900544, "total"=>3385947}, "progress"=>"[============================>                      ] 1.901 MB/3.386 MB", "id"=>"8e0912ce0c1b"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>1966080, "total"=>3385947}, "progress"=>"[=============================>                     ] 1.966 MB/3.386 MB", "id"=>"8e0912ce0c1b"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>2031616, "total"=>3385947}, "progress"=>"[==============================>                    ] 2.032 MB/3.386 MB", "id"=>"8e0912ce0c1b"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>2097152, "total"=>3385947}, "progress"=>"[==============================>                    ] 2.097 MB/3.386 MB", "id"=>"8e0912ce0c1b"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>2162688, "total"=>3385947}, "progress"=>"[===============================>                   ] 2.163 MB/3.386 MB", "id"=>"8e0912ce0c1b"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>2228224, "total"=>3385947}, "progress"=>"[================================>                  ] 2.228 MB/3.386 MB", "id"=>"8e0912ce0c1b"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>2293760, "total"=>3385947}, "progress"=>"[=================================>                 ] 2.294 MB/3.386 MB", "id"=>"8e0912ce0c1b"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>2359296, "total"=>3385947}, "progress"=>"[==================================>                ] 2.359 MB/3.386 MB", "id"=>"8e0912ce0c1b"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>2424832, "total"=>3385947}, "progress"=>"[===================================>               ] 2.425 MB/3.386 MB", "id"=>"8e0912ce0c1b"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>2490368, "total"=>3385947}, "progress"=>"[====================================>              ]  2.49 MB/3.386 MB", "id"=>"8e0912ce0c1b"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>2555904, "total"=>3385947}, "progress"=>"[=====================================>             ] 2.556 MB/3.386 MB", "id"=>"8e0912ce0c1b"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>2621440, "total"=>3385947}, "progress"=>"[======================================>            ] 2.621 MB/3.386 MB", "id"=>"8e0912ce0c1b"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>2686976, "total"=>3385947}, "progress"=>"[=======================================>           ] 2.687 MB/3.386 MB", "id"=>"8e0912ce0c1b"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>2752512, "total"=>3385947}, "progress"=>"[========================================>          ] 2.753 MB/3.386 MB", "id"=>"8e0912ce0c1b"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>2818048, "total"=>3385947}, "progress"=>"[=========================================>         ] 2.818 MB/3.386 MB", "id"=>"8e0912ce0c1b"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>2883584, "total"=>3385947}, "progress"=>"[==========================================>        ] 2.884 MB/3.386 MB", "id"=>"8e0912ce0c1b"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>2949120, "total"=>3385947}, "progress"=>"[===========================================>       ] 2.949 MB/3.386 MB", "id"=>"8e0912ce0c1b"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>3014656, "total"=>3385947}, "progress"=>"[============================================>      ] 3.015 MB/3.386 MB", "id"=>"8e0912ce0c1b"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>3080192, "total"=>3385947}, "progress"=>"[=============================================>     ]  3.08 MB/3.386 MB", "id"=>"8e0912ce0c1b"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>3145728, "total"=>3385947}, "progress"=>"[==============================================>    ] 3.146 MB/3.386 MB", "id"=>"8e0912ce0c1b"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>3211264, "total"=>3385947}, "progress"=>"[===============================================>   ] 3.211 MB/3.386 MB", "id"=>"8e0912ce0c1b"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>3276800, "total"=>3385947}, "progress"=>"[================================================>  ] 3.277 MB/3.386 MB", "id"=>"8e0912ce0c1b"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>3342336, "total"=>3385947}, "progress"=>"[=================================================> ] 3.342 MB/3.386 MB", "id"=>"8e0912ce0c1b"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>3385947, "total"=>3385947}, "progress"=>"[==================================================>] 3.386 MB/3.386 MB", "id"=>"8e0912ce0c1b"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>3385947, "total"=>3385947}, "progress"=>"[==================================================>] 3.386 MB/3.386 MB", "id"=>"8e0912ce0c1b"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>3385947, "total"=>3385947}, "progress"=>"[==================================================>] 3.386 MB/3.386 MB", "id"=>"8e0912ce0c1b"}
+{"status"=>"Pull complete", "progressDetail"=>{}, "id"=>"8e0912ce0c1b"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>174, "total"=>174}, "progress"=>"[==================================================>]    174 B/174 B", "id"=>"306fa48b674e"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>174, "total"=>174}, "progress"=>"[==================================================>]    174 B/174 B", "id"=>"306fa48b674e"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>174, "total"=>174}, "progress"=>"[==================================================>]    174 B/174 B", "id"=>"306fa48b674e"}
+{"status"=>"Pull complete", "progressDetail"=>{}, "id"=>"306fa48b674e"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>172, "total"=>172}, "progress"=>"[==================================================>]    172 B/172 B", "id"=>"e51a2e0cfd66"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>172, "total"=>172}, "progress"=>"[==================================================>]    172 B/172 B", "id"=>"e51a2e0cfd66"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>172, "total"=>172}, "progress"=>"[==================================================>]    172 B/172 B", "id"=>"e51a2e0cfd66"}
+{"status"=>"Pull complete", "progressDetail"=>{}, "id"=>"e51a2e0cfd66"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>32, "total"=>32}, "progress"=>"[==================================================>]     32 B/32 B", "id"=>"8ccac0b28146"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>32, "total"=>32}, "progress"=>"[==================================================>]     32 B/32 B", "id"=>"8ccac0b28146"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>32, "total"=>32}, "progress"=>"[==================================================>]     32 B/32 B", "id"=>"8ccac0b28146"}
+{"status"=>"Pull complete", "progressDetail"=>{}, "id"=>"8ccac0b28146"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>32, "total"=>32}, "progress"=>"[==================================================>]     32 B/32 B", "id"=>"20ea32821467"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>32, "total"=>32}, "progress"=>"[==================================================>]     32 B/32 B", "id"=>"20ea32821467"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>32, "total"=>32}, "progress"=>"[==================================================>]     32 B/32 B", "id"=>"20ea32821467"}
+{"status"=>"Pull complete", "progressDetail"=>{}, "id"=>"20ea32821467"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>32, "total"=>32}, "progress"=>"[==================================================>]     32 B/32 B", "id"=>"198a73cfd686"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>32, "total"=>32}, "progress"=>"[==================================================>]     32 B/32 B", "id"=>"198a73cfd686"}
+{"status"=>"Extracting", "progressDetail"=>{"current"=>32, "total"=>32}, "progress"=>"[==================================================>]     32 B/32 B", "id"=>"198a73cfd686"}
+{"status"=>"Pull complete", "progressDetail"=>{}, "id"=>"198a73cfd686"}
+{"status"=>"Digest: sha256:c6f5562c7404786a257f360bf8dc30529a9446908e10a0939e5576e757183c4b"}
+{"status"=>"Status: Downloaded newer image for nginx:1.9"}
+{"stream"=>" ---> 198a73cfd686\n"}
+{"stream"=>"Successfully built 198a73cfd686\n"}
+{"stream"=>"Step 1 : FROM alpine:3.2\n"}
+{"stream"=>" ---> 8a648f689ddb\n"}
+{"stream"=>"Successfully built 8a648f689ddb\n"}
