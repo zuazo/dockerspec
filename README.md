@@ -3,7 +3,7 @@
 [![GitHub](http://img.shields.io/badge/github-zuazo/dockerspec-blue.svg?style=flat)](https://github.com/zuazo/dockerspec)
 [![License](https://img.shields.io/github/license/zuazo/dockerspec.svg?style=flat)](#license-and-author)
 
-[![Gem Version](https://badge.fury.io/rb/dockerspec.svg)](http://github.com/zuazo/dockerspec/releases)
+[![Gem Version](https://badge.fury.io/rb/dockerspec.svg)](https://rubygems.org/gems/dockerspec)
 [![Dependency Status](http://img.shields.io/gemnasium/zuazo/dockerspec.svg?style=flat)](https://gemnasium.com/zuazo/dockerspec)
 [![Code Climate](http://img.shields.io/codeclimate/github/zuazo/dockerspec.svg?style=flat)](https://codeclimate.com/github/zuazo/dockerspec)
 [![Travis CI Build Status](http://img.shields.io/travis/zuazo/dockerspec.svg?style=flat)](https://travis-ci.org/zuazo/dockerspec)
