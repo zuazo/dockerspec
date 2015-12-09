@@ -283,9 +283,8 @@ module Dockerspec
         FileUtils.cp_r("#{dir}/.", tmpdir)
         dockerfile = File.join(tmpdir, 'Dockerfile')
         File.open(dockerfile, 'w') { |f| f.write(string) }
-        image(::Docker::Image.build_from_dir(tmpdir, &build_block))
+        build_from_dir(tmpdir)
       end
-      add_respository_tag
     end
 
     #
