@@ -172,3 +172,8 @@ RSpec::Core::ExampleGroup.class_eval do
   extend Dockerspec::Serverspec::RSpecResources
   include Dockerspec::Serverspec::RSpecResources
 end
+
+#
+# Allow using #docker_run in the outermost example
+#
+extend Dockerspec::RSpecResources

@@ -133,7 +133,7 @@ module Dockerspec
     #     # [...]
     #   end
     #
-    # @example Building from a Docker Image name
+    # @example Building from a Docker Image Name
     #   describe docker_build(id: 'nginx:1.9') do
     #     # [...]
     #   end
@@ -196,3 +196,8 @@ RSpec::Core::ExampleGroup.class_eval do
   extend Dockerspec::RSpecResources
   include Dockerspec::RSpecResources
 end
+
+#
+# Allow using #docker_build in the outermost example
+#
+extend Dockerspec::RSpecResources
