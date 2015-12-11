@@ -20,7 +20,7 @@ This gem is designed to work out of the box on [Travis CI](https://travis-ci.org
 ## Requirements
 
 * Ruby `2` or higher.
-* Recommended Docker `1.7.0` or higher.
+* Recommended Docker `1.7` or higher.
 
 ## Installation
 
@@ -33,8 +33,6 @@ $ gem install dockerspec
 Or you can add this line to the *Gemfile* of your application:
 
 ```ruby
-# Gemfile
-
 gem 'dockerspec', '~> 0.1.0'
 ```
 
@@ -86,23 +84,27 @@ end
 
 See the documentation above for more examples.
 
-### Prepare the Ruby Environment
+### Prepare Your Ruby Environment
 
-1. Create a **Gemfile**:
+If you are new to Ruby, you can follow these steps:
+
+#### 1. Create a **Gemfile**:
 
 ```ruby
 # Gemfile
 
+source 'https://rubygems.org'
+
 gem 'dockerspec', '~> 0.1.0'
 ```
 
-2. Create the *spec/* directory:
+#### 2. Create the *spec/* directory:
 
 ```
 $ mkdir spec
 ```
 
-3. Add your tests to a file with the *spec/myapp_spec.rb* format:
+#### 3. Add your tests to a file with the *spec/myapp_spec.rb* format:
 
 ```ruby
 # spec/myapp_spec.rb
@@ -120,13 +122,13 @@ describe 'My Dockerfile' do
 end
 ```
 
-4. Install the gems:
+#### 4. Install the gems:
 
 ```
 $ bundle
 ```
 
-5. Run the tests:
+#### 5. Run the tests:
 
 ```
 $ bundle exec rspec
