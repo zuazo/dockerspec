@@ -25,5 +25,5 @@ module Dockerspec
   #
   # Dockerspec Ruby Gem version.
   #
-  VERSION = '0.2.0.dev'
+  VERSION = '0.2.0'
 end
