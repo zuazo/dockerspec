@@ -17,6 +17,13 @@
 # limitations under the License.
 #
 
-require 'dockerspec/version'
-require 'dockerspec/rspec_resources'
-require 'dockerspec/rspec_configuration'
+#
+# Some very opinionated RSpec configuration.
+#
+# This may change in the future.
+#
+RSpec.configure do |config|
+  config.color = true
+  config.formatter = :documentation
+  config.tty = true
+end
