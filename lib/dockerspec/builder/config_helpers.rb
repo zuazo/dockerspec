@@ -127,6 +127,8 @@ module Dockerspec
       # @example RSpec Example Using *Have* Matchers
       #   describe docker_build(path: '.') do
       #     it { should have_cmd ['/usr/bin/supervisord'] }
+      #     # Or in string format:
+      #     it { should have_cmd '/usr/bin/supervisord' }
       #   end
       #
       # @return [Array] The image command.
@@ -264,6 +266,8 @@ module Dockerspec
       # @example RSpec Example Using *Have* Matchers
       #   describe docker_build(path: '.') do
       #     it { should have_entrypoint ['/entrypoint.sh'] }
+      #     # Or in string format:
+      #     it { should have_entrypoint '/entrypoint.sh' }
       #   end
       #
       # @return [Array] The image entrypoint.

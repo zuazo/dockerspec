@@ -25,6 +25,7 @@ context docker_build(path: path, tag: 'from_dir_spec') do
   it { should have_maintainer 'John Doe "john.doe@example.com"' }
   it { should have_maintainer(/John Doe/) }
   it { should have_cmd %w(2 2000) }
+  it { should have_cmd '2 2000' }
   it { should have_label 'description' }
   it { should have_label 'description' => 'My Container' }
   it { should have_expose '80' }
@@ -33,6 +34,7 @@ context docker_build(path: path, tag: 'from_dir_spec') do
   it { should have_env 'container' => 'docker' }
   it { should have_env 'CRACKER' => 'RANDOM;PATH=/tmp/bin:/sbin:/bin' }
   it { should have_entrypoint ['sleep'] }
+  it { should have_entrypoint 'sleep' }
   it { should have_volume '/volume1' }
   it { should have_volume %r{/vol.*2} }
   it { should have_user 'nobody' }
