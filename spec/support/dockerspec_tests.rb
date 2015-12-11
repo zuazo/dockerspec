@@ -17,29 +17,17 @@
 # limitations under the License.
 #
 
-require 'simplecov'
-if ENV['TRAVIS'] && RUBY_VERSION >= '2.0'
-  require 'coveralls'
-  SimpleCov.formatter = Coveralls::SimpleCov::Formatter
-end
-SimpleCov.start do
-  add_filter '/spec/'
-end
-
-require 'dockerspec'
-require 'dockerspec/serverspec'
-require 'support/dockerspec_tests'
-
-require 'should_not/rspec'
-
-RSpec.configure do |config|
-  # Prohibit using the should syntax
-  config.expect_with :rspec do |spec|
-    spec.syntax = :expect
+module DockerspecTests
+  def self.data_dir
+    File.join(File.dirname(__FILE__), '..', 'data')
   end
 
-  config.order = 'random'
+  def self.data_file(file)
+    File.join(DockerspecTests.data_dir, file)
+  end
 
-  config.color = true
-  config.tty = true
+  def self.error_example
+    file = File.join(DockerspecTests.data_dir, 'error_example.log')
+    IO.read(file)
+  end
 end

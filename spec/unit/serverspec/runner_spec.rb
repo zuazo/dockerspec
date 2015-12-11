@@ -130,6 +130,18 @@ describe Dockerspec::Serverspec::Runner do
       expect(specinfra_backend).to receive(:save).once
       subject.run
     end
+
+    context 'with run errors' do
+      let(:error_msg) { DockerspecTests.error_example }
+      before do
+        expect(configuration).to receive(:backend)
+          .and_raise Docker::Error::DockerError.new(error_msg)
+      end
+
+      it 'raises a docker error' do
+        expect { subject.run }.to raise_error Dockerspec::DockerError
+      end
+    end
   end # context #run
 
   context '#finalize' do

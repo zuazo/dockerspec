@@ -1,0 +1,8 @@
+{"stream":"Step 1 : FROM alpine:3.2\n"}
+{"stream":" ---\u003e d6ead20d5571\n"}
+{"stream":"Step 2 : RUN apk add --update wrong-package-name\n"}
+{"stream":" ---\u003e Running in 290a46fa8bf4\n"}
+{"stream":"fetch http://dl-4.alpinelinux.org/alpine/v3.2/main/x86_64/APKINDEX.tar.gz\n"}
+{"stream":"ERROR: unsatisfiable constraints:\n"}
+{"stream":"  wrong-package-name (missing):\n    required by: world[wrong-package-name]\n"}
+{"errorDetail":{"message":"The command '/bin/sh -c apk add --update wrong-package-name' returned a non-zero code: 1"},"error":"The command '/bin/sh -c apk add --update wrong-package-name' returned a non-zero code: 1"}

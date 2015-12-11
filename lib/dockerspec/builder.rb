@@ -28,6 +28,7 @@ require 'dockerspec/builder/logger'
 require 'dockerspec/builder/image_gc'
 require 'dockerspec/helper/ci'
 require 'dockerspec/helper/multiple_sources_description'
+require 'dockerspec/docker_exception_parser'
 
 module Dockerspec
   #
@@ -157,11 +158,7 @@ module Dockerspec
     #
     def source
       return @source unless @source.nil?
-      %i(string template id path).any? do |from|
-        next false unless @options.key?(from)
-        @source = from # Used for description
-      end
-      @source
+      @source = %i(string template id path).find { |from| @options.key?(from) }
     end
 
     #
@@ -321,6 +318,8 @@ module Dockerspec
     def build_from_dir(dir)
       image(::Docker::Image.build_from_dir(dir, &build_block))
       add_respository_tag
+    rescue ::Docker::Error::DockerError => e
+      DockerExceptionParser.new(e)
     end
 
     #
@@ -356,11 +355,10 @@ module Dockerspec
     def build_from_template(file)
       context = @options[:context] || {}
 
-      dir = File.dirname(file)
       template = IO.read(file)
       eruby = Erubis::Eruby.new(template)
       string = eruby.evaluate(context)
-      build_from_string(string, dir)
+      build_from_string(string, File.dirname(file))
     end
 
     #
@@ -379,6 +377,8 @@ module Dockerspec
       add_respository_tag
     rescue ::Docker::Error::NotFoundError
       @image = ::Docker::Image.create('fromImage' => id)
+    rescue ::Docker::Error::DockerError => e
+      DockerExceptionParser.new(e)
     end
 
     #

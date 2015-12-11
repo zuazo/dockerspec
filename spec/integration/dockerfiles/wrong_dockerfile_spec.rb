@@ -17,29 +17,28 @@
 # limitations under the License.
 #
 
-require 'simplecov'
-if ENV['TRAVIS'] && RUBY_VERSION >= '2.0'
-  require 'coveralls'
-  SimpleCov.formatter = Coveralls::SimpleCov::Formatter
-end
-SimpleCov.start do
-  add_filter '/spec/'
-end
+require 'spec_helper'
 
-require 'dockerspec'
-require 'dockerspec/serverspec'
-require 'support/dockerspec_tests'
+describe 'With a wrong Dockerfile' do
+  context 'with build errors' do
+    let(:file) { DockerspecTests.data_file('WrongDockerfile') }
+    let(:build) { docker_build(path: file, tag: 'wrong_dockerfile_spec') }
 
-require 'should_not/rspec'
+    it 'raises docker error' do
+      expect { build }.to raise_error Dockerspec::DockerError
+    end
 
-RSpec.configure do |config|
-  # Prohibit using the should syntax
-  config.expect_with :rspec do |spec|
-    spec.syntax = :expect
+    it 'parses the build output' do
+      expect { build }.to raise_error(
+        Dockerspec::DockerError, /OUTPUT: .*Step [0-9]/m
+      )
+    end
+
+    it 'parses the build error' do
+      expect { build }.to raise_error(
+        Dockerspec::DockerError,
+        /ERROR: +The command .* returned a non-zero code:/
+      )
+    end
   end
-
-  config.order = 'random'
-
-  config.color = true
-  config.tty = true
 end

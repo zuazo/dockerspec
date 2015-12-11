@@ -23,4 +23,9 @@ module Dockerspec
   # wrong.
   #
   class DockerRunArgumentError < ArgumentError; end
+  #
+  # An exception message raised when there are errors running Docker or
+  # building Docker images.
+  #
+  class DockerError < ArgumentError; end
 end

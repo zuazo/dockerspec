@@ -19,7 +19,7 @@
 
 require 'spec_helper'
 
-path = File.join(File.dirname(__FILE__), '..', '..', 'data')
+path = DockerspecTests.data_dir
 image = ::Docker::Image.build_from_dir(path)
 
 describe 'Build a Dockerfile from an image ID' do

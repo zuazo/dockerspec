@@ -70,6 +70,22 @@ describe Dockerspec::Runner do
       expect { described_class.new(bad: '8a648f689ddb') }
         .to raise_error(Dockerspec::DockerRunArgumentError, /:tag.*:id/)
     end
+
+    context 'with constructor errors' do
+      let(:error_msg) { DockerspecTests.error_example }
+
+      context 'from an image ID' do
+        subject { described_class.new(id: 'id') }
+        before do
+          expect(Docker::Container).to receive(:get)
+            .and_raise Docker::Error::DockerError.new(error_msg)
+        end
+
+        it 'raises a docker error' do
+          expect { subject }.to raise_error Dockerspec::DockerError
+        end
+      end
+    end
   end
 
   context '#run' do
@@ -84,6 +100,19 @@ describe Dockerspec::Runner do
     it 'starts the container' do
       expect(container).to receive(:start).once
       subject.run
+    end
+
+    context 'with run errors' do
+      let(:error_msg) { DockerspecTests.error_example }
+
+      before do
+        expect(Docker::Container).to receive(:create)
+          .and_raise Docker::Error::DockerError.new(error_msg)
+      end
+
+      it 'raises a docker error' do
+        expect { subject.run }.to raise_error Dockerspec::DockerError
+      end
     end
   end
 

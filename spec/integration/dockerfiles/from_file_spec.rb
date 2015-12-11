@@ -20,8 +20,7 @@
 require 'spec_helper'
 
 describe 'Build a Dockerfile from a file' do
-  path = File.join(File.dirname(__FILE__), '..', '..', 'data')
-  file = File.join(path, 'Dockerfile1')
+  file = DockerspecTests.data_file('Dockerfile1')
 
   context docker_build(path: file, tag: 'from_file_spec') do
     context docker_run('from_file_spec') do

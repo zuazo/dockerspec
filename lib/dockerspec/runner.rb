@@ -21,6 +21,7 @@ require 'docker'
 require 'dockerspec/docker_gem'
 require 'dockerspec/exceptions'
 require 'dockerspec/helper/multiple_sources_description'
+require 'dockerspec/docker_exception_parser'
 
 module Dockerspec
   #
@@ -175,11 +176,7 @@ module Dockerspec
     #
     def source
       return @source unless @source.nil?
-      %i(tag id).any? do |from|
-        next false unless @options.key?(from)
-        @source = from # Used for description
-      end
-      @source
+      @source = %i(tag id).find { |from| @options.key?(from) }
     end
 
     #
@@ -299,6 +296,8 @@ module Dockerspec
     #
     def setup_from_id(id)
       @container = ::Docker::Container.get(id)
+    rescue ::Docker::Error::DockerError => e
+      DockerExceptionParser.new(e)
     end
 
     #
@@ -358,6 +357,8 @@ module Dockerspec
     def create_container
       return @container unless @container.nil?
       @container = ::Docker::Container.create(container_options)
+    rescue ::Docker::Error::DockerError => e
+      DockerExceptionParser.new(e)
     end
 
     #

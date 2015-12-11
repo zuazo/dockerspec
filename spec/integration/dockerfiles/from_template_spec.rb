@@ -20,8 +20,7 @@
 require 'spec_helper'
 
 describe 'Build a Dockerfile from a template' do
-  path = File.join(File.dirname(__FILE__), '..', '..', 'data')
-  template = File.join(path, 'Dockerfile1.erb')
+  template = DockerspecTests.data_file('Dockerfile1.erb')
 
   context docker_build(template: template, tag: 'from_template_spec') do
     context docker_run('from_template_spec') do

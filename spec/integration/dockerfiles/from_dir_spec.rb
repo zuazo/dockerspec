@@ -19,7 +19,7 @@
 
 require 'spec_helper'
 
-path = File.join(File.dirname(__FILE__), '..', '..', 'data')
+path = DockerspecTests.data_dir
 
 context docker_build(path: path, tag: 'from_dir_spec') do
   it { should have_maintainer 'John Doe "john.doe@example.com"' }

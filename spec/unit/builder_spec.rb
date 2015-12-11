@@ -257,7 +257,7 @@ describe Dockerspec::Builder do
       end
     end
 
-    context 'with an image_id option' do
+    context 'with an image ID option' do
       subject { described_class.new(id: image_id) }
       before do
         allow(Docker::Image).to receive(:get).with(image_id).once
@@ -288,7 +288,19 @@ describe Dockerspec::Builder do
           subject.build
         end
       end
-    end
+
+      context 'with build errors' do
+        let(:error_msg) { DockerspecTests.error_example }
+        before do
+          expect(Docker::Image).to receive(:get)
+            .and_raise Docker::Error::DockerError.new(error_msg)
+        end
+
+        it 'raises a docker error' do
+          expect { subject.build }.to raise_error Dockerspec::DockerError
+        end
+      end
+    end # context with an image ID option
 
     context 'with tag option' do
       let(:repo) { 'reponame' }
@@ -329,6 +341,18 @@ describe Dockerspec::Builder do
       it 'uses the image GC' do
         expect(Dockerspec::Builder::ImageGC).to_not receive(:instance)
         subject.build
+      end
+    end
+
+    context 'with build errors' do
+      let(:error_msg) { DockerspecTests.error_example }
+      before do
+        expect(Docker::Image).to receive(:build_from_dir)
+          .and_raise Docker::Error::DockerError.new(error_msg)
+      end
+
+      it 'raises a docker error' do
+        expect { subject.build }.to raise_error Dockerspec::DockerError
       end
     end
   end # context #build

@@ -23,6 +23,7 @@ require 'dockerspec/runner'
 require 'dockerspec/serverspec/specinfra_backend'
 require 'dockerspec/helper/rspec_example_helpers'
 require 'dockerspec/helper/docker'
+require 'dockerspec/docker_exception_parser'
 
 #
 # Silence error: No backend type is specified. Fall back to :exec type.
@@ -100,6 +101,8 @@ module Dockerspec
         run_container
         specinfra_save
         self
+      rescue ::Docker::Error::DockerError => e
+        DockerExceptionParser.new(e)
       end
 
       #
