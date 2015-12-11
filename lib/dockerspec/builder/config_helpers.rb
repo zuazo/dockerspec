@@ -152,7 +152,7 @@ module Dockerspec
       #     it { should have_label 'description' => 'My Container' }
       #   end
       #
-      # @example RSpec Example Checking Only the Existence of the label
+      # @example RSpec Example Checking Only the Existence of the Label
       #   describe docker_build(path: '.') do
       #     it { should have_label 'description' }
       #   end
