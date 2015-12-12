@@ -87,6 +87,7 @@ See the documentation above for more examples.
 ### Real-world Examples
 
 * [`alpine-tor`](https://github.com/zuazo/alpine-tor-docker) image ([*spec/*](https://github.com/zuazo/alpine-tor-docker/tree/master/spec), [*Gemfile*](https://github.com/zuazo/alpine-tor-docker/tree/master/Gemfile), [*.travis.yml*](https://github.com/zuazo/alpine-tor-docker/tree/master/.travis.yml)).
+* [`chef-local`](https://github.com/zuazo/chef-local-docker) image ([*spec/*](https://github.com/zuazo/chef-local-docker/tree/master/spec), [*Gemfile*](https://github.com/zuazo/chef-local-docker/tree/master/Gemfile), [*.travis.yml*](https://github.com/zuazo/chef-local-docker/tree/master/.travis.yml)).
 
 ### Prepare Your Ruby Environment
 
