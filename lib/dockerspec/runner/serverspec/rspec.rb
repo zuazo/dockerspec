@@ -1,7 +1,7 @@
 # encoding: UTF-8
 #
 # Author:: Xabier de Zuazo (<xabier@zuazo.org>)
-# Copyright:: Copyright (c) 2015 Xabier de Zuazo
+# Copyright:: Copyright (c) 2016 Xabier de Zuazo
 # License:: Apache License, Version 2.0
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,11 +17,4 @@
 # limitations under the License.
 #
 
-require 'rspec'
-
-#
-# Add some RSpec custom settings for {Dockerspec::Serverspec}.
-#
-RSpec.configure do |c|
-  c.add_setting :family
-end
+require 'dockerspec/runner/serverspec/rspec/settings'

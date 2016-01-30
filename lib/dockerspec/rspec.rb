@@ -1,7 +1,7 @@
 # encoding: UTF-8
 #
 # Author:: Xabier de Zuazo (<xabier@zuazo.org>)
-# Copyright:: Copyright (c) 2015-2016 Xabier de Zuazo
+# Copyright:: Copyright (c) 2016 Xabier de Zuazo
 # License:: Apache License, Version 2.0
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,8 +17,5 @@
 # limitations under the License.
 #
 
-require 'dockerspec/runner/serverspec'
-require 'dockerspec/engine/specinfra'
-
-Dockerspec::Configuration.docker_runner = Dockerspec::Runner::Serverspec::Docker
-Dockerspec::Configuration.add_engine Dockerspec::Engine::Specinfra
+require 'dockerspec/rspec/resources'
+require 'dockerspec/rspec/configuration'

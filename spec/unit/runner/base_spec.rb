@@ -1,7 +1,7 @@
 # encoding: UTF-8
 #
 # Author:: Xabier de Zuazo (<xabier@zuazo.org>)
-# Copyright:: Copyright (c) 2015 Xabier de Zuazo
+# Copyright:: Copyright (c) 2015-2016 Xabier de Zuazo
 # License:: Apache License, Version 2.0
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,13 +17,22 @@
 # limitations under the License.
 #
 
-require 'rspec'
+require 'spec_helper'
 
-#
-# Add some RSpec custom settings for {Dockerspec}.
-#
-RSpec.configure do |c|
-  c.add_setting :dockerfile_path
-  c.add_setting :rm_build
-  c.add_setting :log_level
+describe Dockerspec::Runner::Base do
+  let(:engines) { double('Dockerspec::EngineList') }
+  before do
+    allow(Dockerspec::EngineList).to receive(:new).and_return(engines)
+    allow(engines).to receive(:setup)
+    allow(engines).to receive(:save)
+
+    allow(ObjectSpace).to receive(:define_finalizer)
+  end
+
+  context '.container' do
+    it 'raises an error' do
+      expect { subject.run }
+        .to raise_error Dockerspec::RunnerError, /#container method must/
+    end
+  end
 end

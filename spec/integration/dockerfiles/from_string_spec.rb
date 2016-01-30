@@ -18,7 +18,6 @@
 #
 
 require 'spec_helper'
-require 'serverspec'
 
 describe 'Build a Dockerfile from a string' do
   context docker_build(string: 'FROM nginx:1.9', tag: 'from_string_spec') do

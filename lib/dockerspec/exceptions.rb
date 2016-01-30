@@ -24,6 +24,14 @@ module Dockerspec
   #
   class DockerRunArgumentError < ArgumentError; end
   #
+  # An exception message raised when there are errors related to Test Engines.
+  #
+  class EngineError < ArgumentError; end
+  #
+  # An exception message raised when there are errors related to the Runner.
+  #
+  class RunnerError < ArgumentError; end
+  #
   # An exception message raised when there are errors running Docker or
   # building Docker images.
   #

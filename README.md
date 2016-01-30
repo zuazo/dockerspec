@@ -46,9 +46,9 @@ $ bundle
 
 ## Documentation
 
-- [`docker_build`](http://www.rubydoc.info/gems/dockerspec/Dockerspec/RSpecResources#docker_build-instance_method)
+- [`docker_build`](http://www.rubydoc.info/gems/dockerspec/Dockerspec/RSpec/Resources#docker_build-instance_method)
   - [*Docker Build* helpers](http://www.rubydoc.info/gems/dockerspec/Dockerspec/Builder/ConfigHelpers)
-- [`docker_run`](http://www.rubydoc.info/gems/dockerspec/Dockerspec/Serverspec/RSpecResources#docker_run-instance_method)
+- [`docker_run`](http://www.rubydoc.info/gems/dockerspec/Dockerspec/RSpec/Resources#docker_run-instance_method)
   - [*Docker Run* Serverspec resource types](http://serverspec.org/resource_types.html)
 
 ## Usage Examples

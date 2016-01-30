@@ -1,7 +1,7 @@
 # encoding: UTF-8
 #
 # Author:: Xabier de Zuazo (<xabier@zuazo.org>)
-# Copyright:: Copyright (c) 2015 Xabier de Zuazo
+# Copyright:: Copyright (c) 2015-2016 Xabier de Zuazo
 # License:: Apache License, Version 2.0
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -19,7 +19,7 @@
 
 require 'spec_helper'
 
-describe Dockerspec::Runner do
+describe Dockerspec::Runner::Docker do
   let(:builder) { double('Dockerspec::Builder') }
   let(:image_id) { '8d5e6665a7a6' }
   let(:opts) { { tag: image_id, rm: true } }
@@ -27,9 +27,13 @@ describe Dockerspec::Runner do
   let(:build_json) { {} }
   let(:container_id) { '198a73cfd686' }
   let(:container) { double('Docker::Container') }
+  let(:engines) { double('Dockerspec::EngineList') }
   let(:container_json) { { 'Image' => image_id } }
   let(:metadata) { {} }
   before do
+    allow(Dockerspec::EngineList).to receive(:new).and_return(engines)
+    allow(engines).to receive(:setup)
+    allow(engines).to receive(:save)
     allow(ObjectSpace).to receive(:define_finalizer)
     allow(Docker::Container).to receive(:create).and_return(container)
     allow(Docker::Container).to receive(:get).and_return(container)
@@ -95,6 +99,21 @@ describe Dockerspec::Runner do
 
     it 'returns the Runner object' do
       expect(subject.run).to be_a described_class
+      expect(container).to receive(:start).once
+      subject.run
+    end
+
+    it 'setups engines before running' do
+      expect(engines).to receive(:setup).with(no_args).ordered
+      expect(Docker::Container).to receive(:create).ordered
+      expect(container).to receive(:start).ordered
+      subject.run
+    end
+
+    it 'creates the container' do
+      expect(Docker::Container).to receive(:create).ordered
+      expect(container).to receive(:start).ordered
+      subject.run
     end
 
     it 'starts the container' do
@@ -113,6 +132,12 @@ describe Dockerspec::Runner do
       it 'raises a docker error' do
         expect { subject.run }.to raise_error Dockerspec::DockerError
       end
+    end
+
+    it 'saves engines after running' do
+      expect(container).to receive(:start).ordered
+      expect(engines).to receive(:save).with(no_args).ordered
+      subject.run
     end
   end
 

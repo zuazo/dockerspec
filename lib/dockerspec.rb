@@ -18,5 +18,4 @@
 #
 
 require 'dockerspec/version'
-require 'dockerspec/rspec_resources'
-require 'dockerspec/rspec_configuration'
+require 'dockerspec/rspec'

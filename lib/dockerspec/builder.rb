@@ -83,7 +83,7 @@ module Dockerspec
     #    `:debug` or `3` (outputs all the provided information in its raw
     #      original form).
     #
-    # @see Dockerspec::RSpecResources#docker_build
+    # @see Dockerspec::RSpec::Resources#docker_build
     #
     # @api public
     #
@@ -201,7 +201,7 @@ module Dockerspec
     # @api private
     #
     def rspec_options
-      config = RSpec.configuration
+      config = ::RSpec.configuration
       {}.tap do |opts|
         opts[:path] = config.dockerfile_path if config.dockerfile_path?
         opts[:rm] = config.rm_build if config.rm_build?

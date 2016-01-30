@@ -17,8 +17,4 @@
 # limitations under the License.
 #
 
-require 'dockerspec/runner/serverspec'
-require 'dockerspec/engine/specinfra'
-
-Dockerspec::Configuration.docker_runner = Dockerspec::Runner::Serverspec::Docker
-Dockerspec::Configuration.add_engine Dockerspec::Engine::Specinfra
+require 'dockerspec/runner/serverspec/docker'

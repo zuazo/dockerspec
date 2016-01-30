@@ -24,7 +24,7 @@ module Dockerspec
     #
     # **Note:** Keep in mind that not all the available Dockerfile instructions
     # can be checked in the docker image. You should use
-    # {Dockerspec::Serverspec::RSpecResources#docker_run} to check some
+    # {Dockerspec::Serverspec::RSpec::Resources#docker_run} to check some
     # instructions like `FROM`, `RUN`, `ADD` and `COPY` (see the examples
     # there).
     #

@@ -17,8 +17,11 @@
 # limitations under the License.
 #
 
-require 'dockerspec/runner/serverspec'
-require 'dockerspec/engine/specinfra'
+require 'rspec'
 
-Dockerspec::Configuration.docker_runner = Dockerspec::Runner::Serverspec::Docker
-Dockerspec::Configuration.add_engine Dockerspec::Engine::Specinfra
+#
+# Add some RSpec custom settings for {Dockerspec::Serverspec}.
+#
+RSpec.configure do |c|
+  c.add_setting :family
+end

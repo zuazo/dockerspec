@@ -1,7 +1,7 @@
 # encoding: UTF-8
 #
 # Author:: Xabier de Zuazo (<xabier@zuazo.org>)
-# Copyright:: Copyright (c) 2015 Xabier de Zuazo
+# Copyright:: Copyright (c) 2015-2016 Xabier de Zuazo
 # License:: Apache License, Version 2.0
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -19,14 +19,14 @@
 
 require 'spec_helper'
 
-describe Dockerspec::Serverspec::Runner do
+describe Dockerspec::Runner::Serverspec::Docker do
   let(:builder) { double('Dockerspec::Builder') }
   subject { described_class.new('tag') }
   let(:image_id) { '8d5e6665a7a6' }
   let(:container) { double('Docker::Container') }
   let(:configuration) { double('Specinfra::Configuration') }
   let(:container_json) { { 'Image' => image_id } }
-  let(:specinfra_backend) { double('Dockerspec::Serverspec::SpecinfraBackend') }
+  let(:specinfra_backend) { double('Dockerspec::Engine::Specinfra::Backend') }
   before do
     allow(ObjectSpace).to receive(:define_finalizer)
     allow(Specinfra).to receive(:configuration).and_return(configuration)
@@ -43,7 +43,7 @@ describe Dockerspec::Serverspec::Runner do
     allow_any_instance_of(described_class)
       .to receive(:image_id).and_return(image_id)
 
-    allow(Dockerspec::Serverspec::SpecinfraBackend)
+    allow(Dockerspec::Engine::Specinfra::Backend)
       .to receive(:new).and_return(specinfra_backend)
     allow(specinfra_backend).to receive(:reset)
     allow(specinfra_backend).to receive(:save)
@@ -163,11 +163,12 @@ describe Dockerspec::Serverspec::Runner do
   end
 
   context '.restore' do
-    let(:runner) { double('Dockerspec::Serverspec::Runner') }
+    let(:runner) { double('Dockerspec::Runner::Serverspec::Docker') }
     let(:metadata) { { metadata: 'ok' } }
     before do
       allow(Dockerspec::Helper::RSpecExampleHelpers).to receive(:search_object)
-        .with(metadata, Dockerspec::Serverspec::Runner).and_return(runner)
+        .with(metadata, Dockerspec::Runner::Serverspec::Docker)
+        .and_return(runner)
     end
 
     it 'restores the runner' do

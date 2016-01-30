@@ -1,7 +1,7 @@
 # encoding: UTF-8
 #
 # Author:: Xabier de Zuazo (<xabier@zuazo.org>)
-# Copyright:: Copyright (c) 2015 Xabier de Zuazo
+# Copyright:: Copyright (c) 2015-2016 Xabier de Zuazo
 # License:: Apache License, Version 2.0
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -19,11 +19,12 @@
 
 require 'spec_helper'
 
+# A class that includes the Dockerspec::RSpec::Resources module.
 class TestDockerspecRSpecResources
-  include Dockerspec::RSpecResources
+  include Dockerspec::RSpec::Resources
 end
 
-describe Dockerspec::RSpecResources do
+describe Dockerspec::RSpec::Resources do
   subject { TestDockerspecRSpecResources.new }
   let(:builder) { double('Dockerspec::Builder') }
   let(:opts) { { opt1: 'val1' } }
@@ -51,10 +52,29 @@ describe Dockerspec::RSpecResources do
   end
 
   context '#docker_run' do
-    it 'asserts docker run' do
-      expect(Dockerspec::RSpecAssertions).to receive(:assert_docker_run!).once
-        .with(%w(example opts))
-      subject.docker_run('example', 'opts')
+    let(:runner_class) { Dockerspec::Runner::Docker }
+    let(:runner) { double(runner_class.to_s) }
+    let(:example) { 'example' }
+    before do
+      allow(Dockerspec::Configuration).to receive(:runner)
+        .and_return(runner_class)
+      allow(runner_class).to receive(:new).and_return(runner)
+      allow(runner).to receive(:run).and_return(runner)
+    end
+
+    it 'creates a Runner' do
+      allow(runner_class)
+        .to receive(:new).and_return(runner).once.with(example, opts)
+      subject.docker_run(example, opts)
+    end
+
+    it 'runs the Runner' do
+      expect(runner).to receive(:run).once
+      subject.docker_run(example, opts)
+    end
+
+    it 'returns the runner' do
+      expect(subject.docker_run(example, opts)).to eq runner
     end
   end
 end

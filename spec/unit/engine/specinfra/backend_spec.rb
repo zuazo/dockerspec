@@ -1,7 +1,7 @@
 # encoding: UTF-8
 #
 # Author:: Xabier de Zuazo (<xabier@zuazo.org>)
-# Copyright:: Copyright (c) 2015 Xabier de Zuazo
+# Copyright:: Copyright (c) 2015-2016 Xabier de Zuazo
 # License:: Apache License, Version 2.0
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -28,7 +28,7 @@ class MockSpecinfraBackend
   end
 end
 
-describe Dockerspec::Serverspec::SpecinfraBackend do
+describe Dockerspec::Engine::Specinfra::Backend do
   shared_examples 'specinfra backend test' do
     let(:instance) { MockSpecinfraBackend.new }
     subject { described_class.new(backend) }
