@@ -17,7 +17,6 @@
 # limitations under the License.
 #
 
-require 'docker'
 require 'dockerspec/exceptions'
 require 'dockerspec/engine_list'
 require 'dockerspec/helper/rspec_example_helpers'
@@ -25,14 +24,23 @@ require 'dockerspec/helper/rspec_example_helpers'
 module Dockerspec
   module Runner
     #
-    # A basic class with the minimal skeleton to create a Runner: A class to
-    # start the docker containers.
+    # A basic class with the minimal skeleton to create a Runner: Classes to
+    # start docker containers.
     #
     class Base
       #
+      # Gets the configuration options.
+      #
+      # @return [Hash] The options.
+      #
+      # @api private
+      #
+      attr_reader :options
+
+      #
       # Constructs a runner class to run Docker images.
       #
-      # @param opts [String, Hash] The id/name or a list of options.
+      # @param opts [String, Hash] The id/name/file or a list of options.
       #
       # @option opts [Boolean] :rm (calculated) Whether to remove the Docker
       #   container afterwards.
@@ -46,8 +54,120 @@ module Dockerspec
       #
       def initialize(*opts)
         @options = parse_options(opts)
-        @engines = EngineList.new(self, @options)
+        @engines = EngineList.new(self)
         ObjectSpace.define_finalizer(self, proc { finalize })
+      end
+
+      #
+      # Runs the Docker Container.
+      #
+      # 1. Sets up the test context.
+      # 2. Runs the container (or Compose).
+      # 3. Saves the created underlaying test context.
+      #
+      # @example
+      #   builder = Dockerspec::Builder.new('.')
+      #   builder.build
+      #   runner = Dockerspec::Runner::Base.new(builder)
+      #   runner.run #=> #<Dockerspec::Runner::Base:0x0123>
+      #
+      # @return [Dockerspec::Runner::Base] Runner object.
+      #
+      # @raise [Dockerspec::DockerError] For underlaying docker errors.
+      #
+      # @api public
+      #
+      def run
+        setup
+        run_container
+        save
+        self
+      end
+
+      #
+      # Restores the Specinfra backend instance to point to this object's
+      # container.
+      #
+      # This is used to avoid Serverspec running against the last started
+      # container if you are testing multiple containers at the same time.
+      #
+      # @return void
+      #
+      def restore_rspec_context
+        @engines.restore
+      end
+
+      #
+      # Gets the Docker container ID.
+      #
+      # @example
+      #   builder = Dockerspec::Builder.new('.').build
+      #   runner = Dockerspec::Runner::Base.new(builder).run
+      #   runner.id #=> "b8ba0befc716[...]"
+      #
+      # @return [String] Container ID.
+      #
+      # @raise [Dockerspec::RunnerError] When the `#container` method is no
+      #   implemented in the subclass or cannot select the container to test.
+      #
+      # @api public
+      #
+      def id
+        return nil unless container.respond_to?(:id)
+        container.id
+      end
+
+      #
+      # Gets the Docker image ID.
+      #
+      # @return [String] Image ID.
+      #
+      # @raise [Dockerspec::RunnerError] When the `#container` method is no
+      #   implemented in the subclass or cannot select the container to test.
+      #
+      # @api public
+      #
+      def image_id
+        container.json['Image']
+      end
+
+      #
+      # Stops and deletes the Docker Container.
+      #
+      # Automatically called when `:rm` option is enabled.
+      #
+      # @return void
+      #
+      # @api public
+      #
+      def finalize
+        return unless options[:rm] && !container.nil?
+        container.stop
+        container.delete
+      end
+
+      protected
+
+      #
+      # Sets up the context just before starting the docker container.
+      #
+      # @return void
+      #
+      # @api public
+      #
+      def setup
+        @engines.setup
+      end
+
+      #
+      # Saves the context after starting the docker container.
+      #
+      # @return void
+      #
+      # @api public
+      #
+      def save
+        @engines.save
       end
 
       #
@@ -99,116 +219,7 @@ module Dockerspec
       end
 
       #
-      # Runs the Docker Container.
-      #
-      # @example
-      #   builder = Dockerspec::Builder.new('.')
-      #   builder.build
-      #   runner = Dockerspec::Runner.new(builder)
-      #   runner.run #=> #<Dockerspec::Runner::Base:0x0123>
-      #
-      # @return [Dockerspec::Runner::Base] Runner object.
-      #
-      # @api public
-      #
-      def run
-        @engines.setup
-        run_container
-        @engines.save
-        self
-      end
-
-      #
-      # Restores the Specinfra backend instance to point to this object's
-      # container.
-      #
-      # This is used to avoid Serverspec running against the last started
-      # container if you are testing multiple containers at the same time.
-      #
-      # @return void
-      #
-      def restore
-        @engines.restore
-      end
-
-      #
-      # Restores the Docker running container instance in the Specinfra
-      # internal reference.
-      #
-      # Gets the correct {Runner::Base} reference from the RSpec metadata.
-      #
-      # @example Restore Specinfra Backend
-      #   RSpec.configure do |c|
-      #     c.before(:each) do
-      #       metadata = RSpec.current_example.metadata
-      #       Dockerspec::Runner::Base.restore(metadata)
-      #     end
-      #   end
-      #
-      # @param metadata [Hash] RSpec metadata.
-      #
-      # @return void
-      #
-      # @api public
-      #
-      # @see restore
-      #
-      def self.restore(metadata)
-        runner = Helper::RSpecExampleHelpers.search_object(metadata, self)
-        return if runner.nil?
-        runner.restore
-      end
-
-      #
-      # Gets the Docker container ID.
-      #
-      # @example
-      #   builder = Dockerspec::Builder.new('.').build
-      #   runner = Dockerspec::Runner.new(builder).run
-      #   runner.id #=> "b8ba0befc716[...]"
-      #
-      # @return [String] Container ID.
-      #
-      # @api public
-      #
-      def id
-        return nil unless container.respond_to?(:id)
-        container.id
-      end
-
-      #
-      # Gets the Docker image ID.
-      #
-      # @return [String] Image ID.
-      #
-      # @raise [Dockerspec::RunnerError] When the `#container` method is no
-      #   implemented in the subclass.
-      #
-      # @api public
-      #
-      def image_id
-        container.json['Image']
-      end
-
-      #
-      # Stops and deletes the Docker Container.
-      #
-      # Automatically called when `:rm` option is enabled.
-      #
-      # @return void
-      #
-      # @api public
-      #
-      def finalize
-        return unless @options[:rm] && !container.nil?
-        container.stop
-        container.delete
-      end
-
-      protected
-
-      #
-      # Returns the internal `Docker::Container` object.
+      # Gets the internal `Docker::Container` object.
       #
       # @return [Docker::Container] The container.
       #
@@ -244,6 +255,6 @@ end
 RSpec.configure do |c|
   c.before(:each) do
     metadata = RSpec.current_example.metadata
-    Dockerspec::Runner::Base.restore(metadata)
+    Dockerspec::Helper::RSpecExampleHelpers.restore_rspec_context(metadata)
   end
 end

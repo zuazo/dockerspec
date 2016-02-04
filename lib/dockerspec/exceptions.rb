@@ -36,4 +36,9 @@ module Dockerspec
   # building Docker images.
   #
   class DockerError < ArgumentError; end
+  #
+  # An exception message raised when there is an error with the `its_container`
+  # resource.
+  #
+  class ItsContainerError < ArgumentError; end
 end

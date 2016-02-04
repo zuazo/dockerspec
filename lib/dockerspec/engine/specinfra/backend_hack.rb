@@ -37,7 +37,21 @@ Specinfra::Backend::Base.class_eval do
   #
   def self.instance_set(instance)
     return if @instance == instance
-    property[:host_inventory] = property[:os] = nil
+    host_reset
     @instance = instance
+  end
+
+  #
+  # Resets the information stored for a host.
+  #
+  # - Host inventory.
+  # - Detected OS.
+  #
+  # @return void
+  #
+  # @api public
+  #
+  def self.host_reset
+    property[:host_inventory] = property[:os] = nil
   end
 end

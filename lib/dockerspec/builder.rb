@@ -117,6 +117,8 @@ module Dockerspec
     #
     # @return [String] Docker image ID.
     #
+    # @raise [Dockerspec::DockerError] For underlaying docker errors.
+    #
     # @api public
     #
     def build
@@ -313,6 +315,8 @@ module Dockerspec
     #
     # @return void
     #
+    # @raise [Dockerspec::DockerError] For underlaying docker errors.
+    #
     # @api private
     #
     def build_from_dir(dir)
@@ -369,6 +373,8 @@ module Dockerspec
     # @param id [String] The Docker image ID.
     #
     # @return void
+    #
+    # @raise [Dockerspec::DockerError] For underlaying docker errors.
     #
     # @api private
     #

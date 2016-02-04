@@ -48,16 +48,17 @@ For example, to use Serverspec:
     # @param runner [Dockerspec::Runner::Base] The class used to run the
     #   docker container.
     #
-    # @param opts [Hash] Configuration options to pass to the engines.
-    #
     # @return [Dockerspec::EngineList] The list of engines.
+    #
+    # @raise [Dockerspec::EngineError] Raises this exception when the engine
+    #   list is empty.
     #
     # @api public
     #
-    def initialize(runner, opts)
+    def initialize(runner)
       engine_classes = Configuration.engines
       @engines =
-        engine_classes.map { |engine_class| engine_class.new(runner, opts) }
+        engine_classes.map { |engine_class| engine_class.new(runner) }
       assert_engines!
     end
 

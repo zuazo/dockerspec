@@ -21,13 +21,7 @@ require 'spec_helper'
 
 describe Dockerspec::Runner::Base do
   let(:engines) { double('Dockerspec::EngineList') }
-  before do
-    allow(Dockerspec::EngineList).to receive(:new).and_return(engines)
-    allow(engines).to receive(:setup)
-    allow(engines).to receive(:save)
-
-    allow(ObjectSpace).to receive(:define_finalizer)
-  end
+  before { stub_runner_base(engines) }
 
   context '.container' do
     it 'raises an error' do

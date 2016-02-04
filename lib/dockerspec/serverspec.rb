@@ -20,5 +20,10 @@
 require 'dockerspec/runner/serverspec'
 require 'dockerspec/engine/specinfra'
 
+#
+# Use Serverpec to start the containers (engine) and to run the tests (runner).
+#
 Dockerspec::Configuration.docker_runner = Dockerspec::Runner::Serverspec::Docker
+Dockerspec::Configuration.compose_runner =
+  Dockerspec::Runner::Serverspec::Compose
 Dockerspec::Configuration.add_engine Dockerspec::Engine::Specinfra

@@ -54,6 +54,7 @@ module Dockerspec
         # @api public
         #
         def save
+          @saved_backend_name = ::Specinfra.configuration.backend
           @saved_backend_instance = backend_instance
         end
 
@@ -66,6 +67,27 @@ module Dockerspec
         #
         def restore
           instance_set(@saved_backend_instance)
+          ::Specinfra.configuration.backend = @saved_backend_name
+        end
+
+        #
+        # Restores the testing context for a container.
+        #
+        # Used with Docker Compose to choose the container to test.
+        #
+        # @param container_name [String, Symbol] The name of the container.
+        #
+        # @return void
+        #
+        # @api public
+        #
+        def restore_container(container_name)
+          current_container_name =
+            ::Specinfra.configuration.docker_compose_container
+          return if current_container_name == container_name
+          ::Specinfra.configuration.docker_compose_container(container_name)
+          # TODO: Save the host family instead of always reseting it:
+          backend_class.host_reset
         end
 
         #

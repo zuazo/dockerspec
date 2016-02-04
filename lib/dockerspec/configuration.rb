@@ -18,6 +18,7 @@
 #
 
 require 'dockerspec/runner/docker'
+require 'dockerspec/runner/compose'
 
 module Dockerspec
   #
@@ -33,6 +34,13 @@ module Dockerspec
     # @return [Class] The {Dockerspec::Runner::Base} class.
     #
     attr_accessor :docker_runner
+
+    #
+    # The {Dockerspec::Runner::Compose} class used to run Docker Compose.
+    #
+    # @return [Class] The {Dockerspec::Runner::Compose} class.
+    #
+    attr_accessor :compose_runner
 
     #
     # A list of test engines used to run the tests.
@@ -96,6 +104,33 @@ module Dockerspec
     end
 
     #
+    # Sets the class used to start Docker Compose.
+    #
+    # @example
+    #   Dockerspec.Configuration.compose_runner = Dockerspec::Runner::Compose
+    #
+    # @param runner [Class] A {Dockerspec::Runner::Compose::Base} subclass.
+    #
+    # @return void
+    #
+    # @api public
+    #
+    def self.compose_runner=(runner)
+      instance.compose_runner = runner
+    end
+
+    #
+    # Gets the class used to start Docker Compose.
+    #
+    # @return [Class] A {Dockerspec::Runner::Compose::Base} subclass.
+    #
+    # @api public
+    #
+    def self.compose_runner
+      instance.compose_runner
+    end
+
+    #
     # Resets the internal Configuration singleton object.
     #
     # @return void
@@ -131,6 +166,7 @@ module Dockerspec
     #
     def initialize
       @docker_runner = Runner::Docker
+      @compose_runner = Runner::Compose
       @engines = []
     end
 

@@ -36,42 +36,44 @@ module Dockerspec
       # @param runner [Dockerspec::Runner::Base] The class that is being used
       #   to run the Docker Containers.
       #
-      # @param opts [Hash] Configuration options used by the engine.
-      #
       # @return [Dockerspec::Engine::Base] The engine.
       #
       # @api public
       #
-      def initialize(runner, opts)
+      def initialize(runner)
         @runner = runner
-        @options = opts
       end
 
       #
       # Runs the engine setup just before running docker.
       #
+      # Also run when there is a change in the testing target like changing the
+      # container you want to run the tests into with Docker Compose.
+      #
       # Usually this is implemented to clean configurations from previous tests.
       #
       # Does nothing by default.
+      #
+      # @param args [Mixed] The passed arguments.
       #
       # @return void
       #
       # @api public
       #
-      def setup
-      end
+      def setup(*args); end
 
       #
       # Saves the engine status internally after starting the docker container.
       #
       # Does nothing by default.
       #
+      # @param args [Mixed] The passed arguments.
+      #
       # @return void
       #
       # @api public
       #
-      def save
-      end
+      def save(*args); end
 
       #
       # Restores the engine internal status after running tests on other
@@ -82,11 +84,25 @@ module Dockerspec
       #
       # Does nothing by default.
       #
+      # @param args [Mixed] The passed arguments.
+      #
       # @return void
       #
       # @api public
       #
-      def restore
+      def restore(*args); end
+
+      protected
+
+      #
+      # Gets the configuration options from the runner.
+      #
+      # @return [Hash] Options list.
+      #
+      # @api private
+      #
+      def options
+        @runner.options
       end
     end
   end

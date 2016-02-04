@@ -1,7 +1,7 @@
 # encoding: UTF-8
 #
 # Author:: Xabier de Zuazo (<xabier@zuazo.org>)
-# Copyright:: Copyright (c) 2015 Xabier de Zuazo
+# Copyright:: Copyright (c) 2015-2016 Xabier de Zuazo
 # License:: Apache License, Version 2.0
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -29,5 +29,32 @@ module DockerspecTests
   def self.error_example
     file = File.join(DockerspecTests.data_dir, 'error_example.log')
     IO.read(file)
+  end
+
+  def stub_runner_base(engines)
+    allow(Dockerspec::EngineList).to receive(:new).and_return(engines)
+    allow(engines).to receive(:setup)
+    allow(engines).to receive(:save)
+    allow(ObjectSpace).to receive(:define_finalizer)
+  end
+
+  def stub_engines(engines)
+    allow(engines).to receive(:setup)
+  end
+
+  def stub_dockercompose(compose)
+    allow(DockerCompose).to receive(:load).and_return(compose)
+    allow(compose).to receive(:start)
+    allow(compose).to receive(:stop)
+    allow(compose).to receive(:delete)
+  end
+
+  def stub_runner_compose(file, compose, engines)
+    stub_runner_base(engines)
+    stub_dockercompose(compose)
+    stub_engines(engines)
+    allow(Dockerspec::Runner::Compose).to receive(:current_instance=)
+    allow(File).to receive(:directory?).and_call_original
+    allow(File).to receive(:directory?).with(file).and_return(false)
   end
 end

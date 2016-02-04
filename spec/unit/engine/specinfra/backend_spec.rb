@@ -56,6 +56,38 @@ describe Dockerspec::Engine::Specinfra::Backend do
       end
     end
 
+    context '#restore_container' do
+      let(:config) { double('Specinfra::Configuration') }
+      let(:current_name) { 'current' }
+      before do
+        allow(Specinfra).to receive(:configuration).and_return(config)
+        allow(config).to receive(:docker_compose_container)
+          .with(no_args).and_return(current_name)
+        allow(backend_class).to receive(:host_reset)
+      end
+
+      it 'updates the container name' do
+        new_name = 'new'
+        expect(config).to receive(:docker_compose_container).with(new_name)
+          .once
+        subject.restore_container(new_name)
+      end
+
+      it 'does not update if not required' do
+        expect(config).to_not receive(:docker_compose_container)
+          .with(current_name)
+        expect(backend_class).to_not receive(:host_reset)
+        subject.restore_container(current_name)
+      end
+
+      it 'resets the host information' do
+        new_name = 'new'
+        allow(config).to receive(:docker_compose_container).with(new_name)
+        expect(backend_class).to receive(:host_reset).once
+        subject.restore_container(new_name)
+      end
+    end
+
     context '#reset' do
       it 'sets the instance to nil' do
         expect(backend_class).to receive(:instance_set).with(nil)

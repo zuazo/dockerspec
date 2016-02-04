@@ -18,8 +18,10 @@
 #
 
 require 'dockerspec/configuration'
-require 'dockerspec/builder'
 require 'dockerspec/rspec/settings'
+require 'dockerspec/builder'
+require 'dockerspec/rspec/resources/its_container'
+require 'dockerspec/exceptions'
 
 module Dockerspec
   #
@@ -35,6 +37,9 @@ module Dockerspec
     # * `dockerfile_path`: The dockerfile path.
     # * `rm_build`: Whether to remove the build after the run.
     # * `log_level`: Log level to use by default.
+    # * `docker_compose_wait`: Seconds to wait with Docker Compose before
+    #   running the tests.
+    # * `container_name`: Docker container to test with Docker Compose.
     #
     # All the RSpec settings are optional.
     #
@@ -171,6 +176,8 @@ module Dockerspec
       #
       # @return [Dockerspec::Builder] Builder object.
       #
+      # @raise [Dockerspec::DockerError] For underlaying docker errors.
+      #
       # @see Dockerspec::Builder::ConfigHelpers
       #
       # @api public
@@ -203,14 +210,14 @@ module Dockerspec
       #
       # @example Avoid Automatic OS Detection to Speed Up the Tests
       #   describe docker_build('.', tag: 'myapp') do
-      #     describe docker_run('myapp', family: :debian) do
+      #     describe docker_run('myapp', family: 'debian') do
       #       # [...]
       #     end
       #   end
       #
       # @example Using Hash Format
       #   describe docker_build('.', tag: 'myapp') do
-      #     describe docker_run(tag: 'myapp', family: :debian) do
+      #     describe docker_run(tag: 'myapp', family: 'debian') do
       #       # [...]
       #     end
       #   end
@@ -284,7 +291,7 @@ module Dockerspec
       #   container.
       # @option opts [Hash, Array] :env Some `ENV` instructions to add to the
       #   container.
-      # @option opts [Symbol] :family (calculated) The OS family.
+      # @option opts [Symbol, String] :family (calculated) The OS family.
       #   It's automatically detected by default, but can be used to
       #   **speed up the tests**. Some possible values:
       #   `:alpine`, `:arch`, `:coreos`, `:debian`, `:gentoo`, `:nixos`,
@@ -292,7 +299,7 @@ module Dockerspec
       # @option opts [Symbol] :backend (calculated) Docker backend to use:
       #   `:docker`, `:lxc`.
       #
-      # @return [Dockerspec::Runner::Base] Runner object.
+      # @return [Dockerspec::Runner::Docker] Runner object.
       #
       # @raise [Dockerspec::DockerRunArgumentError] Raises this exception when
       #   some required fields are missing.
@@ -300,11 +307,151 @@ module Dockerspec
       # @raise [Dockerspec::EngineError] Raises this exception when the engine
       #   list is empty.
       #
+      # @raise [Dockerspec::DockerError] For underlaying docker errors.
+      #
       # @api public
       #
       def docker_run(*opts)
         runner = Dockerspec::Configuration.docker_runner.new(*opts)
         runner.run
+      end
+
+      #
+      # Runs Docker Compose.
+      #
+      # By default tries to detect the most appropriate Docker backend: native
+      # or LXC.
+      #
+      # @example Testing Containers from a YAML File
+      #   context docker_compose('docker-compose.yml', wait: 15) do
+      #     its_container(:myapp) do
+      #       describe process('apache2') do
+      #         it { should be_running }
+      #       end
+      #       # [...]
+      #     end
+      #     its_container(:db) do
+      #       describe process('mysqld') do
+      #         it { should be_running }
+      #       end
+      #       # [...]
+      #     end
+      #   end
+      #
+      # @example Testing Only One Container from a Directory
+      #   context docker_compose('data/', container: :myapp, wait: 15) do
+      #     describe process('apache2') do
+      #       it { should be_running }
+      #     end
+      #     # [...]
+      #   end
+      #
+      # @example Avoid Automatic OS Detection to Speed Up the Tests
+      #   context docker_compose(
+      #     'data/', container: :myapp, family: 'debian', wait: 15
+      #   ) do
+      #     describe process('apache2') do
+      #       it { should be_running }
+      #     end
+      #     # [...]
+      #   end
+      #
+      # @param opts [String, Hash] The `:file` or a list of options.
+      #
+      # @option opts [String] :file The compose YAML file or a directory
+      #   containing the `'docker-compose.yml'` file.
+      # @option opts [Symbol, String] :container The name of the container to
+      #   test. It is better to use
+      #   {Dockerspec::RSpec::Resources#its_container} if you want to test
+      #   multiple containers.
+      # @option opts [Boolean] :rm (calculated) Whether to remove the Docker
+      #   containers afterwards.
+      # @option opts [Symbol, String] :family (calculated) The OS family.
+      #   It's automatically detected by default, but can be used to
+      #   **speed up the tests**. Some possible values:
+      #   `:alpine`, `:arch`, `:coreos`, `:debian`, `:gentoo`, `:nixos`,
+      #   `:plamo`, `:poky`, `:redhat`, `:suse`.
+      # @option opts [Symbol] :backend (calculated) Docker backend to use:
+      #   `:docker_compose`, `:docker_compose_lxc`.
+      #
+      # @return [Dockerspec::Runner::Compose] Runner object.
+      #
+      # @raise [Dockerspec::DockerRunArgumentError] Raises this exception when
+      #   some required fields are missing.
+      #
+      # @raise [Dockerspec::EngineError] Raises this exception when the engine
+      #   list is empty.
+      #
+      # @raise [Dockerspec::DockerError] For underlaying docker errors.
+      #
+      # @api public
+      #
+      def docker_compose(*opts)
+        runner = Dockerspec::Configuration.compose_runner.new(*opts)
+        runner.run
+      end
+
+      #
+      # Selects the container to test inside {#docker_compose}.
+      #
+      # @example Testing Multiple Containers
+      #   context docker_compose('docker-compose.yml', wait: 15) do
+      #     its_container(:myapp) do
+      #       describe process('apache2') do
+      #         it { should be_running }
+      #         its(:args) { should match(/-DFOREGROUND/) }
+      #       end
+      #       # [...]
+      #     end
+      #     its_container(:db) do
+      #       describe process('mysqld') do
+      #         it { should be_running }
+      #       end
+      #       # [...]
+      #     end
+      #   end
+      #
+      # @example Avoid Automatic OS Detection to Speed Up the Tests
+      #   context docker_compose('docker-compose.yml', wait: 15) do
+      #     its_container('myapp', family: 'centos') do
+      #       describe process('httpd') do
+      #         it { should be_running }
+      #       end
+      #       # [...]
+      #     end
+      #     its_container('db', family: 'debian') do
+      #       describe process('mysqld') do
+      #         it { should be_running }
+      #       end
+      #       # [...]
+      #     end
+      #   end
+      #
+      # @param container [Symbol, String] The name of the container to test.
+      #
+      # @param opts [Hash] A list of options.
+      #
+      # @option opts [Symbol, String] :family (calculated) The OS family.
+      #   It's automatically detected by default, but can be used to
+      #   **speed up the tests**. Some possible values:
+      #   `:alpine`, `:arch`, `:coreos`, `:debian`, `:gentoo`, `:nixos`,
+      #   `:plamo`, `:poky`, `:redhat`, `:suse`.
+      #
+      # @raise [Dockerspec::DockerComposeError] Raises this exception when
+      #   you call `its_container` without calling `docker_compose`.
+      #
+      # @return [Dockerspec::Runner::Compose] Runner object.
+      #
+      # @api public
+      #
+      def its_container(container, *opts, &block)
+        compose = Runner::Compose.current_instance
+        if compose.nil?
+          fail ItsContainerError, ItsContainer::NO_DOCKER_COMPOSE_MESSAGE
+        end
+        container_opts = opts[0].is_a?(Hash) ? opts[0] : {}
+        compose.select_container(container, container_opts)
+        describe(ItsContainer.new(container), *opts, &block)
       end
     end
   end

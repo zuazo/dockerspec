@@ -50,6 +50,8 @@ $ bundle
   - [*Docker Build* helpers](http://www.rubydoc.info/gems/dockerspec/Dockerspec/Builder/ConfigHelpers)
 - [`docker_run`](http://www.rubydoc.info/gems/dockerspec/Dockerspec/RSpec/Resources#docker_run-instance_method)
   - [*Docker Run* Serverspec resource types](http://serverspec.org/resource_types.html)
+- [`docker_compose`](http://www.rubydoc.info/gems/dockerspec/Dockerspec/RSpec/Resources#docker_compose-instance_method)
+  - [`its_container`](http://www.rubydoc.info/gems/dockerspec/Dockerspec/RSpec/Resources#its_container-instance_method)
 
 ## Usage Examples
 
@@ -83,6 +85,30 @@ end
 ```
 
 See the documentation above for more examples.
+
+### Run Tests Against Docker Compose
+
+```ruby
+context docker_compose('.', wait: 30) do
+
+  its_container(:myapp) do
+    describe process('apache2') do
+      it { should be_running }
+      its(:args) { should match(/-DFOREGROUND/) }
+    end
+    # [...]
+  end
+
+  its_container(:db) do
+    describe process('mysqld') do
+      it { should be_running }
+    end
+    # [...]
+  end
+end
+```
+
+**Important Warning:** The `docker_compose` resource uses the [`docker-compose-api`](https://rubygems.org/gems/docker-compose-api) Ruby gem to emulate Docker Compose. So, some *docker-compose.yml* configuration options may not be supported yet or may not work exactly the same. Let us know if you find any bug or you need a missing feature. And thanks to [Mauricio Klein](https://github.com/mauricioklein) for all his work by the way!
 
 ### Real-world Examples
 

@@ -28,11 +28,10 @@ class TestDockerspecBuilderHelpers
 end
 
 describe Dockerspec::Builder::ConfigHelpers do
-  let(:image) { double('Docker::Image') }
   let(:json_config) { {} }
   let(:json) { { 'Config' => json_config } }
+  let(:image) { double('Docker::Image', json: json) }
   subject { TestDockerspecBuilderHelpers.new(image) }
-  before { allow(image).to receive(:json).and_return(json) }
 
   context '#image_config' do
     it 'returns JSON configuration' do

@@ -23,9 +23,9 @@ describe Dockerspec::Runner::Serverspec::Docker do
   let(:builder) { double('Dockerspec::Builder') }
   subject { described_class.new('tag') }
   let(:image_id) { '8d5e6665a7a6' }
-  let(:container) { double('Docker::Container') }
   let(:configuration) { double('Specinfra::Configuration') }
   let(:container_json) { { 'Image' => image_id } }
+  let(:container) { double('Docker::Container', json: container_json) }
   let(:specinfra_backend) { double('Dockerspec::Engine::Specinfra::Backend') }
   before do
     allow(ObjectSpace).to receive(:define_finalizer)
@@ -34,7 +34,6 @@ describe Dockerspec::Runner::Serverspec::Docker do
       .and_return(false)
     allow(Docker::Container).to receive(:create).and_return(container)
     allow(Docker::Container).to receive(:get).and_return(container)
-    allow(container).to receive(:json).and_return(container_json)
     allow(configuration).to receive(:backend)
     allow(configuration).to receive(:os)
     allow(configuration).to receive(:docker_image)
@@ -162,26 +161,11 @@ describe Dockerspec::Runner::Serverspec::Docker do
     end
   end
 
-  context '.restore' do
-    let(:runner) { double('Dockerspec::Runner::Serverspec::Docker') }
-    let(:metadata) { { metadata: 'ok' } }
-    before do
-      allow(Dockerspec::Helper::RSpecExampleHelpers).to receive(:search_object)
-        .with(metadata, Dockerspec::Runner::Serverspec::Docker)
-        .and_return(runner)
-    end
-
-    it 'restores the runner' do
-      expect(runner).to receive(:restore).once
-      described_class.restore(metadata)
-    end
-  end
-
-  context '#restore' do
+  context '#restore_rspec_context' do
     it 'restores the specinfra backend' do
       expect(specinfra_backend).to receive(:restore).once
       subject.run
-      subject.restore
+      subject.restore_rspec_context
     end
   end
 end

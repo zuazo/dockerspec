@@ -21,6 +21,7 @@ require 'spec_helper'
 
 describe Dockerspec::VERSION do
   it { should match(/^[0-9]+\.[0-9]+\.[0-9]+/) }
+
   it 'is a valid version' do
     expect { described_class }.to_not raise_error
   end

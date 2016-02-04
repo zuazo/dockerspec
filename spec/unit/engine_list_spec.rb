@@ -21,8 +21,7 @@ require 'spec_helper'
 
 describe Dockerspec::EngineList do
   let(:runner) { double('Dockerspec::Runner::Base') }
-  let(:opts) { { key1: 'val1' } }
-  subject { described_class.new(runner, opts) }
+  subject { described_class.new(runner) }
   let(:engine_class) { class_double('Dockerspec::Engine::Base') }
   let(:engine_classes) { [engine_class] }
   let(:engine) { double('Dockerspec::Engine::Base') }
@@ -45,7 +44,7 @@ describe Dockerspec::EngineList do
     end
 
     it 'creates the engines' do
-      expect(engine_class).to receive(:new).with(runner, opts).once
+      expect(engine_class).to receive(:new).with(runner).once
         .and_return(engine)
       subject
     end
@@ -61,6 +60,8 @@ describe Dockerspec::EngineList do
 
   %w(setup save restore).each do |meth|
     context ".#{meth}" do
+      let(:opts) { { key1: 'val1' } }
+
       it "calls engine .#{meth} method" do
         expect(engine).to receive(meth).once.with(no_args)
         subject.send(meth)

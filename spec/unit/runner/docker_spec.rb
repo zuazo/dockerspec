@@ -20,15 +20,26 @@
 require 'spec_helper'
 
 describe Dockerspec::Runner::Docker do
-  let(:builder) { double('Dockerspec::Builder') }
   let(:image_id) { '8d5e6665a7a6' }
+  let(:build_json) { {} }
+  let(:builder) do
+    double(
+      'Dockerspec::Builder',
+      image_id: image_id,
+      image_config: build_json,
+      json: build_json,
+      id: image_id,
+      cmd: %w(/bin/sh)
+    )
+  end
   let(:opts) { { tag: image_id, rm: true } }
   subject { described_class.new(opts) }
-  let(:build_json) { {} }
   let(:container_id) { '198a73cfd686' }
-  let(:container) { double('Docker::Container') }
-  let(:engines) { double('Dockerspec::EngineList') }
   let(:container_json) { { 'Image' => image_id } }
+  let(:container) do
+    double('Docker::Container', json: container_json, id: container_id)
+  end
+  let(:engines) { double('Dockerspec::EngineList') }
   let(:metadata) { {} }
   before do
     allow(Dockerspec::EngineList).to receive(:new).and_return(engines)
@@ -37,19 +48,12 @@ describe Dockerspec::Runner::Docker do
     allow(ObjectSpace).to receive(:define_finalizer)
     allow(Docker::Container).to receive(:create).and_return(container)
     allow(Docker::Container).to receive(:get).and_return(container)
-    allow(container).to receive(:json).and_return(container_json)
     allow(container).to receive(:start)
-    allow(container).to receive(:id).and_return(container_id)
     allow(container).to receive(:stop)
     allow(container).to receive(:delete)
 
     allow(Dockerspec::Builder).to receive(:new).and_return(builder)
     allow(builder).to receive(:build).and_return(builder)
-    allow(builder).to receive(:image_id).and_return(image_id)
-    allow(builder).to receive(:image_config).and_return(build_json)
-    allow(builder).to receive(:json).and_return(build_json)
-    allow(builder).to receive(:id).and_return(image_id)
-    allow(builder).to receive(:cmd).and_return(%w(/bin/sh))
   end
 
   context '.new' do

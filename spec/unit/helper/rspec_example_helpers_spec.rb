@@ -20,16 +20,11 @@
 require 'spec_helper'
 
 describe Dockerspec::Helper::RSpecExampleHelpers do
-  let(:docker_info) { {} }
-  before { allow(::Docker).to receive(:info).and_return(docker_info) }
-
   context '.search_object' do
     context 'when the object exists inside the described_class' do
       let(:klass) { String }
       let(:object) { klass.new }
-      let(:metadata) do
-        { described_class: object }
-      end
+      let(:metadata) { { described_class: object } }
 
       it 'founds the object' do
         expect(described_class.search_object(metadata, klass)).to eq(object)
@@ -39,9 +34,7 @@ describe Dockerspec::Helper::RSpecExampleHelpers do
     context 'when the object exists inside an example group' do
       let(:klass) { String }
       let(:object) { klass.new }
-      let(:metadata) do
-        { example_group: { described_class: object } }
-      end
+      let(:metadata) { { example_group: { described_class: object } } }
 
       it 'founds the object' do
         expect(described_class.search_object(metadata, klass)).to eq(object)
@@ -84,6 +77,51 @@ describe Dockerspec::Helper::RSpecExampleHelpers do
       it 'founds the object' do
         expect(described_class.search_object(metadata, Fixnum)).to eq(nil)
       end
+    end
+  end
+
+  context '.search_objects_with' do
+    let(:obj1) { 'dony' }
+    let(:obj2) { 'leo' }
+    let(:bad_obj1) { 'krang'.to_sym }
+    let(:metadata) do
+      {
+        described_class: obj1,
+        example_group: {
+          described_class: bad_obj1,
+          example_group: {
+            described_class: obj2
+          }
+        }
+      }
+    end
+
+    it 'returns found objects in reverse order' do
+      expect(
+        described_class.search_objects_with(metadata, :strip, 0)
+      ).to eq([obj1, obj2].reverse)
+    end
+
+    it 'returns no objects when not found' do
+      expect(
+        described_class.search_objects_with(metadata, :nonexistent, 0)
+      ).to eq([])
+    end
+  end
+
+  context '.restore_rspec_context' do
+    let(:runner) { double('Dockerspec::Runner::Base') }
+    let(:metadata) { { metadata: 'ok' } }
+    before do
+      allow(Dockerspec::Helper::RSpecExampleHelpers)
+        .to receive(:search_objects_with)
+        .with(metadata, :restore_rspec_context, 0)
+        .and_return([runner])
+    end
+
+    it 'restores the runner' do
+      expect(runner).to receive(:restore_rspec_context).once
+      described_class.restore_rspec_context(metadata)
     end
   end
 end

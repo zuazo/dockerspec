@@ -17,7 +17,6 @@
 # limitations under the License.
 #
 
-require 'docker'
 require 'dockerspec/docker_gem'
 require 'dockerspec/exceptions'
 require 'dockerspec/helper/multiple_sources_description'
@@ -75,11 +74,16 @@ module Dockerspec
       #
       # @return [Dockerspec::Runner::Docker] Runner object.
       #
+      # @raise [Dockerspec::DockerRunArgumentError] Raises this exception when
+      #   some required options are missing.
+      #
+      # @raise [Dockerspec::DockerError] For underlaying docker errors.
+      #
       # @api public
       #
       def initialize(*opts)
         super
-        send("setup_from_#{source}", @options[source])
+        send("setup_from_#{source}", options[source])
       end
 
       #
@@ -137,7 +141,7 @@ module Dockerspec
       #
       def source
         return @source unless @source.nil?
-        @source = %i(tag id).find { |from| @options.key?(from) }
+        @source = %i(tag id).find { |from| options.key?(from) }
       end
 
       #
@@ -180,7 +184,7 @@ module Dockerspec
       # Parses the configuration options passed to the constructor.
       #
       # @example
-      #   self.parse_options #=> {:rm=>true}
+      #   self.parse_options #=> {:rm=>true, :tag=>"myapp"}
       #
       # @param opts [Array<String, Hash>] The list of options. The strings will
       #   be interpreted as `:tag`, others will be merged.
@@ -225,6 +229,8 @@ module Dockerspec
       #
       # @return void
       #
+      # @raise [Dockerspec::DockerError] For underlaying docker errors.
+      #
       # @api private
       #
       def setup_from_id(id)
@@ -257,8 +263,8 @@ module Dockerspec
       # @api private
       #
       def add_container_env_options(opts)
-        opts['Env'] = opts['Env'].to_a << "PATH=#{path}" if @options.key?(:path)
-        env = @options[:env].to_a.map { |v| v.join('=') }
+        opts['Env'] = opts['Env'].to_a << "PATH=#{path}" if options.key?(:path)
+        env = options[:env].to_a.map { |v| v.join('=') }
         opts['Env'] = opts['Env'].to_a.concat(env)
         opts
       end
@@ -285,6 +291,8 @@ module Dockerspec
       #
       # @return void
       #
+      # @raise [Dockerspec::DockerError] For underlaying docker errors.
+      #
       # @api private
       #
       def create_container
@@ -298,6 +306,8 @@ module Dockerspec
       # Creates and runs the Docker container.
       #
       # @return void
+      #
+      # @raise [Dockerspec::DockerError] For underlaying docker errors.
       #
       # @api private
       #

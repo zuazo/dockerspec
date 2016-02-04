@@ -18,3 +18,4 @@
 #
 
 require 'dockerspec/runner/serverspec/docker'
+require 'dockerspec/runner/serverspec/compose'

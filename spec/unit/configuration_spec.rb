@@ -54,4 +54,16 @@ describe Dockerspec::Configuration do
       expect(described_class.docker_runner).to eq(runner)
     end
   end
+
+  context '.compose_runner= & .compose_runner' do
+    it 'returns Docker Compose by default' do
+      described_class.reset
+      expect(described_class.compose_runner).to eq(Dockerspec::Runner::Compose)
+    end
+
+    it 'sets the runner' do
+      described_class.compose_runner = runner
+      expect(described_class.compose_runner).to eq(runner)
+    end
+  end
 end

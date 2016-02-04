@@ -32,34 +32,20 @@ module Dockerspec
       # @param runner [Dockerspec::Runner::Base] The class that is being used
       #   to run the Docker Containers.
       #
-      # @param opts [Hash] Configuration options used by the engine.
-      #
       # @return [Dockerspec::Engine::Specinfra] The engine.
       #
       # @api public
       #
-      def initialize(runner, opts)
+      def initialize(runner)
         super
         @backend = nil
-      end
-
-      #
-      # Restores the Specinfra backend instance to point to this object's
-      # container.
-      #
-      # This is used to avoid Serverspec running against the last started
-      # container if you are testing multiple containers at the same time.
-      #
-      # @return void
-      #
-      def restore
-        @backend.restore
       end
 
       #
       # Sets the Specinfra configuration.
       #
       # - Resets the internal Specinfra backend reference.
+      # - Sets the chosen container name with Docker Compose.
       # - Sets the `:family`.
       #
       # @return void
@@ -67,15 +53,16 @@ module Dockerspec
       # @api private
       #
       def setup
-        @backend = Backend.new(@runner.backend_name)
-        @backend.reset
-        return unless @options.key?(:family)
-        ::Specinfra.configuration.os(family: @options[:family])
+        if @backend.nil?
+          @backend = Backend.new(backend_name)
+          @backend.reset
+        end
+        setup_container_name
+        setup_family
       end
 
       #
-      # Saves the Specinfra backend internal reference internally to restore
-      # it later.
+      # Saves the Specinfra backend reference internally to restore it later.
       #
       # @return void
       #
@@ -83,6 +70,60 @@ module Dockerspec
       #
       def save
         @backend.save
+      end
+
+      #
+      # Restores the Specinfra backend instance to point to this object's
+      # container.
+      #
+      # This is used to avoid Serverspec running against the previous started
+      # container if you are testing multiple containers at the same time.
+      #
+      # @return void
+      #
+      # @api private
+      #
+      def restore
+        @backend.restore
+        setup_container_name
+        setup_family
+      end
+
+      protected
+
+      #
+      # Gets the Specinfra backend name from the runner.
+      #
+      # @return [String] The backend name.
+      #
+      # @api private
+      #
+      def backend_name
+        @runner.backend_name
+      end
+
+      #
+      # Sets up the OS family.
+      #
+      # @return void
+      #
+      # @api private
+      #
+      def setup_family
+        return unless options.key?(:family)
+        ::Specinfra.configuration.os(family: options[:family])
+      end
+
+      #
+      # Selects the container to test.
+      #
+      # @return void
+      #
+      # @api private
+      #
+      def setup_container_name
+        return unless options.key?(:container)
+        @backend.restore_container(options[:container])
       end
     end
   end

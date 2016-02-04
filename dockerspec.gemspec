@@ -30,10 +30,12 @@ Gem::Specification.new do |s|
   s.required_ruby_version = Gem::Requirement.new('>= 2.0.0')
 
   s.add_dependency 'docker-api', '~> 1.22'
+  s.add_dependency 'docker-compose-api', '~> 1.0'
   s.add_dependency 'rspec', '~> 3.0'
   s.add_dependency 'rspec-its', '~> 1.0'
   s.add_dependency 'serverspec', '~> 2.24'
   s.add_dependency 'specinfra-backend-docker_lxc', '~> 0.2.0'
+  s.add_dependency 'specinfra-backend-docker_compose', '~> 0.1.0'
   s.add_dependency 'erubis', '~> 2.0'
 
   s.add_development_dependency 'rake', '~> 10.0'

@@ -22,7 +22,7 @@ require 'spec_helper'
 describe Dockerspec::Builder do
   let(:file) { double('StringIO') }
   let(:image_id) { '198a73cfd686' }
-  let(:image) { double('Docker::Image') }
+  let(:image) { double('Docker::Image', id: image_id) }
   let(:image_gc) { double('Dockerspec::Builder::ImageGC') }
   let(:tmpdir) { '/tmp/d20151208-1396-xutmns' }
   before do
@@ -30,7 +30,6 @@ describe Dockerspec::Builder do
     allow(Docker::Image).to receive(:build).and_return(image)
     allow(Docker::Image).to receive(:get).and_return(image)
     allow(Docker::Image).to receive(:create)
-    allow(image).to receive(:id).and_return(image_id)
     allow(Dockerspec::Builder::ImageGC).to receive(:instance)
       .and_return(image_gc)
     allow(image_gc).to receive(:add)
