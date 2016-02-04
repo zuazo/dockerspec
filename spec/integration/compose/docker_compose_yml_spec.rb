@@ -24,7 +24,7 @@ describe 'Docker Compose' do
   context docker_compose(file, wait: ENV['CI'] ? 90 : 15) do
     its_container(:db) do
       it 'detects the OS family' do
-        expect(command('uname -a').stdout).to match(/Debian/i)
+        expect(command('uname -a').stdout).to match(/Debian|Ubuntu/i)
         expect(file('/etc/alpine-release').exists?).to be false
         expect(property[:os][:family]).to eq 'debian'
       end
@@ -94,7 +94,7 @@ describe 'Docker Compose' do
 
     its_container(:wordpress) do
       it 'detects the OS family' do
-        expect(command('uname -a').stdout).to match(/Debian/i)
+        expect(command('uname -a').stdout).to match(/Debian|Ubuntu/i)
         expect(file('/etc/alpine-release').exists?).to be false
         expect(property[:os][:family]).to eq 'debian'
       end
