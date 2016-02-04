@@ -110,7 +110,7 @@ describe Dockerspec::Runner::Compose do
   context '#run' do
     context 'with docker wait set' do
       let(:docker_wait) { 10 }
-      let(:time) { Time.new }
+      let(:time) { Time.new.utc }
       before do
         allow(Time).to receive(:new).and_return(time)
         opts[:wait] = docker_wait

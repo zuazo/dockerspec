@@ -45,6 +45,12 @@ module Dockerspec
       include Dockerspec::Helper::MultipleSourcesDescription
 
       #
+      # @return [Symbol] The option key to set when you pass a string instead
+      #   of a hash of options.
+      #
+      OPTIONS_DEFAULT_KEY = :file
+
+      #
       # The internal {DockerCompose} object.
       #
       # @return [DockerCompose] The compose object.
@@ -260,35 +266,9 @@ module Dockerspec
         return if opts[:file].is_a?(String)
         fail DockerRunArgumentError, 'You need to pass the `:file` option to '\
           'the #docker_compose method.'
+        # TODO: Move this to base
       end
 
-      #
-      # Parses the configuration options passed to the constructor.
-      #
-      # @example
-      #   self.parse_options #=> {:rm=>true, :file=> "docker-compose.yml"}
-      #
-      # @param opts [Array<String, Hash>] The list of options. The strings will
-      #   be interpreted as `:tag`, others will be merged.
-      #
-      # @return [Hash] The configuration options.
-      #
-      # @raise [Dockerspec::DockerRunArgumentError] Raises this exception when
-      #   some required fields are missing.
-      #
-      # @see #initialize
-      #
-      # @api private
-      #
-      def parse_options(opts)
-        opts_hs_ary = opts.map { |x| x.is_a?(Hash) ? x : { file: x } }
-        result = super(opts_hs_ary)
-        assert_options!(result)
-        result
-      end
-
-      #
-      # Generates the {DockerCompose} object from the file.
       #
       # Saves the build internally.
       #
@@ -313,9 +293,9 @@ module Dockerspec
       # @api private
       #
       def run_container
-        start_time = Time.new
+        start_time = Time.new.utc
         Dir.chdir(::File.dirname(file)) { compose.start }
-        do_wait((Time.new - start_time).to_i)
+        do_wait((Time.new.utc - start_time).to_i)
       end
 
       #

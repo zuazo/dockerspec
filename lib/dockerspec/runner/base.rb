@@ -29,6 +29,12 @@ module Dockerspec
     #
     class Base
       #
+      # The option key to set when you pass a string instead of a hash of
+      # options.
+      #
+      OPTIONS_DEFAULT_KEY = :ignored
+
+      #
       # Gets the configuration options.
       #
       # @return [Hash] The options.
@@ -185,6 +191,18 @@ module Dockerspec
       end
 
       #
+      # The option key to set when you pass a string instead of a hash of
+      # options.
+      #
+      # @return [Symbol] The key name.
+      #
+      # @api private
+      #
+      def options_default_key
+        self.class::OPTIONS_DEFAULT_KEY
+      end
+
+      #
       # Gets the default configuration options after merging them with RSpec
       # configuration options.
       #
@@ -200,22 +218,41 @@ module Dockerspec
       end
 
       #
+      # Ensures that the passed options are correct.
+      #
+      # Does nothing. Must be implemented in subclasses.
+      #
+      # @return void
+      #
+      # @api private
+      #
+      def assert_options!(opts); end
+
+      #
       # Parses the configuration options passed to the constructor.
       #
       # @example
-      #   self.parse_options #=> {:rm=>true}
+      #   self.parse_options #=> {:rm=>true, :file=> "docker-compose.yml"}
       #
       # @param opts [Array<String, Hash>] The list of options. The strings will
-      #   be interpreted as `:tag`, others will be merged.
+      #   be interpreted as `default_opt` key value, others will be merged.
       #
       # @return [Hash] The configuration options.
+      #
+      # @raise [Dockerspec::DockerRunArgumentError] Raises this exception when
+      #   some required fields are missing.
       #
       # @see #initialize
       #
       # @api private
       #
       def parse_options(opts)
-        opts.reduce(default_options) { |a, e| a.merge(e) }
+        opts_hs_ary = opts.map do |x|
+          x.is_a?(Hash) ? x : { options_default_key => x }
+        end
+        result = opts_hs_ary.reduce(default_options) { |a, e| a.merge(e) }
+        assert_options!(result)
+        result
       end
 
       #

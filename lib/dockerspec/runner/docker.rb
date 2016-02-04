@@ -38,6 +38,12 @@ module Dockerspec
       include Dockerspec::Helper::MultipleSourcesDescription
 
       #
+      # @return [Symbol] The option key to set when you pass a string instead
+      #   of a hash of options.
+      #
+      OPTIONS_DEFAULT_KEY = :tag
+
+      #
       # The internal {Docker::Container} object.
       #
       # @return [Docker::Container] The container.
@@ -178,31 +184,6 @@ module Dockerspec
         return if opts[:tag].is_a?(String) || opts[:id].is_a?(String)
         fail DockerRunArgumentError, 'You need to pass the `:tag` or the '\
           '`:id` option to the #docker_run method.'
-      end
-
-      #
-      # Parses the configuration options passed to the constructor.
-      #
-      # @example
-      #   self.parse_options #=> {:rm=>true, :tag=>"myapp"}
-      #
-      # @param opts [Array<String, Hash>] The list of options. The strings will
-      #   be interpreted as `:tag`, others will be merged.
-      #
-      # @return [Hash] The configuration options.
-      #
-      # @raise [Dockerspec::DockerRunArgumentError] Raises this exception when
-      #   some required fields are missing.
-      #
-      # @see #initialize
-      #
-      # @api private
-      #
-      def parse_options(opts)
-        opts_hs_ary = opts.map { |x| x.is_a?(Hash) ? x : { tag: x } }
-        result = super(opts_hs_ary)
-        assert_options!(result)
-        result
       end
 
       #
