@@ -266,7 +266,6 @@ module Dockerspec
         return if opts[:file].is_a?(String)
         fail DockerRunArgumentError, 'You need to pass the `:file` option to '\
           'the #docker_compose method.'
-        # TODO: Move this to base
       end
 
       #
