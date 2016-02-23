@@ -21,7 +21,8 @@ require 'spec_helper'
 
 describe Dockerspec::Runner::Serverspec::Docker do
   let(:builder) { double('Dockerspec::Builder') }
-  subject { described_class.new('tag') }
+  let(:options) { {} }
+  subject { described_class.new('tag', options) }
   let(:image_id) { '8d5e6665a7a6' }
   let(:configuration) { double('Specinfra::Configuration') }
   let(:container_json) { { 'Image' => image_id } }
@@ -86,6 +87,14 @@ describe Dockerspec::Runner::Serverspec::Docker do
 
     it 'sets Specinfra image ID' do
       expect(configuration).to receive(:docker_image).once.with(image_id)
+      subject.run
+    end
+
+    it 'sets the environment' do
+      options[:env] = { PASSWORD: 'example' }
+      expect(configuration).to receive(:env).once.with(options[:env]).ordered
+      expect(configuration).to receive(:docker_image).once.with(image_id)
+        .ordered
       subject.run
     end
 

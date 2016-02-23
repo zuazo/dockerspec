@@ -102,6 +102,7 @@ module Dockerspec
         #
         def setup
           super
+          Specinfra.configuration.env(options[:env]) if options.key?(:env)
           if source == :id
             Specinfra.configuration.docker_container(id)
           else

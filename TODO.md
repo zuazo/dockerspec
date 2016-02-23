@@ -9,7 +9,7 @@
 * [ ] Create `stub_*` methods for unit tests.
 * [ ] Add integration tests for Runner without Serverspec.
 * [ ] Add a Capybara test example.
-* [ ] Fix `:env` with docker_run and Serverspec.
+* [x] Fix `:env` with docker_run and Serverspec.
 * [ ] `have_expose` with int allowed
 * [ ] Add `described_image` helper for `docker_run`.
 * [ ] Rename the event methods in the Engines to be more clear.
