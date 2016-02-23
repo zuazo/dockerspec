@@ -75,6 +75,20 @@ module Dockerspec
           calculate_docker_backend_name('docker')
         end
 
+        #
+        # Gets the internal {Docker::Container} object.
+        #
+        # @return [Docker::Container] The container.
+        #
+        # @api public
+        #
+        def container
+          @cached_container ||= begin
+            backend = Engine::Specinfra::Backend.new(backend_name)
+            backend.backend_instance_attribute(:container)
+          end
+        end
+
         protected
 
         #
@@ -88,10 +102,10 @@ module Dockerspec
         #
         def setup
           super
-          if id.nil?
-            Specinfra.configuration.docker_image(image_id)
-          else
+          if source == :id
             Specinfra.configuration.docker_container(id)
+          else
+            Specinfra.configuration.docker_image(image_id)
           end
         end
       end

@@ -58,7 +58,7 @@ describe Dockerspec::EngineList do
     end
   end
 
-  %w(setup save restore).each do |meth|
+  %w(setup save restore ready).each do |meth|
     context ".#{meth}" do
       let(:opts) { { key1: 'val1' } }
 

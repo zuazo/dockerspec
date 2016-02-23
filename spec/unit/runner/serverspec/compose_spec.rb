@@ -56,6 +56,16 @@ describe Dockerspec::Runner::Serverspec::Compose do
     end
   end
 
+  context '#compose' do
+    let(:compose) { double('DockerCompose') }
+
+    it 'returns backend compose attribute' do
+      expect(specinfra_backend).to receive(:backend_instance_attribute).once
+        .with(:compose).and_return(compose)
+      expect(subject.send(:compose)).to eq(compose)
+    end
+  end
+
   context '#run' do
     it 'runs without errors' do
       subject.run

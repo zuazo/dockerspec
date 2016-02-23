@@ -73,6 +73,20 @@ module Dockerspec
         protected
 
         #
+        # Gets the internal {DockerCompose} object.
+        #
+        # @return [DockerCompose] The compose object.
+        #
+        # @api private
+        #
+        def compose
+          @cached_compose ||= begin
+            backend = Engine::Specinfra::Backend.new(backend_name)
+            backend.backend_instance_attribute(:compose)
+          end
+        end
+
+        #
         # Sets the Specinfra configuration and the engines.
         #
         # - Sets up the testing engines.

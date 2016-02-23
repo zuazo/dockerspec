@@ -280,7 +280,25 @@ module Dockerspec
       #     end
       #   end
       #
-      # @param opts [String, Hash] The `:tag` or a list of options.
+      # @example Testing with Infrataster
+      #   require 'dockerspec/infrataster'
+      #   context docker_run('nginx') do
+      #     describe server(described_container) do
+      #       describe http('/') do
+      #         it 'responds content including "Welcome to nginx!"' do
+      #           expect(response.body).to include 'Welcome to nginx!'
+      #         end
+      #         it 'responds as "nginx" server' do
+      #           expect(response.headers['server']).to match(/nginx/i)
+      #         end
+      #       end
+      #     end
+      #   end
+      #
+      # @param opts [String, Hash] The `:tag` or a list of options. This
+      #   configuration options will be passed to the Testing Engines like
+      #   Infrataster. So you can include your Infrataster server configuration
+      #   here.
       #
       # @option opts [String] :tag The Docker image tag name to run.
       # @option opts [String] :id The Docker container ID to use instead of
@@ -314,6 +332,8 @@ module Dockerspec
       def docker_run(*opts)
         runner = Dockerspec::Configuration.docker_runner.new(*opts)
         runner.run
+        described_container(runner.container_name)
+        runner
       end
 
       #
@@ -427,9 +447,28 @@ module Dockerspec
       #     end
       #   end
       #
+      # @example Testing a Database with Infrataster using Docker Compose
+      #   require 'dockerspec/infrataster'
+      #   # After including `gem 'infrataster-plugin-mysql'` in your Gemfile:
+      #   require 'infrataster-plugin-mysql'
+      #   context docker_compose('docker-compose.yml', wait: 60) do
+      #     its_container(:db, mysql: { user: 'root', password: 'example' }) do
+      #       describe server(described_container) do
+      #         describe mysql_query('SHOW STATUS') do
+      #           it 'returns positive uptime' do
+      #             row = results.find { |r| r['Variable_name'] == 'Uptime' }
+      #             expect(row['Value'].to_i).to be > 0
+      #           end
+      #         end
+      #       end
+      #     end
+      #   end
+      #
       # @param container [Symbol, String] The name of the container to test.
       #
-      # @param opts [Hash] A list of options.
+      # @param opts [Hash] A list of options. This configuration options will
+      #   be passed to the Testing Engines like Infrataster. So you can include
+      #   your Infrataster server configuration here.
       #
       # @option opts [Symbol, String] :family (calculated) The OS family.
       #   It's automatically detected by default, but can be used to
@@ -437,10 +476,10 @@ module Dockerspec
       #   `:alpine`, `:arch`, `:coreos`, `:debian`, `:gentoo`, `:nixos`,
       #   `:plamo`, `:poky`, `:redhat`, `:suse`.
       #
+      # @return [Dockerspec::Runner::Compose] Runner object.
+      #
       # @raise [Dockerspec::DockerComposeError] Raises this exception when
       #   you call `its_container` without calling `docker_compose`.
-      #
-      # @return [Dockerspec::Runner::Compose] Runner object.
       #
       # @api public
       #
@@ -451,7 +490,46 @@ module Dockerspec
         end
         container_opts = opts[0].is_a?(Hash) ? opts[0] : {}
         compose.select_container(container, container_opts)
+        described_container(compose.container_name)
         describe(ItsContainer.new(container), *opts, &block)
+      end
+
+      #
+      # Sets or gets the latest contained configuration hash.
+      #
+      # Used to call the Infrataster {#server} method.
+      #
+      # @example Testing a Docker Container
+      #   context docker_run('myapp') do
+      #     describe server(described_container) do
+      #       describe http('/') do
+      #         it 'responds content including "My App Homepage"' do
+      #           expect(response.body).to match(/My App Homepage/i)
+      #         end
+      #       end
+      #     end
+      #   end
+      #
+      # @example Testing with Docker Compose
+      #   context docker_compose('docker-compose.yml', wait: 60) do
+      #     its_container(:wordpress) do
+      #       describe server(described_container) do
+      #         describe http('/wp-admin/install.php') do
+      #           it 'responds content including "Wordpress Installation"' do
+      #             expect(response.body).to match(/WordPress .* Installation/i)
+      #           end
+      #         end
+      #       end
+      #     end
+      #   end
+      #
+      # @api public
+      #
+      def described_container(value = nil)
+        # rubocop:disable Style/ClassVars
+        @@described_container = value unless value.nil?
+        # rubocop:enable Style/ClassVars
+        @@described_container.to_sym
       end
     end
   end

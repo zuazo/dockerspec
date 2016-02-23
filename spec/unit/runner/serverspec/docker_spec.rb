@@ -28,6 +28,8 @@ describe Dockerspec::Runner::Serverspec::Docker do
   let(:container) { double('Docker::Container', json: container_json) }
   let(:specinfra_backend) { double('Dockerspec::Engine::Specinfra::Backend') }
   before do
+    @engines_orig = Dockerspec::Configuration.engines.dup
+    Dockerspec::Configuration.engines.replace([Dockerspec::Engine::Specinfra])
     allow(ObjectSpace).to receive(:define_finalizer)
     allow(Specinfra).to receive(:configuration).and_return(configuration)
     allow(Dockerspec::Helper::Docker).to receive(:lxc_execution_driver?)
@@ -46,14 +48,28 @@ describe Dockerspec::Runner::Serverspec::Docker do
       .to receive(:new).and_return(specinfra_backend)
     allow(specinfra_backend).to receive(:reset)
     allow(specinfra_backend).to receive(:save)
+    allow(specinfra_backend).to receive(:save)
+    allow(specinfra_backend).to receive(:backend_instance_attribute)
+      .with(:container).and_return(container)
 
     allow(Dockerspec::Builder).to receive(:new).and_return(builder)
     allow(builder).to receive(:build).and_return(builder)
   end
+  after { Dockerspec::Configuration.engines.replace(@engines_orig) }
 
   context '.new' do
     it 'runs without errors' do
       subject
+    end
+  end
+
+  context '#container' do
+    let(:container) { double('Docker::Container') }
+
+    it 'returns backend container attribute' do
+      expect(specinfra_backend).to receive(:backend_instance_attribute).once
+        .with(:container).and_return(container)
+      expect(subject.container).to eq(container)
     end
   end
 
@@ -75,6 +91,7 @@ describe Dockerspec::Runner::Serverspec::Docker do
 
     context 'with a container ID' do
       let(:id) { '1a895dd3954a' }
+      subject { described_class.new(id: id) }
       before { expect(subject).to receive(:id).and_return(id).at_least(1) }
 
       it 'sets Specinfra container ID' do

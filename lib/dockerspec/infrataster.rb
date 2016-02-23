@@ -1,7 +1,7 @@
 # encoding: UTF-8
 #
 # Author:: Xabier de Zuazo (<xabier@zuazo.org>)
-# Copyright:: Copyright (c) 2015-2016 Xabier de Zuazo
+# Copyright:: Copyright (c) 2016 Xabier de Zuazo
 # License:: Apache License, Version 2.0
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,13 +17,9 @@
 # limitations under the License.
 #
 
-require 'dockerspec/runner/serverspec'
-require 'dockerspec/engine/specinfra'
+require 'dockerspec/engine/infrataster'
 
 #
-# Use Serverpec to start the containers (runner) and to run the tests (engine).
+# Use Infrataster to run the tests (engine).
 #
-Dockerspec::Configuration.docker_runner = Dockerspec::Runner::Serverspec::Docker
-Dockerspec::Configuration.compose_runner =
-  Dockerspec::Runner::Serverspec::Compose
-Dockerspec::Configuration.add_engine Dockerspec::Engine::Specinfra
+Dockerspec::Configuration.add_engine Dockerspec::Engine::Infrataster

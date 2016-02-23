@@ -18,11 +18,12 @@
 #
 
 require 'spec_helper'
+require 'infrataster-plugin-mysql'
 
 describe 'Docker Compose' do
   file = DockerspecTests.data_file('docker-compose.yml')
   context docker_compose(file, wait: ENV['CI'] ? 90 : 15) do
-    its_container(:db) do
+    its_container(:db, mysql: { user: 'root', password: 'example' }) do
       it 'detects the OS family' do
         expect(command('uname -a').stdout).to match(/Debian|Ubuntu/i)
         expect(file('/etc/alpine-release').exists?).to be false
@@ -89,6 +90,15 @@ describe 'Docker Compose' do
         it { should have_uid 0 }
         it { should have_home_directory '/root' }
         it { should have_login_shell '/bin/bash' }
+      end
+
+      describe server(described_container) do
+        describe mysql_query('SHOW STATUS') do
+          it 'returns positive uptime' do
+            row = results.find { |r| r['Variable_name'] == 'Uptime' }
+            expect(row['Value'].to_i).to be > 0
+          end
+        end
       end
     end
 
@@ -170,6 +180,18 @@ describe 'Docker Compose' do
         it { should have_uid 0 }
         it { should have_home_directory '/root' }
         it { should have_login_shell '/bin/bash' }
+      end
+
+      describe server(described_container) do
+        describe http('/wp-admin/install.php') do
+          it 'responds content including "Wordpress Installation"' do
+            expect(response.body).to match(/WordPress .* Installation/i)
+          end
+
+          it 'responds as "text/html"' do
+            expect(response.headers['content-type']).to include 'text/html'
+          end
+        end
       end
     end
 

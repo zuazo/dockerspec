@@ -76,6 +76,24 @@ module Dockerspec
       def save(*args); end
 
       #
+      # Runs when the container to test is ready.
+      #
+      # This is mainly used with Docker Compose to know when the container to
+      # test is selected.
+      #
+      # Without Docker Compose this is called just after calling {#save}.
+      #
+      # Does nothing by default.
+      #
+      # @param args [Mixed] The passed arguments.
+      #
+      # @return void
+      #
+      # @api public
+      #
+      def ready(*args); end
+
+      #
       # Restores the engine internal status after running tests on other
       # containers.
       #
@@ -103,6 +121,34 @@ module Dockerspec
       #
       def options
         @runner.options
+      end
+
+      #
+      # Gets the Container Name.
+      #
+      # @return [String, nil] Container name.
+      #
+      # @raise [Dockerspec::RunnerError] When the `#container` method is no
+      #   implemented in the subclass or cannot select the container to test.
+      #
+      # @api private
+      #
+      def container_name
+        @runner.container_name
+      end
+
+      #
+      # Gets the Docker Container IP address.
+      #
+      # @return [String] IP address.
+      #
+      # @raise [Dockerspec::RunnerError] When the `#container` method is no
+      #   implemented in the subclass or cannot select the container to test.
+      #
+      # @api private
+      #
+      def ipaddress
+        @runner.ipaddress
       end
     end
   end

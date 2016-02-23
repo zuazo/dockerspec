@@ -26,6 +26,7 @@ end
 
 describe Dockerspec::RSpec::Resources do
   subject { TestDockerspecRSpecResources.new }
+  let(:container_name) { 'container_name1' }
   let(:builder) { double('Dockerspec::Builder') }
   let(:opts) { { opt1: 'val1' } }
   before do
@@ -53,7 +54,7 @@ describe Dockerspec::RSpec::Resources do
 
   context '#docker_run' do
     let(:runner_class) { Dockerspec::Runner::Docker }
-    let(:runner) { double(runner_class.to_s) }
+    let(:runner) { double(runner_class.to_s, container_name: container_name) }
     let(:example) { 'example' }
     before do
       allow(Dockerspec::Configuration).to receive(:docker_runner)
@@ -80,7 +81,7 @@ describe Dockerspec::RSpec::Resources do
 
   context '#docker_compose' do
     let(:runner_class) { Dockerspec::Runner::Compose }
-    let(:runner) { double(runner_class.to_s) }
+    let(:runner) { double(runner_class.to_s, container_name: container_name) }
     let(:example) { 'example' }
     before do
       allow(Dockerspec::Configuration).to receive(:compose_runner)
@@ -107,7 +108,9 @@ describe Dockerspec::RSpec::Resources do
 
   context 'its_container' do
     let(:container) { 'webapp' }
-    let(:compose) { double('Dockerspec::Runner::Compose') }
+    let(:compose) do
+      double('Dockerspec::Runner::Compose', container_name: container_name)
+    end
     let(:its_container) { double('Dockerspec::RSpec::Resource::ItsContainer') }
     before do
       allow(Dockerspec::Runner::Compose).to receive(:current_instance)

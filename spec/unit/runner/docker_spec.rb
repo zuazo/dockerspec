@@ -25,10 +25,9 @@ describe Dockerspec::Runner::Docker do
   let(:builder) do
     double(
       'Dockerspec::Builder',
-      image_id: image_id,
+      id: image_id,
       image_config: build_json,
       json: build_json,
-      id: image_id,
       cmd: %w(/bin/sh)
     )
   end
@@ -45,6 +44,7 @@ describe Dockerspec::Runner::Docker do
     allow(Dockerspec::EngineList).to receive(:new).and_return(engines)
     allow(engines).to receive(:setup)
     allow(engines).to receive(:save)
+    allow(engines).to receive(:ready)
     allow(ObjectSpace).to receive(:define_finalizer)
     allow(Docker::Container).to receive(:create).and_return(container)
     allow(Docker::Container).to receive(:get).and_return(container)
@@ -141,6 +141,12 @@ describe Dockerspec::Runner::Docker do
     it 'saves engines after running' do
       expect(container).to receive(:start).ordered
       expect(engines).to receive(:save).with(no_args).ordered
+      subject.run
+    end
+
+    it 'sets the engines ready after saving' do
+      expect(engines).to receive(:save).with(no_args).ordered
+      expect(engines).to receive(:ready).with(no_args).ordered
       subject.run
     end
   end

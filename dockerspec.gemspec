@@ -14,8 +14,8 @@ Gem::Specification.new do |s|
   s.platform = Gem::Platform::RUBY
   s.summary = 'Dockerspec'
   s.description =
-    'A small gem to run RSpec and Serverspec tests against Dockerfiles or '\
-    'Docker images easily.'
+    'A small gem to run RSpec, Serverspec, Infrataster and Capybara tests '\
+    'against Dockerfiles or Docker images easily.'
   s.license = 'Apache-2.0'
   s.authors = %(Xabier de Zuazo)
   s.email = 'xabier@zuazo.org'
@@ -34,6 +34,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'rspec', '~> 3.0'
   s.add_dependency 'rspec-its', '~> 1.0'
   s.add_dependency 'serverspec', '~> 2.24'
+  s.add_dependency 'infrataster', '~> 0.3.0'
   s.add_dependency 'specinfra-backend-docker_lxc', '~> 0.2.0'
   s.add_dependency 'specinfra-backend-docker_compose', '~> 0.1.0'
   s.add_dependency 'erubis', '~> 2.0'
@@ -47,4 +48,6 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'should_not', '~> 1.1'
   s.add_development_dependency 'rubocop', '~> 0.35.0'
   s.add_development_dependency 'yard', '~> 0.8'
+  # Used for integration tests:
+  s.add_development_dependency 'infrataster-plugin-mysql', '~> 0.2.0'
 end

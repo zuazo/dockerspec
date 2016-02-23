@@ -76,6 +76,19 @@ For example, to use Serverspec:
     end
 
     #
+    # Notify the engines that the container to test is selected and ready.
+    #
+    # @param args [Mixed] Arguments to pass to the `#ready` methods.
+    #
+    # @return void
+    #
+    # @api public
+    #
+    def ready(*args)
+      call_engines_method(:ready, *args)
+    end
+
+    #
     # Saves all the engines one by one.
     #
     # @param args [Mixed] Arguments to pass to the `#save` methods.

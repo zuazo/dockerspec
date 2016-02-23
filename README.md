@@ -13,7 +13,7 @@
 
 ## Description
 
-A small Ruby Gem to run RSpec and [Serverspec](http://serverspec.org/) tests against Dockerfiles or Docker images easily.
+A small Ruby Gem to run RSpec, [Serverspec](http://serverspec.org/), [Infrataster](https://github.com/ryotarai/infrataster) and [Capybara](http://jnicklas.github.io/capybara/) tests against Dockerfiles or Docker images easily.
 
 This gem is designed to work out of the box on [Travis CI](https://travis-ci.org/), [CircleCI](https://circleci.com/) and other similar CI environments.
 
@@ -50,6 +50,8 @@ $ bundle
   - [*Docker Build* helpers](http://www.rubydoc.info/gems/dockerspec/Dockerspec/Builder/ConfigHelpers)
 - [`docker_run`](http://www.rubydoc.info/gems/dockerspec/Dockerspec/RSpec/Resources#docker_run-instance_method)
   - [*Docker Run* Serverspec resource types](http://serverspec.org/resource_types.html)
+  - [Infrataster Resources](http://www.rubydoc.info/gems/infrataster#Resources)
+  - [Capybara DSL](http://www.rubydoc.info/gems/capybara#The_DSL)
 - [`docker_compose`](http://www.rubydoc.info/gems/dockerspec/Dockerspec/RSpec/Resources#docker_compose-instance_method)
   - [`its_container`](http://www.rubydoc.info/gems/dockerspec/Dockerspec/RSpec/Resources#its_container-instance_method)
 
@@ -109,6 +111,80 @@ end
 ```
 
 **Important Warning:** The `docker_compose` resource uses the [`docker-compose-api`](https://rubygems.org/gems/docker-compose-api) Ruby gem to emulate Docker Compose. So, some *docker-compose.yml* configuration options may not be supported yet or may not work exactly the same. Let us know if you find any bug or you need a missing feature. And thanks to [Mauricio Klein](https://github.com/mauricioklein) for all his work by the way!
+
+### Run HTTP Tests Using Infrataster
+
+```ruby
+require 'dockerspec'
+# require 'dockerspec/serverspec' # Only if you want to run both types of tests
+require 'dockerspec/infrataster'
+
+context docker_run('nginx') do
+  describe server(described_container) do # Infrataster
+
+    describe http('/') do
+      it 'responds content including "Welcome to nginx!"' do
+        expect(response.body).to include 'Welcome to nginx!'
+      end
+
+      it 'responds as "nginx" server' do
+        expect(response.headers['server']).to match(/nginx/i)
+      end
+    end
+  end
+end
+```
+
+### Run Database Tests Using `infrataster-plugin-mysql` Gem with Docker Compose
+
+You need to include the `infrataster-plugin-mysql` gem in your *Gemfile*:
+
+```ruby
+# Gemfile
+
+# gem [...]
+gem 'infrataster-plugin-mysql', '~> 0.2.0'
+```
+
+A *docker-compose.yml* file example with a database:
+
+```yaml
+myapp:
+  image: myapp
+  links:
+  - db:mysql
+  ports:
+  - 8080:80
+
+db:
+  image: mariadb
+  environment:
+  - MYSQL_ROOT_PASSWORD=example
+```
+
+The file with the tests:
+
+```ruby
+require 'dockerspec'
+# require 'dockerspec/serverspec' # Only if you want to run both types of tests
+require 'dockerspec/infrataster'
+require 'infrataster-plugin-mysql'
+
+context docker_compose('docker-compose.yml', wait: 60) do
+
+  its_container(:db, mysql: { user: 'root', password: 'example' }) do
+    describe server(described_container) do # Infrataster
+
+      describe mysql_query('SHOW STATUS') do
+        it 'returns positive uptime' do
+          row = results.find { |r| r['Variable_name'] == 'Uptime' }
+          expect(row['Value'].to_i).to be > 0
+        end
+      end
+    end
+  end
+end
+```
 
 ### Real-world Examples
 

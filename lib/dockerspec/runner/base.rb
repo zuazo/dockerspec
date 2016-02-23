@@ -70,6 +70,7 @@ module Dockerspec
       # 1. Sets up the test context.
       # 2. Runs the container (or Compose).
       # 3. Saves the created underlaying test context.
+      # 4. Sets the container as ready.
       #
       # @example
       #   builder = Dockerspec::Builder.new('.')
@@ -87,6 +88,7 @@ module Dockerspec
         setup
         run_container
         save
+        ready
         self
       end
 
@@ -101,6 +103,34 @@ module Dockerspec
       #
       def restore_rspec_context
         @engines.restore
+      end
+
+      #
+      # Gets the internal {Docker::Container} object.
+      #
+      # @return [Docker::Container] The container.
+      #
+      # @raise [Dockerspec::RunnerError] When the method is no implemented in
+      #   the subclass.
+      #
+      # @api public
+      #
+      def container
+        fail RunnerError, "#{self.class}#container method must be implemented"
+      end
+
+      #
+      # Gets the container name.
+      #
+      # @return [String] Container name.
+      #
+      # @raise [Dockerspec::RunnerError] When the `#container` method is no
+      #   implemented in the subclass or cannot select the container to test.
+      #
+      # @api public
+      #
+      def container_name
+        container.json['Name']
       end
 
       #
@@ -135,6 +165,22 @@ module Dockerspec
       #
       def image_id
         container.json['Image']
+      end
+
+      #
+      # Gets the Docker Container IP address.
+      #
+      # This is used by {Dockerspec::Engine::Infrataster}.
+      #
+      # @return [String] IP address.
+      #
+      # @raise [Dockerspec::RunnerError] When the `#container` method is no
+      #   implemented in the subclass or cannot select the container to test.
+      #
+      # @api public
+      #
+      def ipaddress
+        container.json['NetworkSettings']['IPAddress']
       end
 
       #
@@ -174,6 +220,17 @@ module Dockerspec
       #
       def save
         @engines.save
+      end
+
+      #
+      # Notifies the engines that the container to test is selected and ready.
+      #
+      # @return void
+      #
+      # @api public
+      #
+      def ready
+        @engines.ready
       end
 
       #
@@ -253,20 +310,6 @@ module Dockerspec
         result = opts_hs_ary.reduce(default_options) { |a, e| a.merge(e) }
         assert_options!(result)
         result
-      end
-
-      #
-      # Gets the internal `Docker::Container` object.
-      #
-      # @return [Docker::Container] The container.
-      #
-      # @raise [Dockerspec::RunnerError] When the method is no implemented in
-      #   the subclass.
-      #
-      # @api private
-      #
-      def container
-        fail RunnerError, "#{self.class}#container method must be implemented"
       end
 
       #

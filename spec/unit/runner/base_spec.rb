@@ -21,12 +21,43 @@ require 'spec_helper'
 
 describe Dockerspec::Runner::Base do
   let(:engines) { double('Dockerspec::EngineList') }
-  before { stub_runner_base(engines) }
+  let(:container_name) { 'purple_orange' }
+  let(:ipaddress) { '11.22.33.44' }
+  let(:container_json) do
+    {
+      'Name' => container_name,
+      'NetworkSettings' => {
+        'IPAddress' => ipaddress
+      }
+    }
+  end
+  before do
+    stub_runner_base(engines)
+    allow(ObjectSpace).to receive(:define_finalizer)
+  end
 
   context '.container' do
     it 'raises an error' do
       expect { subject.run }
         .to raise_error Dockerspec::RunnerError, /#container method must/
+    end
+  end
+
+  context '#container_name' do
+    let(:container) { double('Docker::Container', json: container_json) }
+    before { allow(subject).to receive(:container).and_return(container) }
+
+    it 'returns the container name' do
+      expect(subject.container_name).to eq(container_name)
+    end
+  end
+
+  context '#ipaddress' do
+    let(:container) { double('Docker::Container', json: container_json) }
+    before { allow(subject).to receive(:container).and_return(container) }
+
+    it 'returns the container IP address' do
+      expect(subject.ipaddress).to eq(ipaddress)
     end
   end
 end

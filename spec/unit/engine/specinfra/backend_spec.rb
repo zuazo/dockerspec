@@ -94,6 +94,16 @@ describe Dockerspec::Engine::Specinfra::Backend do
         subject.reset
       end
     end
+
+    context '#backend_instance_attribute' do
+      let(:instance) { double('instance') }
+      before { allow(backend_class).to receive(:instance).and_return(instance) }
+
+      it 'reads backend instance variable' do
+        expect(instance).to receive(:instance_variable_get).once.with(:@compose)
+        subject.backend_instance_attribute('compose')
+      end
+    end
   end # shared example
 
   context 'with a string as backend' do

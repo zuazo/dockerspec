@@ -1,7 +1,7 @@
 # encoding: UTF-8
 #
 # Author:: Xabier de Zuazo (<xabier@zuazo.org>)
-# Copyright:: Copyright (c) 2015 Xabier de Zuazo
+# Copyright:: Copyright (c) 2015-2016 Xabier de Zuazo
 # License:: Apache License, Version 2.0
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,14 +20,26 @@
 require 'spec_helper'
 
 describe 'Build a Dockerfile from a tag' do
-  context docker_build(id: 'alpine:3.2', tag: 'from_tag_spec') do
+  context docker_build(id: 'nginx:1', tag: 'from_tag_spec') do
     context docker_run('from_tag_spec') do
-      describe package('alpine-base') do
+      describe package('nginx') do
         it { should be_installed }
       end
 
       it 'is a Linux distro' do
         expect(command('uname').stdout).to include 'Linux'
+      end
+
+      describe server(described_container) do
+        describe http('/') do
+          it 'responds content including "Welcome to nginx!"' do
+            expect(response.body).to include 'Welcome to nginx!'
+          end
+
+          it 'responds as "nginx" server' do
+            expect(response.headers['server']).to match(/nginx/i)
+          end
+        end
       end
     end
   end

@@ -33,7 +33,7 @@ module Dockerspec
     class Compose < Base
       class << self
         #
-        # Saves the latest created `Docker::Runner::Compose` object.
+        # Saves the latest created {Dockerspec::Runner::Compose} object.
         #
         # @return [Docker::Runner::Compose::Base] The saved instance.
         #
@@ -93,8 +93,34 @@ module Dockerspec
         setup_from_file(file)
       end
 
+      # Does not call ready because container is still not ready.
+      #
+      # Runs the Docker Container.
+      #
+      # 1. Sets up the test context.
+      # 2. Runs the container (or Compose).
+      # 3. Saves the created underlaying test context.
+      #
+      # @return [Dockerspec::Runner::Compose] Runner object.
+      #
+      # @raise [Dockerspec::DockerError] For underlaying docker errors.
+      #
+      # @see #select_conainer
+      #
+      # @api public
+      #
+      def run
+        setup
+        run_container
+        save
+        self
+      end
+
       #
       # Selects the container to test and sets its configuration options.
+      #
+      # Also sets the selected container as ready in the underlaying test
+      # engines.
       #
       # @param name [Symbol, String] The container name.
       #
@@ -107,7 +133,7 @@ module Dockerspec
       def select_container(name, opts = nil)
         @options[:container] = name
         @container_options[name] = @options.merge(opts) if opts.is_a?(Hash)
-        @engines.setup
+        ready
       end
 
       #
@@ -120,6 +146,42 @@ module Dockerspec
       def options
         container_name = @options[:container]
         @container_options[container_name] || @options
+      end
+
+      #
+      # Gets the selected container name.
+      #
+      # @return [String, nil] The container name.
+      #
+      # @api private
+      #
+      def container_name
+        return nil if @options[:container].nil?
+        @options[:container].to_s
+      end
+
+      #
+      # Gets the selected container object.
+      #
+      # This method is used in {Dockerspec::Runner::Base} to get information
+      # from the container: ID, image ID, ...
+      #
+      # @return [Docker::Container] The container object.
+      #
+      # @raise [Dockerspec::RunnerError] When cannot select the container to
+      #  test.
+      #
+      # @api public
+      #
+      def container
+        if container_name.nil?
+          fail RunnerError, 'Use `its_container` to select a container to test.'
+        end
+        compose_container = compose.containers[container_name]
+        if compose_container.nil?
+          fail RunnerError, "Container not found: #{compose_container.inspect}"
+        end
+        compose_container.container
       end
 
       #
@@ -175,42 +237,6 @@ module Dockerspec
           else
             options[source]
           end
-      end
-
-      #
-      # Gets the selected container name.
-      #
-      # @return [String, Symbol] The container name.
-      #
-      # @api private
-      #
-      def container_name
-        options[:container]
-      end
-
-      #
-      # Gets the selected container object.
-      #
-      # This method is used in {Dockerspec::Runner::Base} to get information
-      # from the container: ID, image ID, ...
-      #
-      # @return [Docker::Container] The container object.
-      #
-      # @raise [Dockerspec::RunnerError] When cannot select the container to
-      #  test.
-      #
-      # @api private
-      #
-      def container
-        # TODO: This does not work in Serverspec::Compose
-        if container_name.nil?
-          fail RunnerError, 'Use `its_container` to select a container to test.'
-        end
-        compose_container = compose.containers[container_name]
-        if compose_container.nil?
-          fail RunnerError, "Container not found: #{compose_container.inspect}"
-        end
-        compose_container.container
       end
 
       #

@@ -71,8 +71,8 @@ describe Dockerspec::Runner::Compose do
       subject.select_container(container_name, opt1: 'val1')
     end
 
-    it 'setups the engines' do
-      expect(engines).to receive(:setup).once
+    it 'sets the engines as ready' do
+      expect(engines).to receive(:ready).once
       subject.select_container(container_name)
     end
   end

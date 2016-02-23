@@ -101,6 +101,20 @@ module Dockerspec
           instance_set(nil)
         end
 
+        #
+        # Gets the internal attribute value from the Specinfra backend object.
+        #
+        # Used mainly to get information from the running containers like their
+        # name or their IP address.
+        #
+        # @return [Mixed] The value of the attribute to read.
+        #
+        # @api public
+        #
+        def backend_instance_attribute(name)
+          backend_instance.instance_variable_get("@#{name}".to_sym)
+        end
+
         protected
 
         #

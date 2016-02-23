@@ -33,8 +33,7 @@ module DockerspecTests
 
   def stub_runner_base(engines)
     allow(Dockerspec::EngineList).to receive(:new).and_return(engines)
-    allow(engines).to receive(:setup)
-    allow(engines).to receive(:save)
+    %i(setup save ready).each { |m| allow(engines).to receive(m) }
     allow(ObjectSpace).to receive(:define_finalizer)
   end
 
