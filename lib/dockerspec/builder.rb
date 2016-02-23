@@ -321,7 +321,7 @@ module Dockerspec
     #
     def build_from_dir(dir)
       image(::Docker::Image.build_from_dir(dir, &build_block))
-      add_respository_tag
+      add_repository_tag
     rescue ::Docker::Error::DockerError => e
       DockerExceptionParser.new(e)
     end
@@ -380,9 +380,10 @@ module Dockerspec
     #
     def build_from_id(id)
       @image = ::Docker::Image.get(id)
-      add_respository_tag
+      add_repository_tag
     rescue ::Docker::Error::NotFoundError
       @image = ::Docker::Image.create('fromImage' => id)
+      add_repository_tag
     rescue ::Docker::Error::DockerError => e
       DockerExceptionParser.new(e)
     end
@@ -394,7 +395,7 @@ module Dockerspec
     #
     # @api private
     #
-    def add_respository_tag
+    def add_repository_tag
       return unless @options.key?(:tag)
       repo, repo_tag = @options[:tag].split(':', 2)
       @image.tag(repo: repo, tag: repo_tag, force: true)

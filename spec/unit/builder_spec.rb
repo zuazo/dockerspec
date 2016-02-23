@@ -257,10 +257,11 @@ describe Dockerspec::Builder do
     end
 
     context 'with an image ID option' do
-      subject { described_class.new(id: image_id) }
+      subject { described_class.new(id: image_id, tag: 'mytag') }
       before do
         allow(Docker::Image).to receive(:get).with(image_id).once
           .and_return(image)
+        allow(image).to receive(:tag)
       end
 
       it 'builds an image from an image ID' do
@@ -280,10 +281,17 @@ describe Dockerspec::Builder do
         before do
           expect(Docker::Image).to receive(:get)
             .with(image_id).and_raise Docker::Error::NotFoundError
+          allow(Docker::Image).to receive(:create).and_return(image)
         end
+
         it 'pulls the image' do
-          expect(Docker::Image)
-            .to receive(:create).once.with('fromImage' => image_id)
+          expect(Docker::Image).to receive(:create).once
+            .with('fromImage' => image_id).and_return(image)
+          subject.build
+        end
+
+        it 'creates the repository tag' do
+          expect(image).to receive(:tag).once.ordered
           subject.build
         end
       end
