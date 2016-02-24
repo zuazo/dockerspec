@@ -45,6 +45,7 @@ For example:
   end
 
         EOE
+                                    .freeze
 
         #
         # Constructs a `its_container` object.

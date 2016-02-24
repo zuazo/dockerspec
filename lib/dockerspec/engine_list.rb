@@ -38,7 +38,8 @@ For example, to use Serverspec:
     require 'dockerspec'
     require 'dockerspec/serverspec'
 
-     EOE
+    EOE
+                         .freeze
 
     #
     # Constructs the list of engines.

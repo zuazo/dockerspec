@@ -49,96 +49,111 @@ module Dockerspec
     #
     attr_reader :engines
 
-    #
-    # Adds a class to use as engine to run the tests.
-    #
-    # @example
-    #   Dockerspec.Configuration.add_engine Dockerspec::Engine::Specinfra
-    #
-    # @param engine [Class] A {Dockerspec::Engine::Base} subclass.
-    #
-    # @return void
-    #
-    # @api public
-    #
-    def self.add_engine(engine)
-      instance.add_engine(engine)
-    end
+    class << self
+      #
+      # Adds a class to use as engine to run the tests.
+      #
+      # @example
+      #   Dockerspec.Configuration.add_engine Dockerspec::Engine::Specinfra
+      #
+      # @param engine [Class] A {Dockerspec::Engine::Base} subclass.
+      #
+      # @return void
+      #
+      # @api public
+      #
+      def add_engine(engine)
+        instance.add_engine(engine)
+      end
 
-    #
-    # Gets the engine classes used to run the tests.
-    #
-    # @return [Array<Class>] A list of {Dockerspec::Engine::Base} subclasses.
-    #
-    # @api public
-    #
-    def self.engines
-      instance.engines
-    end
+      #
+      # Gets the engine classes used to run the tests.
+      #
+      # @return [Array<Class>] A list of {Dockerspec::Engine::Base} subclasses.
+      #
+      # @api public
+      #
+      def engines
+        instance.engines
+      end
 
-    #
-    # Sets the class used to create and start Docker Containers.
-    #
-    # @example
-    #   Dockerspec.Configuration.docker_runner = Dockerspec::Runner::Docker
-    #
-    # @param runner [Class] A {Dockerspec::Runner::Base} subclass.
-    #
-    # @return void
-    #
-    # @api public
-    #
-    def self.docker_runner=(runner)
-      instance.docker_runner = runner
-    end
+      #
+      # Sets the class used to create and start Docker Containers.
+      #
+      # @example
+      #   Dockerspec.Configuration.docker_runner = Dockerspec::Runner::Docker
+      #
+      # @param runner [Class] A {Dockerspec::Runner::Base} subclass.
+      #
+      # @return void
+      #
+      # @api public
+      #
+      def docker_runner=(runner)
+        instance.docker_runner = runner
+      end
 
-    #
-    # Gets the class used to create and start Docker Containers.
-    #
-    # @return [Class] A {Dockerspec::Runner::Base} subclass.
-    #
-    # @api public
-    #
-    def self.docker_runner
-      instance.docker_runner
-    end
+      #
+      # Gets the class used to create and start Docker Containers.
+      #
+      # @return [Class] A {Dockerspec::Runner::Base} subclass.
+      #
+      # @api public
+      #
+      def docker_runner
+        instance.docker_runner
+      end
 
-    #
-    # Sets the class used to start Docker Compose.
-    #
-    # @example
-    #   Dockerspec.Configuration.compose_runner = Dockerspec::Runner::Compose
-    #
-    # @param runner [Class] A {Dockerspec::Runner::Compose::Base} subclass.
-    #
-    # @return void
-    #
-    # @api public
-    #
-    def self.compose_runner=(runner)
-      instance.compose_runner = runner
-    end
+      #
+      # Sets the class used to start Docker Compose.
+      #
+      # @example
+      #   Dockerspec.Configuration.compose_runner = Dockerspec::Runner::Compose
+      #
+      # @param runner [Class] A {Dockerspec::Runner::Compose::Base} subclass.
+      #
+      # @return void
+      #
+      # @api public
+      #
+      def compose_runner=(runner)
+        instance.compose_runner = runner
+      end
 
-    #
-    # Gets the class used to start Docker Compose.
-    #
-    # @return [Class] A {Dockerspec::Runner::Compose::Base} subclass.
-    #
-    # @api public
-    #
-    def self.compose_runner
-      instance.compose_runner
-    end
+      #
+      # Gets the class used to start Docker Compose.
+      #
+      # @return [Class] A {Dockerspec::Runner::Compose::Base} subclass.
+      #
+      # @api public
+      #
+      def compose_runner
+        instance.compose_runner
+      end
 
-    #
-    # Resets the internal Configuration singleton object.
-    #
-    # @return void
-    #
-    # @api public
-    #
-    def self.reset
-      @instance = nil
+      #
+      # Resets the internal Configuration singleton object.
+      #
+      # @return void
+      #
+      # @api public
+      #
+      def reset
+        @instance = nil
+      end
+
+      protected
+
+      #
+      # Creates the Configuration singleton instance.
+      #
+      # @return void
+      #
+      # @api private
+      #
+      def instance
+        @instance ||= new
+      end
     end
 
     #
@@ -168,17 +183,6 @@ module Dockerspec
       @docker_runner = Runner::Docker
       @compose_runner = Runner::Compose
       @engines = []
-    end
-
-    #
-    # Creates the Configuration singleton instance.
-    #
-    # @return void
-    #
-    # @api private
-    #
-    def self.instance
-      @instance ||= new
     end
   end
 end
