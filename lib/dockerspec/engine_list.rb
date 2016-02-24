@@ -129,7 +129,7 @@ For example, to use Serverspec:
     #
     def assert_engines!
       return unless @engines.empty?
-      fail EngineError, NO_ENGINES_MESSAGE
+      raise EngineError, NO_ENGINES_MESSAGE
     end
 
     #

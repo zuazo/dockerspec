@@ -486,7 +486,7 @@ module Dockerspec
       def its_container(container, *opts, &block)
         compose = Runner::Compose.current_instance
         if compose.nil?
-          fail ItsContainerError, ItsContainer::NO_DOCKER_COMPOSE_MESSAGE
+          raise ItsContainerError, ItsContainer::NO_DOCKER_COMPOSE_MESSAGE
         end
         container_opts = opts[0].is_a?(Hash) ? opts[0] : {}
         compose.select_container(container, container_opts)

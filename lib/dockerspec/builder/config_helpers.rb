@@ -72,7 +72,7 @@ module Dockerspec
         @image.json['Architecture']
       end
 
-      alias_method :arch, :architecture
+      alias arch architecture
 
       #
       # Returns the image Operating System.
@@ -258,7 +258,7 @@ module Dockerspec
           end
       end
 
-      alias_method :env, :envs
+      alias env envs
 
       #
       # Returns the image entrypoint (`ENTRYPOINT`).

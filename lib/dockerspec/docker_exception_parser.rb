@@ -45,7 +45,7 @@ module Dockerspec
     def initialize(e)
       e_ary = parse_exception(e)
       raise_docker_error_exception(e_ary)
-      fail e
+      raise e
     end
 
     protected
@@ -153,7 +153,7 @@ module Dockerspec
       output = parse_streams(e_ary)
       error_msg = parse_error_detail(e_ary)
       return if error_msg.nil?
-      fail DockerError, generate_error_message(error_msg, output)
+      raise DockerError, generate_error_message(error_msg, output)
     end
   end
 end

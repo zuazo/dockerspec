@@ -83,14 +83,14 @@ module Dockerspec
       # @api private
       #
       def description_from_docker(str)
-        return str unless str.match(/^[0-9a-f]+$/)
+        return str unless str =~ /^[0-9a-f]+$/
         str[0..11]
       end
 
       #
       # Generates a description from Docker ID.
       #
-      alias_method :description_from_id, :description_from_docker
+      alias description_from_id description_from_docker
 
       #
       # Generates a description from string.
@@ -136,7 +136,7 @@ module Dockerspec
       #
       # @api private
       #
-      alias_method :description_from_path, :description_from_file
+      alias description_from_path description_from_file
     end
   end
 end

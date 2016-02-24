@@ -55,7 +55,7 @@ module Dockerspec
         workdir: :string,
         onbuild: :array,
         stopsignal: :string
-      }
+      }.freeze
 
       PREDICATE_TYPES.each do |name, type|
         matcher_name = "have_#{name}".to_sym

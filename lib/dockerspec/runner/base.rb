@@ -116,7 +116,7 @@ module Dockerspec
       # @api public
       #
       def container
-        fail RunnerError, "#{self.class}#container method must be implemented"
+        raise RunnerError, "#{self.class}#container method must be implemented"
       end
 
       #

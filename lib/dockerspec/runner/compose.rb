@@ -175,11 +175,12 @@ module Dockerspec
       #
       def container
         if container_name.nil?
-          fail RunnerError, 'Use `its_container` to select a container to test.'
+          raise RunnerError,
+                'Use `its_container` to select a container to test.'
         end
         compose_container = compose.containers[container_name]
         if compose_container.nil?
-          fail RunnerError, "Container not found: #{compose_container.inspect}"
+          raise RunnerError, "Container not found: #{compose_container.inspect}"
         end
         compose_container.container
       end
@@ -290,8 +291,8 @@ module Dockerspec
       #
       def assert_options!(opts)
         return if opts[:file].is_a?(String)
-        fail DockerRunArgumentError, 'You need to pass the `:file` option to '\
-          'the #docker_compose method.'
+        raise DockerRunArgumentError, 'You need to pass the `:file` option '\
+          'to the #docker_compose method.'
       end
 
       #

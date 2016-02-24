@@ -165,7 +165,7 @@ module Dockerspec
       #
       # @api private
       #
-      alias_method :description_from_tag, :description_from_docker
+      alias description_from_tag description_from_docker
 
       #
       # Ensures that the passed options are correct.
@@ -182,7 +182,7 @@ module Dockerspec
       #
       def assert_options!(opts)
         return if opts[:tag].is_a?(String) || opts[:id].is_a?(String)
-        fail DockerRunArgumentError, 'You need to pass the `:tag` or the '\
+        raise DockerRunArgumentError, 'You need to pass the `:tag` or the '\
           '`:id` option to the #docker_run method.'
       end
 

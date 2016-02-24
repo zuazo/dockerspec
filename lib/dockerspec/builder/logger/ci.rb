@@ -52,12 +52,12 @@ module Dockerspec
         # @api private
         #
         def print_stream(stream)
-          if stream.match(/^Step /)
+          if stream =~ /^Step /
             @buffer = stream
             @skip = true
           else
             @buffer += stream
-            @skip = false if stream.match(/^ ---> (Running in|\[Warning\]) /)
+            @skip = false if stream =~ /^ ---> (Running in|\[Warning\]) /
           end
           return if @skip
           @output.puts @buffer

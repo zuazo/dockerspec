@@ -89,7 +89,7 @@ For example:
           compose =
             Helper::RSpecExampleHelpers
             .search_object(metadata, Dockerspec::Runner::Compose)
-          fail ItsContainerError, NO_DOCKER_COMPOSE_MESSAGE if compose.nil?
+          raise ItsContainerError, NO_DOCKER_COMPOSE_MESSAGE if compose.nil?
           compose.restore_rspec_context
           compose.select_container(@container)
         end

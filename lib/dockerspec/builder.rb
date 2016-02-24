@@ -175,7 +175,7 @@ module Dockerspec
     #
     # @api private
     #
-    alias_method :description_from_template, :description_from_file
+    alias description_from_template description_from_file
 
     #
     # Sets or gets the Docker image.
