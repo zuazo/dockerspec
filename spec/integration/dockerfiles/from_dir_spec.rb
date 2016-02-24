@@ -28,6 +28,7 @@ context docker_build(path: path, tag: 'from_dir_spec') do
   it { should have_cmd '2 2000' }
   it { should have_label 'description' }
   it { should have_label 'description' => 'My Container' }
+  it { should have_expose 80 }
   it { should have_expose '80' }
   it { should have_expose(/80$/) }
   it { should have_env 'container' }

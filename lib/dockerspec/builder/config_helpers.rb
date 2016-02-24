@@ -194,6 +194,11 @@ module Dockerspec
       #     it { should have_expose '80' }
       #   end
       #
+      # @example RSpec Example Using *Have* Matchers with Integer Valuess
+      #   describe docker_build(path: '.') do
+      #     it { should have_expose 80 }
+      #   end
+      #
       # @example RSpec Example Using Regular Expressions
       #   describe docker_build(path: '.') do
       #     it { should have_expose(/80$/) }

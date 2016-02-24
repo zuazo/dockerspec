@@ -93,6 +93,11 @@ module Dockerspec
           end
         when :array
           matcher matcher_name do |expected|
+            # Allow ports to be passed as integer:
+            if matcher_name == :have_expose && expected.is_a?(Numeric)
+              expected = expected.to_s
+            end
+
             match { |actual| !actual.send("#{name}s").grep(expected).empty? }
 
             failure_message do |actual|
