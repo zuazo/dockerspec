@@ -5,6 +5,23 @@ rvm:
 - 2.1
 - 2.2
 
+env:
+  matrix:
+  - SERVERSPEC="true"
+  - INFRATASTER="true"
+  - ALL="true"
+
+matrix:
+  exclude:
+  - rvm: 2.0.0
+    env: SERVERSPEC="true"
+  - rvm: 2.1
+    env: SERVERSPEC="true"
+  - rvm: 2.0.0
+    env: INFRATASTER="true"
+  - rvm: 2.1
+    env: INFRATASTER="true"
+
 sudo: required
 
 services: docker

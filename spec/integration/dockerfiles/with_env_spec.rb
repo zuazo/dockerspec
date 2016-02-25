@@ -28,25 +28,29 @@ describe 'Build a Docker container with specific environment' do
     env: { MYSQL_ROOT_PASSWORD: password },
     mysql: { user: 'root', password: password }
   ) do
-    describe command('mysqld -V') do
-      its(:stdout) { should match(/^mysqld .*MariaDB/i) }
+    serverspec_tests do
+      describe command('mysqld -V') do
+        its(:stdout) { should match(/^mysqld .*MariaDB/i) }
+      end
+
+      describe process('mysqld') do
+        it { should be_running }
+      end
+
+      describe service('mysqld') do
+        it { should be_running }
+      end
     end
 
-    describe process('mysqld') do
-      it { should be_running }
-    end
+    infrataster_tests do
+      describe server(described_container) do
+        before(:all) { sleep(20) } # Wait until MySQL server is ready
 
-    describe service('mysqld') do
-      it { should be_running }
-    end
-
-    describe server(described_container) do
-      before(:all) { sleep(20) } # Wait until MySQL server is ready
-
-      describe mysql_query('SHOW STATUS') do
-        it 'returns positive uptime' do
-          row = results.find { |r| r['Variable_name'] == 'Uptime' }
-          expect(row['Value'].to_i).to be > 0
+        describe mysql_query('SHOW STATUS') do
+          it 'returns positive uptime' do
+            row = results.find { |r| r['Variable_name'] == 'Uptime' }
+            expect(row['Value'].to_i).to be > 0
+          end
         end
       end
     end

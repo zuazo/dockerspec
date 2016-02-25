@@ -19,17 +19,19 @@
 
 require 'spec_helper'
 
-describe 'Build a Dockerfile from a template' do
-  template = DockerspecTests.data_file('Dockerfile1.erb')
+serverspec_tests do
+  describe 'Build a Dockerfile from a template' do
+    template = DockerspecTests.data_file('Dockerfile1.erb')
 
-  context docker_build(template: template, tag: 'from_template_spec') do
-    context docker_run('from_template_spec') do
-      describe package('alpine-base') do
-        it { should be_installed }
-      end
+    context docker_build(template: template, tag: 'from_template_spec') do
+      context docker_run('from_template_spec') do
+        describe package('alpine-base') do
+          it { should be_installed }
+        end
 
-      it 'is a Linux distro' do
-        expect(command('uname').stdout).to include 'Linux'
+        it 'is a Linux distro' do
+          expect(command('uname').stdout).to include 'Linux'
+        end
       end
     end
   end

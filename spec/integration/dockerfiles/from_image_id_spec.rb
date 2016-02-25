@@ -22,15 +22,17 @@ require 'spec_helper'
 path = DockerspecTests.data_dir
 image = ::Docker::Image.build_from_dir(path)
 
-describe 'Build a Dockerfile from an image ID' do
-  context docker_build(id: image.id, tag: 'from_image_id_spec') do
-    context docker_run('from_image_id_spec') do
-      describe package('alpine-base') do
-        it { should be_installed }
-      end
+serverspec_tests do
+  describe 'Build a Dockerfile from an image ID' do
+    context docker_build(id: image.id, tag: 'from_image_id_spec') do
+      context docker_run('from_image_id_spec') do
+        describe package('alpine-base') do
+          it { should be_installed }
+        end
 
-      it 'is a Linux distro' do
-        expect(command('uname').stdout).to include 'Linux'
+        it 'is a Linux distro' do
+          expect(command('uname').stdout).to include 'Linux'
+        end
       end
     end
   end

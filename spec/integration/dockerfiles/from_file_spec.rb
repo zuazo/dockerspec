@@ -19,17 +19,19 @@
 
 require 'spec_helper'
 
-describe 'Build a Dockerfile from a file' do
-  file = DockerspecTests.data_file('Dockerfile1')
+serverspec_tests do
+  describe 'Build a Dockerfile from a file' do
+    file = DockerspecTests.data_file('Dockerfile1')
 
-  context docker_build(path: file, tag: 'from_file_spec') do
-    context docker_run('from_file_spec') do
-      describe package('alpine-base') do
-        it { should be_installed }
-      end
+    context docker_build(path: file, tag: 'from_file_spec') do
+      context docker_run('from_file_spec') do
+        describe package('alpine-base') do
+          it { should be_installed }
+        end
 
-      it 'is a Linux distro' do
-        expect(command('uname').stdout).to include 'Linux'
+        it 'is a Linux distro' do
+          expect(command('uname').stdout).to include 'Linux'
+        end
       end
     end
   end

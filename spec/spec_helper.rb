@@ -46,3 +46,5 @@ RSpec.configure do |config|
 
   config.include DockerspecTests
 end
+
+DockerspecTests.init_engines

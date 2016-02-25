@@ -7,7 +7,7 @@
 * [ ] Add `docker_context`, `docker_describe` to avoid starting all containers at the same time.
 * [ ] Add a Runner logger.
 * [ ] Create `stub_*` methods for unit tests.
-* [ ] Add integration tests for Runner without Serverspec.
+* [x] Add integration tests for Runner without Serverspec.
 * [ ] Add a Capybara test example.
 * [x] Fix `:env` with docker_run and Serverspec.
 * [x] `have_expose` with int allowed
