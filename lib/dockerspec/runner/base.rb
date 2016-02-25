@@ -193,7 +193,7 @@ module Dockerspec
       # @api public
       #
       def finalize
-        return unless options[:rm] && !container.nil?
+        return if options[:rm] == false || container.nil?
         container.stop
         container.delete
       end

@@ -215,7 +215,7 @@ module Dockerspec
       # @api public
       #
       def finalize
-        return unless options[:rm] && !compose.nil?
+        return if options[:rm] == false || compose.nil?
         compose.stop
         compose.delete
       end
