@@ -21,8 +21,8 @@ require 'spec_helper'
 
 serverspec_tests do
   describe 'Build a Dockerfile from a string' do
-    context docker_build(string: 'FROM nginx:1.9', tag: 'from_string_spec') do
-      context docker_run('from_string_spec') do
+    describe docker_build(string: 'FROM nginx:1.9', tag: 'from_string_spec') do
+      describe docker_run('from_string_spec') do
         describe command('ls -al /') do
           its(:stdout) { should match(/bin/) }
           its(:exit_status) { should eq 0 }

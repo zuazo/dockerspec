@@ -23,7 +23,7 @@ require 'infrataster-plugin-mysql'
 describe 'Build a Docker container with specific environment' do
   password = 'B3xuQpGW6wbL6UGzqs5c'
 
-  context docker_run(
+  describe docker_run(
     'mariadb',
     env: { MYSQL_ROOT_PASSWORD: password },
     mysql: { user: 'root', password: password }

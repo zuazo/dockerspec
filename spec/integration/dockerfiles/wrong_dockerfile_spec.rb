@@ -20,7 +20,7 @@
 require 'spec_helper'
 
 describe 'With a wrong Dockerfile' do
-  context 'with build errors' do
+  describe 'with build errors' do
     let(:file) { DockerspecTests.data_file('WrongDockerfile') }
     let(:build) { docker_build(path: file, tag: 'wrong_dockerfile_spec') }
 

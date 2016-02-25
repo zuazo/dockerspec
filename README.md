@@ -91,7 +91,7 @@ See the documentation above for more examples.
 ### Run Tests Against Docker Compose
 
 ```ruby
-context docker_compose('.', wait: 30) do
+describe docker_compose('.', wait: 30) do
 
   its_container(:myapp) do
     describe process('apache2') do
@@ -119,7 +119,7 @@ require 'dockerspec'
 # require 'dockerspec/serverspec' # Only if you want to run both types of tests
 require 'dockerspec/infrataster'
 
-context docker_run('nginx') do
+describe docker_run('nginx') do
   describe server(described_container) do # Infrataster
 
     describe http('/') do
@@ -170,7 +170,7 @@ require 'dockerspec'
 require 'dockerspec/infrataster'
 require 'infrataster-plugin-mysql'
 
-context docker_compose('docker-compose.yml', wait: 60) do
+describe docker_compose('docker-compose.yml', wait: 60) do
 
   its_container(:db, mysql: { user: 'root', password: 'example' }) do
     describe server(described_container) do # Infrataster

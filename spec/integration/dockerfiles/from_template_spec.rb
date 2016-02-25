@@ -23,8 +23,8 @@ serverspec_tests do
   describe 'Build a Dockerfile from a template' do
     template = DockerspecTests.data_file('Dockerfile1.erb')
 
-    context docker_build(template: template, tag: 'from_template_spec') do
-      context docker_run('from_template_spec') do
+    describe docker_build(template: template, tag: 'from_template_spec') do
+      describe docker_run('from_template_spec') do
         describe package('alpine-base') do
           it { should be_installed }
         end

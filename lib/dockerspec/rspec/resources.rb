@@ -282,7 +282,7 @@ module Dockerspec
       #
       # @example Testing with Infrataster
       #   require 'dockerspec/infrataster'
-      #   context docker_run('nginx') do
+      #   describe docker_run('nginx') do
       #     describe server(described_container) do
       #       describe http('/') do
       #         it 'responds content including "Welcome to nginx!"' do
@@ -343,7 +343,7 @@ module Dockerspec
       # or LXC.
       #
       # @example Testing Containers from a YAML File
-      #   context docker_compose('docker-compose.yml', wait: 15) do
+      #   describe docker_compose('docker-compose.yml', wait: 15) do
       #     its_container(:myapp) do
       #       describe process('apache2') do
       #         it { should be_running }
@@ -359,7 +359,7 @@ module Dockerspec
       #   end
       #
       # @example Testing Only One Container from a Directory
-      #   context docker_compose('data/', container: :myapp, wait: 15) do
+      #   describe docker_compose('data/', container: :myapp, wait: 15) do
       #     describe process('apache2') do
       #       it { should be_running }
       #     end
@@ -367,7 +367,7 @@ module Dockerspec
       #   end
       #
       # @example Avoid Automatic OS Detection to Speed Up the Tests
-      #   context docker_compose(
+      #   describe docker_compose(
       #     'data/', container: :myapp, family: 'debian', wait: 15
       #   ) do
       #     describe process('apache2') do
@@ -415,7 +415,7 @@ module Dockerspec
       # Selects the container to test inside {#docker_compose}.
       #
       # @example Testing Multiple Containers
-      #   context docker_compose('docker-compose.yml', wait: 15) do
+      #   describe docker_compose('docker-compose.yml', wait: 15) do
       #     its_container(:myapp) do
       #       describe process('apache2') do
       #         it { should be_running }
@@ -432,7 +432,7 @@ module Dockerspec
       #   end
       #
       # @example Avoid Automatic OS Detection to Speed Up the Tests
-      #   context docker_compose('docker-compose.yml', wait: 15) do
+      #   describe docker_compose('docker-compose.yml', wait: 15) do
       #     its_container('myapp', family: 'centos') do
       #       describe process('httpd') do
       #         it { should be_running }
@@ -451,7 +451,7 @@ module Dockerspec
       #   require 'dockerspec/infrataster'
       #   # After including `gem 'infrataster-plugin-mysql'` in your Gemfile:
       #   require 'infrataster-plugin-mysql'
-      #   context docker_compose('docker-compose.yml', wait: 60) do
+      #   describe docker_compose('docker-compose.yml', wait: 60) do
       #     its_container(:db, mysql: { user: 'root', password: 'example' }) do
       #       describe server(described_container) do
       #         describe mysql_query('SHOW STATUS') do
@@ -500,7 +500,7 @@ module Dockerspec
       # Used to call the Infrataster {#server} method.
       #
       # @example Testing a Docker Container
-      #   context docker_run('myapp') do
+      #   describe docker_run('myapp') do
       #     describe server(described_container) do
       #       describe http('/') do
       #         it 'responds content including "My App Homepage"' do
@@ -511,7 +511,7 @@ module Dockerspec
       #   end
       #
       # @example Testing with Docker Compose
-      #   context docker_compose('docker-compose.yml', wait: 60) do
+      #   describe docker_compose('docker-compose.yml', wait: 60) do
       #     its_container(:wordpress) do
       #       describe server(described_container) do
       #         describe http('/wp-admin/install.php') do

@@ -38,7 +38,7 @@ module Dockerspec
 
 For example:
 
-  context docker_compose('docker-compose.yml', wait: 30) do
+  describe docker_compose('docker-compose.yml', wait: 30) do
     its_container(:mysql) do
       # [...]
     end

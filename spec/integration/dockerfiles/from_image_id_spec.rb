@@ -24,8 +24,8 @@ image = ::Docker::Image.build_from_dir(path)
 
 serverspec_tests do
   describe 'Build a Dockerfile from an image ID' do
-    context docker_build(id: image.id, tag: 'from_image_id_spec') do
-      context docker_run('from_image_id_spec') do
+    describe docker_build(id: image.id, tag: 'from_image_id_spec') do
+      describe docker_run('from_image_id_spec') do
         describe package('alpine-base') do
           it { should be_installed }
         end

@@ -22,7 +22,7 @@ require 'infrataster-plugin-mysql'
 
 describe 'Docker Compose' do
   file = DockerspecTests.data_file('docker-compose.yml')
-  context docker_compose(file, wait: ENV['CI'] ? 90 : 15) do
+  describe docker_compose(file, wait: ENV['CI'] ? 90 : 15) do
     its_container(:db, mysql: { user: 'root', password: 'example' }) do
       serverspec_tests do
         it 'detects the OS family' do

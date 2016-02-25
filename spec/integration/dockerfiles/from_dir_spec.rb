@@ -22,7 +22,7 @@ require 'spec_helper'
 path = DockerspecTests.data_dir
 
 serverspec_tests do
-  context docker_build(path: path, tag: 'from_dir_spec') do
+  describe docker_build(path: path, tag: 'from_dir_spec') do
     it { should have_maintainer 'John Doe "john.doe@example.com"' }
     it { should have_maintainer(/John Doe/) }
     it { should have_cmd %w(2 2000) }
@@ -62,12 +62,12 @@ serverspec_tests do
     its(:arch) { should eq 'amd64' }
     its(:os) { should eq 'linux' }
 
-    context docker_run('from_dir_spec') do
-      context file('/tmp/file_example1') do
+    describe docker_run('from_dir_spec') do
+      describe file('/tmp/file_example1') do
         it { should be_file }
       end
 
-      context file('/tmp/file_example2') do
+      describe file('/tmp/file_example2') do
         it { should be_file }
       end
 

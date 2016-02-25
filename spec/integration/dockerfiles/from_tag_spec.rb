@@ -20,8 +20,8 @@
 require 'spec_helper'
 
 describe 'Build a Dockerfile from a tag' do
-  context docker_build(id: 'nginx:1.9', tag: 'from_tag_spec') do
-    context docker_run('from_tag_spec') do
+  describe docker_build(id: 'nginx:1.9', tag: 'from_tag_spec') do
+    describe docker_run('from_tag_spec') do
       serverspec_tests do
         describe package('nginx') do
           it { should be_installed }
