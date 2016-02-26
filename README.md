@@ -82,6 +82,7 @@ describe 'My Dockerfile' do
         it { should be_running }
       end
     end
+
   end
 end
 ```
@@ -107,6 +108,7 @@ describe docker_compose('.', wait: 30) do
     end
     # [...]
   end
+
 end
 ```
 
@@ -131,6 +133,7 @@ describe docker_run('nginx') do
         expect(response.headers['server']).to match(/nginx/i)
       end
     end
+
   end
 end
 ```
@@ -183,8 +186,10 @@ describe docker_build('.', tag: 'mywebapp') do
             expect(page).to have_content 'Welcome admin!'
           end
         end
+
       end
     end
+
   end
 end
 ```
@@ -222,7 +227,6 @@ The file with the tests:
 
 ```ruby
 require 'dockerspec'
-# require 'dockerspec/serverspec' # Only if you want to run both types of tests
 require 'dockerspec/infrataster'
 require 'infrataster-plugin-mysql'
 
@@ -237,6 +241,14 @@ describe docker_compose('docker-compose.yml', wait: 60) do
           expect(row['Value'].to_i).to be > 0
         end
       end
+
+      describe mysql_query('SHOW DATABASES') do
+        it 'includes `myapp` database' do
+          databases = results.map { |r| r['Database'] }
+          expect(databases).to include('myapp')
+        end
+      end
+
     end
   end
 end
