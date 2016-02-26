@@ -134,6 +134,62 @@ describe docker_run('nginx') do
   end
 end
 ```
+See the [Infrataster Resources documentation](http://www.rubydoc.info/gems/infrataster#Resources) for more information.
+
+### Run HTTP Tests Using Capybara
+
+In the following example we set the *admin* password and log in in a hypothetical web application:
+
+```ruby
+require 'dockerspec'
+require 'dockerspec/infrataster'
+
+describe docker_build('.', tag: 'mywebapp') do
+  describe docker_run('mywebapp') do
+
+    describe server(described_container) do
+      describe capybara('/') do
+        let(:password) { '4dm1nP4ssw0rd' }
+
+        describe 'on /setup' do
+          before { visit '/setup' }
+
+          it 'contains "Configure the password"' do
+            expect(page).to have_content 'Configure the password'
+          end
+
+          it 'sets the admin password' do
+            fill_in 'Password', with: password
+            fill_in 'Confirm Password', with: password
+            click_button 'Set password'
+          end
+        end
+
+        describe 'on /login' do
+          before { visit '/login' }
+
+          it 'logs in as admin' do
+            expect(page).to have_content 'sign in'
+            fill_in 'User name', with: 'admin'
+            fill_in 'Password', with: password
+            click_button 'Sig in'
+          end
+        end
+
+        describe 'on /' do
+          before { visit '/' }
+
+          it 'is logged id' do
+            expect(page).to have_content 'Welcome admin!'
+          end
+        end
+      end
+    end
+  end
+end
+```
+
+See the [Capybara DSL documentation](http://www.rubydoc.info/gems/capybara#The_DSL) for more information.
 
 ### Run Database Tests Using `infrataster-plugin-mysql` Gem with Docker Compose
 
