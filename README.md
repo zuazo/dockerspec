@@ -290,9 +290,9 @@ require 'dockerspec'
 require 'dockerspec/serverspec'
 
 describe 'My Dockerfile' do
-  describe docker_build('.', tag: 'myapp') do
+  describe docker_build('.') do
     # [...]
-    describe docker_run('myapp') do
+    describe docker_run(described_image) do
       # [...]
     end
   end
@@ -317,11 +317,6 @@ $ bundle exec rspec
 
 ```yaml
 language: ruby
-
-rvm:
-- 2.0.0
-- 2.1
-- 2.2
 
 sudo: required
 
