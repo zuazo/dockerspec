@@ -37,14 +37,14 @@ describe Dockerspec::Engine::Infrataster do
     end
   end
 
-  context '#ready' do
+  context '#when_container_ready' do
     it 'defines infrataster server' do
       expect(Infrataster::Server).to receive(:define).with(
         container_name.to_sym,
         ipaddress,
         options
       )
-      subject.ready
+      subject.when_container_ready
     end
 
     it 'defines infrataster server only once' do
@@ -53,9 +53,9 @@ describe Dockerspec::Engine::Infrataster do
         ipaddress,
         options
       )
-      subject.ready
-      subject.ready
-      subject.ready
+      subject.when_container_ready
+      subject.when_container_ready
+      subject.when_container_ready
     end
   end
 end

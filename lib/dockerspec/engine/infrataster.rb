@@ -54,7 +54,7 @@ module Dockerspec
       #
       # @api public
       #
-      def ready
+      def when_container_ready
         define_server
       end
 

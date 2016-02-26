@@ -100,7 +100,7 @@ module Dockerspec
         #
         # @api private
         #
-        def setup
+        def before_running
           super
           Specinfra.configuration.env(options[:env]) if options.key?(:env)
           if source == :id

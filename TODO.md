@@ -12,4 +12,4 @@
 * [x] Fix `:env` with docker_run and Serverspec.
 * [x] `have_expose` with int allowed
 * [x] Add `described_image` helper for `docker_run`.
-* [ ] Rename the event methods in the Engines to be more clear.
+* [x] Rename the event methods in the Engines to be more clear.

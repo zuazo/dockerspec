@@ -60,7 +60,7 @@ module Dockerspec
       #
       # @api public
       #
-      def setup(*args); end
+      def before_running(*args); end
 
       #
       # Saves the engine status internally after starting the docker container.
@@ -73,7 +73,7 @@ module Dockerspec
       #
       # @api public
       #
-      def save(*args); end
+      def when_running(*args); end
 
       #
       # Runs when the container to test is ready.
@@ -81,7 +81,8 @@ module Dockerspec
       # This is mainly used with Docker Compose to know when the container to
       # test is selected.
       #
-      # Without Docker Compose this is called just after calling {#save}.
+      # Without Docker Compose this is called just after calling
+      # {#when_running}.
       #
       # Does nothing by default.
       #
@@ -91,7 +92,7 @@ module Dockerspec
       #
       # @api public
       #
-      def ready(*args); end
+      def when_container_ready(*args); end
 
       #
       # Restores the engine internal status after running tests on other

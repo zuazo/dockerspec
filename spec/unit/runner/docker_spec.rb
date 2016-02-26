@@ -42,9 +42,9 @@ describe Dockerspec::Runner::Docker do
   let(:metadata) { {} }
   before do
     allow(Dockerspec::EngineList).to receive(:new).and_return(engines)
-    allow(engines).to receive(:setup)
-    allow(engines).to receive(:save)
-    allow(engines).to receive(:ready)
+    allow(engines).to receive(:before_running)
+    allow(engines).to receive(:when_running)
+    allow(engines).to receive(:when_container_ready)
     allow(ObjectSpace).to receive(:define_finalizer)
     allow(Docker::Container).to receive(:create).and_return(container)
     allow(Docker::Container).to receive(:get).and_return(container)
@@ -108,7 +108,7 @@ describe Dockerspec::Runner::Docker do
     end
 
     it 'setups engines before running' do
-      expect(engines).to receive(:setup).with(no_args).ordered
+      expect(engines).to receive(:before_running).with(no_args).ordered
       expect(Docker::Container).to receive(:create).ordered
       expect(container).to receive(:start).ordered
       subject.run
@@ -140,13 +140,13 @@ describe Dockerspec::Runner::Docker do
 
     it 'saves engines after running' do
       expect(container).to receive(:start).ordered
-      expect(engines).to receive(:save).with(no_args).ordered
+      expect(engines).to receive(:when_running).with(no_args).ordered
       subject.run
     end
 
     it 'sets the engines ready after saving' do
-      expect(engines).to receive(:save).with(no_args).ordered
-      expect(engines).to receive(:ready).with(no_args).ordered
+      expect(engines).to receive(:when_running).with(no_args).ordered
+      expect(engines).to receive(:when_container_ready).with(no_args).ordered
       subject.run
     end
   end

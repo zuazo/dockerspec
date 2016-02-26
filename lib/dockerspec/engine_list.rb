@@ -66,40 +66,41 @@ For example, to use Serverspec:
     #
     # Setups all the engines one by one.
     #
-    # @param args [Mixed] Arguments to pass to the `#setup` methods.
+    # @param args [Mixed] Arguments to pass to the `#before_running` methods.
     #
     # @return void
     #
     # @api public
     #
-    def setup(*args)
-      call_engines_method(:setup, *args)
+    def before_running(*args)
+      call_engines_method(:before_running, *args)
     end
 
     #
     # Notify the engines that the container to test is selected and ready.
     #
-    # @param args [Mixed] Arguments to pass to the `#ready` methods.
+    # @param args [Mixed] Arguments to pass to the `#when_container_ready`
+    # methods.
     #
     # @return void
     #
     # @api public
     #
-    def ready(*args)
-      call_engines_method(:ready, *args)
+    def when_container_ready(*args)
+      call_engines_method(:when_container_ready, *args)
     end
 
     #
     # Saves all the engines one by one.
     #
-    # @param args [Mixed] Arguments to pass to the `#save` methods.
+    # @param args [Mixed] Arguments to pass to the `#when_running` methods.
     #
     # @return void
     #
     # @api public
     #
-    def save(*args)
-      call_engines_method(:save, *args)
+    def when_running(*args)
+      call_engines_method(:when_running, *args)
     end
 
     #

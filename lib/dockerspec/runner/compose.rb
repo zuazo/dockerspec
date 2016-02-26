@@ -110,9 +110,9 @@ module Dockerspec
       # @api public
       #
       def run
-        setup
+        before_running
         run_container
-        save
+        when_running
         self
       end
 
@@ -133,7 +133,7 @@ module Dockerspec
       def select_container(name, opts = nil)
         @options[:container] = name
         @container_options[name] = @options.merge(opts) if opts.is_a?(Hash)
-        ready
+        when_container_ready
       end
 
       #

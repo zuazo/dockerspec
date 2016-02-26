@@ -72,7 +72,7 @@ describe Dockerspec::Runner::Compose do
     end
 
     it 'sets the engines as ready' do
-      expect(engines).to receive(:ready).once
+      expect(engines).to receive(:when_container_ready).once
       subject.select_container(container_name)
     end
   end

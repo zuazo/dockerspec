@@ -97,7 +97,7 @@ module Dockerspec
         #
         # @api private
         #
-        def setup
+        def before_running
           super
           wait = options[:docker_wait] || options[:wait]
           Specinfra.configuration.docker_wait(wait) unless wait.nil?

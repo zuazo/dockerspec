@@ -52,7 +52,7 @@ module Dockerspec
       #
       # @api private
       #
-      def setup
+      def before_running
         if @backend.nil?
           @backend = Backend.new(backend_name)
           @backend.reset
@@ -68,7 +68,7 @@ module Dockerspec
       #
       # @api private
       #
-      def save
+      def when_running
         @backend.save
       end
 

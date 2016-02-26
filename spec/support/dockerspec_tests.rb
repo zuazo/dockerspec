@@ -71,12 +71,14 @@ module DockerspecTests
 
   def stub_runner_base(engines)
     allow(Dockerspec::EngineList).to receive(:new).and_return(engines)
-    %i(setup save ready).each { |m| allow(engines).to receive(m) }
+    %i(before_running when_running when_container_ready).each do |m|
+      allow(engines).to receive(m)
+    end
     allow(ObjectSpace).to receive(:define_finalizer)
   end
 
   def stub_engines(engines)
-    allow(engines).to receive(:setup)
+    allow(engines).to receive(:before_running)
   end
 
   def stub_dockercompose(compose)

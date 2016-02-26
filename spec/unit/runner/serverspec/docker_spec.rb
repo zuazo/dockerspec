@@ -49,7 +49,6 @@ describe Dockerspec::Runner::Serverspec::Docker do
       .to receive(:new).and_return(specinfra_backend)
     allow(specinfra_backend).to receive(:reset)
     allow(specinfra_backend).to receive(:save)
-    allow(specinfra_backend).to receive(:save)
     allow(specinfra_backend).to receive(:backend_instance_attribute)
       .with(:container).and_return(container)
 

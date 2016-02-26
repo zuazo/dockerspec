@@ -85,10 +85,10 @@ module Dockerspec
       # @api public
       #
       def run
-        setup
+        before_running
         run_container
-        save
-        ready
+        when_running
+        when_container_ready
         self
       end
 
@@ -207,8 +207,8 @@ module Dockerspec
       #
       # @api public
       #
-      def setup
-        @engines.setup
+      def before_running
+        @engines.before_running
       end
 
       #
@@ -218,8 +218,8 @@ module Dockerspec
       #
       # @api public
       #
-      def save
-        @engines.save
+      def when_running
+        @engines.when_running
       end
 
       #
@@ -229,8 +229,8 @@ module Dockerspec
       #
       # @api public
       #
-      def ready
-        @engines.ready
+      def when_container_ready
+        @engines.when_container_ready
       end
 
       #

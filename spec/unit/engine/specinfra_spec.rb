@@ -47,34 +47,34 @@ describe Dockerspec::Engine::Specinfra do
     end
   end
 
-  context '#setup' do
+  context '#before_running' do
     it 'creates the backend' do
       expect(Dockerspec::Engine::Specinfra::Backend).to receive(:new).once
         .with(backend_name).and_return(backend)
-      subject.setup
+      subject.before_running
     end
 
     it 'resets the backend' do
       expect(backend).to receive(:reset).once.with(no_args)
-      subject.setup
+      subject.before_running
     end
 
     it 'sets up the container name' do
       expect(backend).to receive(:restore_container).once.with(container_name)
-      subject.setup
+      subject.before_running
     end
 
     it 'sets up the family' do
       expect(specinfra_config).to receive(:os).once.with(family: family)
-      subject.setup
+      subject.before_running
     end
   end
 
-  context '#save' do
+  context '#when_running' do
     it 'saves the backend' do
-      subject.setup
+      subject.before_running
       expect(backend).to receive(:save).once.with(no_args)
-      subject.save
+      subject.when_running
     end
   end
 
@@ -85,19 +85,19 @@ describe Dockerspec::Engine::Specinfra do
     end
 
     it 'restores the backend' do
-      subject.setup
+      subject.before_running
       expect(backend).to receive(:restore).once.with(no_args)
       subject.restore
     end
 
     it 'sets up the container name' do
-      subject.setup
+      subject.before_running
       expect(backend).to receive(:restore_container).once.with(container_name)
       subject.restore
     end
 
     it 'sets up the family' do
-      subject.setup
+      subject.before_running
       expect(specinfra_config).to receive(:os).once.with(family: family)
       subject.restore
     end
