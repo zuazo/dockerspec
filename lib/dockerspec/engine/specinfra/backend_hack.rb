@@ -23,7 +23,7 @@ require 'specinfra/backend/base'
 # Add a method to the {Specinfra::Backend::Base} singleton class to set its
 # internal backend.
 #
-# TODO: This hack makes me want to poke my own eyes out.
+# This hack makes me want to poke my own eyes out :-(
 #
 Specinfra::Backend::Base.class_eval do
   #

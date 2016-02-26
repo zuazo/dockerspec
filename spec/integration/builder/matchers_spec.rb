@@ -36,7 +36,7 @@ describe Dockerspec::Builder::Matchers do
         end
 
         it 'contains the actual value' do
-          expect { test }.to raise_error(/got `John Doe/)
+          expect { test }.to raise_error(/got `"John Doe/)
         end
       end
 
@@ -52,7 +52,7 @@ describe Dockerspec::Builder::Matchers do
         end
 
         it 'contains the actual value' do
-          expect { test }.to raise_error(/got `John Doe/)
+          expect { test }.to raise_error(/got `"John Doe/)
         end
       end
     end # context :string predicate type

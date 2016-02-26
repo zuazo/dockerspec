@@ -60,78 +60,54 @@ module Dockerspec
       PREDICATE_TYPES.each do |name, type|
         matcher_name = "have_#{name}".to_sym
 
-        case type
-        when :string
-          matcher matcher_name do |expected|
-            match { |actual| !expected.match(actual.send(name)).nil? }
+        value_method = name
+        verb = 'be'
+        matcher matcher_name do |expected|
+          case type
+          when :string
+            verb = 'match'
 
-            failure_message do |actual|
-              "expected `#{name.upcase}` to match `#{expected.inspect}`, "\
-                "got `#{actual.send(name)}`"
-            end
+            match { |actual| !expected.match(actual.send(value_method)).nil? }
+          when :json
+            verb = 'be'
 
-            failure_message_when_negated do |actual|
-              "expected `#{name.upcase}` not to match `#{expected.inspect}`, "\
-                "got `#{actual.send(name)}`"
-            end
-          end
-        when :json
-          matcher matcher_name do |expected|
             include MatcherHelpers
 
-            match { |actual| maybe_json?(actual.send(name), expected) }
+            match { |actual| maybe_json?(actual.send(value_method), expected) }
+          when :array
+            value_method = "#{name}s"
+            verb = 'include'
 
-            failure_message do |actual|
-              "expected `#{name.upcase}` to be `#{expected.inspect}`, "\
-                "got `#{actual.send(name)}`"
-            end
-
-            failure_message_when_negated do |actual|
-              "expected `#{name.upcase}` not to be `#{expected.inspect}`, "\
-                "got `#{actual.send(name)}`"
-            end
-          end
-        when :array
-          matcher matcher_name do |expected|
             # Allow ports to be passed as integer:
             if matcher_name == :have_expose && expected.is_a?(Numeric)
               expected = expected.to_s
             end
 
-            match { |actual| !actual.send("#{name}s").grep(expected).empty? }
+            match { |actual| !actual.send(value_method).grep(expected).empty? }
+          when :hash
+            value_method = "#{name}s"
+            verb = 'contain'
 
-            failure_message do |actual|
-              "expected `#{name.upcase}` to include `#{expected.inspect}`, "\
-                "got `#{actual.send("#{name}s").inspect}`"
-            end
-
-            failure_message_when_negated do |actual|
-              "expected `#{name.upcase}` not to include "\
-              "`#{expected.inspect}`, got `#{actual.send("#{name}s").inspect}`"
-            end
-          end
-        when :hash
-          matcher matcher_name do |expected|
             include MatcherHelpers
 
             match do |actual|
-              actual = actual.send("#{name}s")
+              actual = actual.send(value_method)
               break sub_hash?(actual, expected) if expected.is_a?(Hash)
               !actual.keys.grep(expected).empty?
             end
+          end # case type
 
-            failure_message do |actual|
-              "expected `#{name.upcase}` to contain `#{expected.inspect}`, "\
-                "got `#{actual.send("#{name}s")}`"
-            end
-
-            failure_message_when_negated do |actual|
-              "expected `#{name.upcase}` not to contain "\
-              "`#{expected.inspect}`, got `#{actual.send("#{name}s")}`"
-            end
+          failure_message do |actual|
+            "expected `#{name.upcase}` to #{verb} `#{expected.inspect}`, "\
+              "got `#{actual.send(value_method).inspect}`"
           end
-        end
-      end
+
+          failure_message_when_negated do |actual|
+            "expected `#{name.upcase}` not to #{verb} "\
+            "`#{expected.inspect}`, got `#{actual.send(value_method).inspect}`"
+          end
+        end # matcher
+      end # PREDICATE_TYPES each
     end
   end
 end
