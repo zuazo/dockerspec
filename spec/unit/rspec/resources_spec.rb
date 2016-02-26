@@ -26,8 +26,9 @@ end
 
 describe Dockerspec::RSpec::Resources do
   subject { TestDockerspecRSpecResources.new }
+  let(:image_id) { 'ade0b83dcb0b' }
   let(:container_name) { 'container_name1' }
-  let(:builder) { double('Dockerspec::Builder') }
+  let(:builder) { double('Dockerspec::Builder', id: image_id) }
   let(:opts) { { opt1: 'val1' } }
   before do
     allow(Dockerspec::Builder).to receive(:new).and_return(builder)
@@ -38,6 +39,7 @@ describe Dockerspec::RSpec::Resources do
     it 'creates a new Builder' do
       expect(Dockerspec::Builder).to receive(:new).once.with(opts)
         .and_return(builder)
+      allow(builder).to receive(:build).and_return(builder)
       subject.docker_build(opts)
     end
 
@@ -47,8 +49,12 @@ describe Dockerspec::RSpec::Resources do
     end
 
     it 'returns the build result' do
-      allow(builder).to receive(:build).and_return('built')
-      expect(subject.docker_build(opts)).to eq 'built'
+      expect(subject.docker_build(opts)).to eq builder
+    end
+
+    it 'sets `described_image`' do
+      subject.docker_build(opts)
+      expect(subject.described_image).to eq image_id
     end
   end
 
@@ -76,6 +82,11 @@ describe Dockerspec::RSpec::Resources do
 
     it 'returns the runner' do
       expect(subject.docker_run(example, opts)).to eq runner
+    end
+
+    it 'sets `described_image`' do
+      subject.docker_run(example, opts)
+      expect(subject.described_container).to eq container_name.to_sym
     end
   end
 
@@ -156,6 +167,11 @@ describe Dockerspec::RSpec::Resources do
         .to raise_error(
           Dockerspec::ItsContainerError, /used with.*`docker_compose`/
         )
+    end
+
+    it 'sets `described_image`' do
+      subject.its_container(container)
+      expect(subject.described_container).to eq container_name.to_sym
     end
   end
 end

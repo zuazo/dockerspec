@@ -64,14 +64,14 @@ require 'dockerspec'
 require 'dockerspec/serverspec'
 
 describe 'My Dockerfile' do
-  describe docker_build('.', tag: 'myapp') do
+  describe docker_build('.') do
 
     it { should have_maintainer /John Doe/ }
     it { should have_cmd ['/bin/dash'] }
     it { should have_expose '80' }
     it { should have_user 'nobody' }
 
-    describe docker_run('myapp') do
+    describe docker_run(described_image) do
       describe file('/etc/httpd.conf') do
         it { should be_file }
         it { should contain 'ServerName www.example.jp' }

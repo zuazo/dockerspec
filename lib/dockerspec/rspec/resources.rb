@@ -185,6 +185,8 @@ module Dockerspec
       def docker_build(*opts)
         builder = Dockerspec::Builder.new(*opts)
         builder.build
+        described_image(builder.id)
+        builder
       end
 
       #
@@ -495,7 +497,32 @@ module Dockerspec
       end
 
       #
-      # Sets or gets the latest contained configuration hash.
+      # Sets or gets the latest run container name.
+      #
+      # This can be used to avoid adding a tag to the build image.
+      #
+      # @example
+      #   describe docker_build('.') do
+      #     describe docker_run(described_image, family: 'debian') do
+      #       # [...]
+      #     end
+      #   end
+      #
+      # @param value [String] The docker image id.
+      #
+      # @return [String] The docker image id.
+      #
+      # @api public
+      #
+      def described_image(value = nil)
+        # rubocop:disable Style/ClassVars
+        @@described_image = value unless value.nil?
+        # rubocop:enable Style/ClassVars
+        @@described_image
+      end
+
+      #
+      # Sets or gets the latest run container name.
       #
       # Used to call the Infrataster {#server} method.
       #
@@ -522,6 +549,10 @@ module Dockerspec
       #       end
       #     end
       #   end
+      #
+      # @param value [Symbol, String] The container name.
+      #
+      # @return [Symbol] The container name.
       #
       # @api public
       #

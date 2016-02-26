@@ -11,5 +11,5 @@
 * [x] Add a Capybara test example.
 * [x] Fix `:env` with docker_run and Serverspec.
 * [x] `have_expose` with int allowed
-* [ ] Add `described_image` helper for `docker_run`.
+* [x] Add `described_image` helper for `docker_run`.
 * [ ] Rename the event methods in the Engines to be more clear.
