@@ -44,17 +44,6 @@ $ bundle
 
 **Warning:** As the gem is in its early development stages, [the API is very likely to break between minor versions](http://semver.org/).
 
-## Documentation
-
-- [`docker_build`](http://www.rubydoc.info/gems/dockerspec/Dockerspec/RSpec/Resources#docker_build-instance_method)
-  - [*Docker Build* helpers](http://www.rubydoc.info/gems/dockerspec/Dockerspec/Builder/ConfigHelpers)
-- [`docker_run`](http://www.rubydoc.info/gems/dockerspec/Dockerspec/RSpec/Resources#docker_run-instance_method)
-  - [*Docker Run* Serverspec resource types](http://serverspec.org/resource_types.html)
-  - [Infrataster Resources](http://www.rubydoc.info/gems/infrataster#Resources)
-  - [Capybara DSL](http://www.rubydoc.info/gems/capybara#The_DSL)
-- [`docker_compose`](http://www.rubydoc.info/gems/dockerspec/Dockerspec/RSpec/Resources#docker_compose-instance_method)
-  - [`its_container`](http://www.rubydoc.info/gems/dockerspec/Dockerspec/RSpec/Resources#its_container-instance_method)
-
 ## Usage Examples
 
 ### Run Tests Against a Dockerfile in the Current Directory
@@ -253,6 +242,17 @@ describe docker_compose('docker-compose.yml', wait: 60) do
   end
 end
 ```
+
+## Documentation
+
+- [`docker_build`](http://www.rubydoc.info/gems/dockerspec/Dockerspec/RSpec/Resources#docker_build-instance_method)
+  - [*Docker Build* helpers](http://www.rubydoc.info/gems/dockerspec/Dockerspec/Builder/ConfigHelpers)
+- [`docker_run`](http://www.rubydoc.info/gems/dockerspec/Dockerspec/RSpec/Resources#docker_run-instance_method)
+  - [*Docker Run* Serverspec resource types](http://serverspec.org/resource_types.html)
+  - [Infrataster Resources](http://www.rubydoc.info/gems/infrataster#Resources)
+  - [Capybara DSL](http://www.rubydoc.info/gems/capybara#The_DSL)
+- [`docker_compose`](http://www.rubydoc.info/gems/dockerspec/Dockerspec/RSpec/Resources#docker_compose-instance_method)
+  - [`its_container`](http://www.rubydoc.info/gems/dockerspec/Dockerspec/RSpec/Resources#its_container-instance_method)
 
 ### Real-world Examples
 
