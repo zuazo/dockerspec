@@ -257,9 +257,10 @@ end
 ### Real-world Examples
 
 * [`alpine-tor`](https://github.com/zuazo/alpine-tor-docker) image ([*spec/*](https://github.com/zuazo/alpine-tor-docker/tree/master/spec), [*Gemfile*](https://github.com/zuazo/alpine-tor-docker/tree/master/Gemfile), [*.travis.yml*](https://github.com/zuazo/alpine-tor-docker/tree/master/.travis.yml)).
-* [`chef-local`](https://github.com/zuazo/chef-local-docker) image ([*spec/*](https://github.com/zuazo/chef-local-docker/tree/master/spec), [*Gemfile*](https://github.com/zuazo/chef-local-docker/tree/master/Gemfile), [*.travis.yml*](https://github.com/zuazo/chef-local-docker/tree/master/.travis.yml)): Run the same tests against multiple tags.
+* [`chef-local`](https://github.com/zuazo/chef-local-docker) image ([*spec/*](https://github.com/zuazo/chef-local-docker/tree/master/spec), [*Gemfile*](https://github.com/zuazo/chef-local-docker/tree/master/Gemfile), [*.travis.yml*](https://github.com/zuazo/chef-local-docker/tree/master/.travis.yml)): Runs the same tests against multiple tags.
 * [`keywhiz`](https://github.com/zuazo/keywhiz-docker) image ([*spec/*](https://github.com/zuazo/keywhiz-docker/tree/master/spec), [*Gemfile*](https://github.com/zuazo/keywhiz-docker/tree/master/Gemfile), [*.travis.yml*](https://github.com/zuazo/keywhiz-docker/tree/master/.travis.yml)).
 * [`irssi-tor`](https://github.com/zuazo/irssi-tor-docker) image ([*spec/*](https://github.com/zuazo/irssi-tor-docker/tree/master/spec), [*Gemfile*](https://github.com/zuazo/irssi-tor-docker/tree/master/Gemfile), [*.travis.yml*](https://github.com/zuazo/irssi-tor-docker/tree/master/.travis.yml)).
+* [`dradis`](https://github.com/zuazo/dradis-docker) image ([*spec/*](https://github.com/zuazo/dradis-docker/tree/master/spec), [*Gemfile*](https://github.com/zuazo/dradis-docker/tree/master/Gemfile), [*.travis.yml*](https://github.com/zuazo/dradis-docker/tree/master/.travis.yml)): Runs some Capybara HTTP tests.
 
 ### Prepare Your Ruby Environment
 
