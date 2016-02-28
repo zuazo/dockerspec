@@ -6,9 +6,9 @@
 [![Gem Version](https://badge.fury.io/rb/dockerspec.svg)](https://rubygems.org/gems/dockerspec)
 [![Dependency Status](http://img.shields.io/gemnasium/zuazo/dockerspec.svg?style=flat)](https://gemnasium.com/zuazo/dockerspec)
 [![Code Climate](http://img.shields.io/codeclimate/github/zuazo/dockerspec.svg?style=flat)](https://codeclimate.com/github/zuazo/dockerspec)
-[![Travis CI Build Status](http://img.shields.io/travis/zuazo/dockerspec/0.3.0.svg?style=flat)](https://travis-ci.org/zuazo/dockerspec)
+[![Travis CI Build Status](http://img.shields.io/travis/zuazo/dockerspec.svg?style=flat)](https://travis-ci.org/zuazo/dockerspec)
 [![Circle CI Build Status](https://circleci.com/gh/zuazo/dockerspec/tree/master.svg?style=shield)](https://circleci.com/gh/zuazo/dockerspec/tree/master)
-[![Coverage Status](http://img.shields.io/coveralls/zuazo/dockerspec/0.3.0.svg?style=flat)](https://coveralls.io/r/zuazo/dockerspec?branch=0.3.0)
+[![Coverage Status](http://img.shields.io/coveralls/zuazo/dockerspec.svg?style=flat)](https://coveralls.io/r/zuazo/dockerspec?branch=master)
 [![Inline docs](http://inch-ci.org/github/zuazo/dockerspec.svg?branch=master&style=flat)](http://inch-ci.org/github/zuazo/dockerspec)
 
 ## Description
