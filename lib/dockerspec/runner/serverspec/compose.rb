@@ -90,7 +90,6 @@ module Dockerspec
         # Sets the Specinfra configuration and the engines.
         #
         # - Sets up the testing engines.
-        # - Configures the time to wait after starting docker compose.
         # - Configures the compose file to use.
         #
         # @return void
@@ -99,8 +98,6 @@ module Dockerspec
         #
         def before_running
           super
-          wait = options[:docker_wait] || options[:wait]
-          Specinfra.configuration.docker_wait(wait) unless wait.nil?
           Specinfra.configuration.docker_compose_file(@options[:file])
         end
       end

@@ -77,7 +77,7 @@ module Dockerspec
       # @option opts [String] :file The compose YAML file or a directory
       #   containing the `'docker-compose.yml'` file.
       # @option opts [Boolean] :rm (calculated) Whether to remove the Docker
-      #   containers afterwards.
+      # @option opts [Integer] :wait Time to wait before running the tests.
       #
       # @return [Dockerspec::Runner::Compose] Runner object.
       #
@@ -111,8 +111,10 @@ module Dockerspec
       #
       def run
         before_running
+        start_time = Time.new.utc
         run_container
         when_running
+        do_wait((Time.new.utc - start_time).to_i)
         self
       end
 
@@ -270,9 +272,6 @@ module Dockerspec
       def rspec_options
         config = ::RSpec.configuration
         super.tap do |opts|
-          if config.docker_compose_wait?
-            opts[:docker_wait] = config.docker_compose_wait
-          end
           opts[:container] = config.container_name if config.container_name?
         end
       end
@@ -311,36 +310,12 @@ module Dockerspec
       #
       # Runs Docker Compose.
       #
-      # It also waits the required (configured) time after compose has been
-      # started.
-      #
       # @return void
       #
       # @api private
       #
       def run_container
-        start_time = Time.new.utc
         Dir.chdir(::File.dirname(file)) { compose.start }
-        do_wait((Time.new.utc - start_time).to_i)
-      end
-
-      #
-      # Sleeps for some time if required.
-      #
-      # Reads the seconds to sleep from the `:docker_wait` or `:wait`
-      # configuration option.
-      #
-      # @param waited [Integer] The time already waited.
-      #
-      # @return nil
-      #
-      # @api private
-      #
-      def do_wait(waited)
-        wait = options[:docker_wait] || options[:wait]
-        return unless wait.is_a?(Integer) || wait.is_a?(Float)
-        return if waited >= wait
-        sleep(wait - waited)
       end
     end
   end

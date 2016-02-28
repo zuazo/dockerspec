@@ -50,6 +50,7 @@ module Dockerspec
       #
       # @option opts [Boolean] :rm (calculated) Whether to remove the Docker
       #   container afterwards.
+      # @option opts [Integer] :wait Time to wait before running the tests.
       #
       # @return [Dockerspec::Runner::Base] Runner object.
       #
@@ -71,6 +72,8 @@ module Dockerspec
       # 2. Runs the container (or Compose).
       # 3. Saves the created underlaying test context.
       # 4. Sets the container as ready.
+      # 5. Waits the required (configured) time after container has been
+      #    started.
       #
       # @example
       #   builder = Dockerspec::Builder.new('.')
@@ -86,9 +89,11 @@ module Dockerspec
       #
       def run
         before_running
+        start_time = Time.new.utc
         run_container
         when_running
         when_container_ready
+        do_wait((Time.new.utc - start_time).to_i)
         self
       end
 
@@ -244,7 +249,10 @@ module Dockerspec
       # @api private
       #
       def rspec_options
-        {}
+        config = ::RSpec.configuration
+        {}.tap do |opts|
+          opts[:wait] = config.docker_wait if config.docker_wait?
+        end
       end
 
       #
@@ -324,6 +332,25 @@ module Dockerspec
       #
       def run_container
         container.start
+      end
+
+      #
+      # Sleeps for some time if required.
+      #
+      # Reads the seconds to sleep from the `:docker_wait` or `:wait`
+      # configuration option.
+      #
+      # @param waited [Integer] The time already waited.
+      #
+      # @return nil
+      #
+      # @api private
+      #
+      def do_wait(waited)
+        wait = options[:wait]
+        return unless wait.is_a?(Integer) || wait.is_a?(Float)
+        return if waited >= wait
+        sleep(wait - waited)
       end
     end
   end

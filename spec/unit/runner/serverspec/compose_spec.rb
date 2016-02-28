@@ -46,8 +46,6 @@ describe Dockerspec::Runner::Serverspec::Compose do
       .to receive(:new).and_return(specinfra_backend)
     allow(specinfra_backend).to receive(:reset)
     allow(specinfra_backend).to receive(:save)
-
-    allow_any_instance_of(described_class).to receive(:sleep)
   end
 
   context '.new' do
@@ -68,13 +66,6 @@ describe Dockerspec::Runner::Serverspec::Compose do
 
   context '#run' do
     it 'runs without errors' do
-      subject.run
-    end
-
-    it 'sets docker wait' do
-      wait = 30
-      opts[:wait] = wait
-      expect(configuration).to receive(:docker_wait).once.with(wait)
       subject.run
     end
 

@@ -90,10 +90,9 @@ describe Dockerspec::Runner::Compose do
 
     it 'can read docker compose wait from RSpec configuration' do
       wait = 30
-      wait_orig = RSpec.configuration.docker_compose_wait
-      RSpec.configuration.docker_compose_wait = wait
-      expect(subject.options[:docker_wait]).to eq wait
-      RSpec.configuration.docker_compose_wait = wait_orig
+      RSpec.configuration.docker_wait = wait
+      expect(subject.options[:wait]).to eq wait
+      RSpec.configuration.docker_wait = false
     end
   end
 

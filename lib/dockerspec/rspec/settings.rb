@@ -28,6 +28,6 @@ RSpec.configure do |c|
   c.add_setting :log_level
 
   # Docker Compose settings:
-  c.add_setting :docker_compose_wait
+  c.add_setting :docker_wait
   c.add_setting :container_name
 end

@@ -77,6 +77,7 @@ module Dockerspec
       #   container.
       # @option opts [Hash, Array] :env Some `ENV` instructions to add to the
       #   container.
+      # @option opts [Integer] :wait Time to wait before running the tests.
       #
       # @return [Dockerspec::Runner::Docker] Runner object.
       #

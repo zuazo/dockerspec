@@ -74,6 +74,7 @@ module DockerspecTests
     %i(before_running when_running when_container_ready).each do |m|
       allow(engines).to receive(m)
     end
+    allow_any_instance_of(Dockerspec::Runner::Base).to receive(:sleep)
     allow(ObjectSpace).to receive(:define_finalizer)
   end
 

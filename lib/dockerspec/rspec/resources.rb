@@ -37,8 +37,7 @@ module Dockerspec
     # * `dockerfile_path`: The dockerfile path.
     # * `rm_build`: Whether to remove the build after the run.
     # * `log_level`: Log level to use by default.
-    # * `docker_compose_wait`: Seconds to wait with Docker Compose before
-    #   running the tests.
+    # * `docker_wait`: Seconds to wait before running the tests.
     # * `container_name`: Docker container to test with Docker Compose.
     #
     # All the RSpec settings are optional.

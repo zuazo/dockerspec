@@ -63,6 +63,7 @@ module Dockerspec
         #   **speed up the tests**. Some possible values:
         #   `:alpine`, `:arch`, `:coreos`, `:debian`, `:gentoo`, `:nixos`,
         #   `:plamo`, `:poky`, `:redhat`, `:suse`.
+        # @option opts [Integer] :wait Time to wait before running the tests.
         # @option opts [Symbol] :backend (calculated) Docker backend to use:
         #   `:docker`, `:lxc`.
         #

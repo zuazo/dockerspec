@@ -149,6 +149,31 @@ describe Dockerspec::Runner::Docker do
       expect(engines).to receive(:when_container_ready).with(no_args).ordered
       subject.run
     end
+
+    context 'with docker wait set' do
+      let(:docker_wait) { 10 }
+      let(:time) { Time.new.utc }
+      before do
+        allow(Time).to receive(:new).and_return(time)
+        opts[:wait] = docker_wait
+      end
+
+      it 'sleeps' do
+        expect(subject).to receive(:sleep).once
+        subject.run
+      end
+
+      context 'when compose start takes longer than wait' do
+        before do
+          allow(Time).to receive(:new).and_return(time, time + docker_wait + 1)
+        end
+
+        it 'does not sleep by default' do
+          expect(subject).to_not receive(:sleep)
+          subject
+        end
+      end
+    end
   end
 
   context '#id' do
