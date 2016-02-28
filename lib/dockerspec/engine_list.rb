@@ -35,7 +35,6 @@ Remember to include the Test Engine you want to use.
 
 For example, to use Serverspec:
 
-    require 'dockerspec'
     require 'dockerspec/serverspec'
 
     EOE

@@ -49,7 +49,6 @@ $ bundle
 ### Run Tests Against a Dockerfile in the Current Directory
 
 ```ruby
-require 'dockerspec'
 require 'dockerspec/serverspec'
 
 describe 'My Dockerfile' do
@@ -81,6 +80,8 @@ See the documentation above for more examples.
 ### Run Tests Against Docker Compose
 
 ```ruby
+require 'dockerspec/serverspec'
+
 describe docker_compose('.', wait: 30) do
 
   its_container(:myapp) do
@@ -106,7 +107,6 @@ end
 ### Run HTTP Tests Using Infrataster
 
 ```ruby
-require 'dockerspec'
 # require 'dockerspec/serverspec' # Only if you want to run both types of tests
 require 'dockerspec/infrataster'
 
@@ -133,7 +133,6 @@ See the [Infrataster Resources documentation](http://www.rubydoc.info/gems/infra
 In the following example we set the *admin* password and log in in a hypothetical web application:
 
 ```ruby
-require 'dockerspec'
 require 'dockerspec/infrataster'
 
 describe docker_build('.', tag: 'mywebapp') do
@@ -215,7 +214,6 @@ db:
 The file with the tests:
 
 ```ruby
-require 'dockerspec'
 require 'dockerspec/infrataster'
 require 'infrataster-plugin-mysql'
 
@@ -287,7 +285,6 @@ $ mkdir spec
 ```ruby
 # spec/myapp_spec.rb
 
-require 'dockerspec'
 require 'dockerspec/serverspec'
 
 describe 'My Dockerfile' do

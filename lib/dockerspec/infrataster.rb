@@ -17,6 +17,7 @@
 # limitations under the License.
 #
 
+require 'dockerspec'
 require 'dockerspec/engine/infrataster'
 
 #

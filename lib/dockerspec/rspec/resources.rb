@@ -32,6 +32,29 @@ module Dockerspec
     # Some resources included inside {RSpec::Core::ExampleGroup} to build and
     # run Docker containers.
     #
+    # ## Load the Test Engine You Want to Use
+    #
+    # If you want to run [Serverspec](http://serverspec.org/) tests, you need
+    # to require the `dockerspec/serverspec` path:
+    #
+    # ```ruby
+    # require 'dockerspec/serverspec'
+    # ```
+    #
+    # If you want to run [Infrataster](https://github.com/ryotarai/infrataster)
+    # tests, you need to require the `dockerspec/infrataster` path:
+    #
+    # ```ruby
+    # require 'dockerspec/infrataster'
+    # ```
+    #
+    # Of course, you can load both engines:
+    #
+    # ```ruby
+    # require 'dockerspec/serverspec'
+    # require 'dockerspec/infrataster'
+    # ```
+    #
     # ## RSpec Settings
     #
     # * `dockerfile_path`: The dockerfile path.
