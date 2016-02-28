@@ -6,9 +6,9 @@
 [![Gem Version](https://badge.fury.io/rb/dockerspec.svg)](https://rubygems.org/gems/dockerspec)
 [![Dependency Status](http://img.shields.io/gemnasium/zuazo/dockerspec.svg?style=flat)](https://gemnasium.com/zuazo/dockerspec)
 [![Code Climate](http://img.shields.io/codeclimate/github/zuazo/dockerspec.svg?style=flat)](https://codeclimate.com/github/zuazo/dockerspec)
-[![Travis CI Build Status](http://img.shields.io/travis/zuazo/dockerspec.svg?style=flat)](https://travis-ci.org/zuazo/dockerspec)
+[![Travis CI Build Status](http://img.shields.io/travis/zuazo/dockerspec/0.3.0.svg?style=flat)](https://travis-ci.org/zuazo/dockerspec)
 [![Circle CI Build Status](https://circleci.com/gh/zuazo/dockerspec/tree/master.svg?style=shield)](https://circleci.com/gh/zuazo/dockerspec/tree/master)
-[![Coverage Status](http://img.shields.io/coveralls/zuazo/dockerspec.svg?style=flat)](https://coveralls.io/r/zuazo/dockerspec?branch=master)
+[![Coverage Status](http://img.shields.io/coveralls/zuazo/dockerspec/0.3.0.svg?style=flat)](https://coveralls.io/r/zuazo/dockerspec?branch=0.3.0)
 [![Inline docs](http://inch-ci.org/github/zuazo/dockerspec.svg?branch=master&style=flat)](http://inch-ci.org/github/zuazo/dockerspec)
 
 ## Description
@@ -33,7 +33,7 @@ $ gem install dockerspec
 Or you can add this line to the *Gemfile* of your application:
 
 ```ruby
-gem 'dockerspec', '~> 0.2.0'
+gem 'dockerspec', '~> 0.3.0'
 ```
 
 And then execute:
@@ -271,7 +271,7 @@ If you are new to Ruby, you can follow these steps:
 
 source 'https://rubygems.org'
 
-gem 'dockerspec', '~> 0.2.0'
+gem 'dockerspec', '~> 0.3.0'
 ```
 
 #### 2. Create the *spec/* directory:
@@ -358,7 +358,7 @@ See [TODO.md](https://github.com/zuazo/dockerspec/blob/master/TODO.md).
 |                      |                                          |
 |:---------------------|:-----------------------------------------|
 | **Author:**          | [Xabier de Zuazo](https://github.com/zuazo) (<xabier@zuazo.org>)
-| **Copyright:**       | Copyright (c) 2015 Xabier de Zuazo
+| **Copyright:**       | Copyright (c) 2015-2016 Xabier de Zuazo
 | **License:**         | Apache License, Version 2.0
 
     Licensed under the Apache License, Version 2.0 (the "License");
