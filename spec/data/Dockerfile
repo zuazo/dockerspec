@@ -1,4 +1,4 @@
-FROM alpine:3.2
+FROM alpine@sha256:cbbda5d34003b6c916f7fcd4aaba46c2de47c229dfbd06c5849d163dcf99d35e
 MAINTAINER John Doe "john.doe@example.com"
 
 LABEL testing=docker serverspec=true description="My Container"

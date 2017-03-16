@@ -137,10 +137,10 @@ describe 'Docker Compose' do
           it { should be_executable.by_user('root') }
         end
 
-        describe file('/etc/apache2/apache2.conf') do
+        describe file('/etc/apache2/conf-available/docker-php.conf') do
           it { should exist }
           it { should be_file }
-          it { should contain 'DocumentRoot' }
+          it { should contain 'DirectoryIndex index.php' }
           it do
             should contain('AllowOverride All')
               .from(%r{^<Directory /var/www/>}).to(%r{^</Directory>})
