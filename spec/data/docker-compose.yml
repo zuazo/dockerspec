@@ -1,12 +1,12 @@
 wordpress:
-  image: wordpress@sha256:200455a3ff4bd410505d8b36dd2b4364378d49567ae1ce7566106f3015b4a7f7
+  image: wordpress:4.7.3-apache
   links:
   - db:mysql
   ports:
   - 8080:80
 
 db:
-  image: mariadb@sha256:68b616083f131ac3e7c850242d2725ebdd70899ce29733e69432c27195d87e50
+  image: mariadb:10.1.22
   environment:
   - MYSQL_ROOT_PASSWORD=example
 

@@ -24,8 +24,7 @@ describe 'Build a Docker container with specific environment' do
   password = 'B3xuQpGW6wbL6UGzqs5c'
 
   describe docker_run(
-    'mariadb@sha256:'\
-    '68b616083f131ac3e7c850242d2725ebdd70899ce29733e69432c27195d87e50',
+    'mariadb:10.1.22',
     env: { MYSQL_ROOT_PASSWORD: password },
     mysql: { user: 'root', password: password }
   ) do

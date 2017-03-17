@@ -21,10 +21,7 @@ require 'spec_helper'
 
 serverspec_tests do
   describe 'Build a Dockerfile from a string' do
-    image =
-      'nginx@sha256:'\
-      '54313b5c376892d55205f13d620bc3dcccc8e70e596d083953f95e94f071f6db'
-    describe docker_build(string: "FROM #{image}", tag: 'from_string_spec') do
+    describe docker_build(string: 'FROM nginx:1.9', tag: 'from_string_spec') do
       describe docker_run('from_string_spec') do
         describe command('ls -al /') do
           its(:stdout) { should match(/bin/) }

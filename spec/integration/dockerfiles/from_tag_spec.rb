@@ -20,10 +20,7 @@
 require 'spec_helper'
 
 describe 'Build a Dockerfile from a tag' do
-  id =
-    'nginx@sha256:'\
-    '54313b5c376892d55205f13d620bc3dcccc8e70e596d083953f95e94f071f6db'
-  describe docker_build(id: id, tag: 'from_tag_spec') do
+  describe docker_build(id: 'nginx:1.9', tag: 'from_tag_spec') do
     describe docker_run('from_tag_spec') do
       serverspec_tests do
         describe package('nginx') do
