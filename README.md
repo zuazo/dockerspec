@@ -75,6 +75,25 @@ describe 'My Dockerfile' do
 end
 ```
 
+### Checking Container Logs
+
+To check the running container logs content, you can use [the `stdout` and `stderr` helpers](http://www.rubydoc.info/gems/dockerspec/Dockerspec/Runner/ConfigHelpers) inside `docker_run` or `its_container` blocks.
+
+For example:
+
+```ruby
+require 'dockerspec/serverspec'
+
+describe 'My Dockerfile' do
+  describe docker_build('.') do
+    describe docker_run(described_image) do
+      its(:stdout) { should include 'Successfully Started.' }
+      its(:stderr) { should eq '' }
+    end
+  end
+end
+```
+
 See the documentation above for more examples.
 
 ### Run Tests Against Docker Compose
@@ -93,6 +112,8 @@ describe docker_compose('.', wait: 30) do
   end
 
   its_container(:db) do
+    its(:stdout) { should include 'MySQL init process done.' }
+
     describe process('mysqld') do
       it { should be_running }
     end
@@ -246,6 +267,7 @@ end
 - [`docker_build`](http://www.rubydoc.info/gems/dockerspec/Dockerspec/RSpec/Resources#docker_build-instance_method)
   - [*Docker Build* helpers](http://www.rubydoc.info/gems/dockerspec/Dockerspec/Builder/ConfigHelpers)
 - [`docker_run`](http://www.rubydoc.info/gems/dockerspec/Dockerspec/RSpec/Resources#docker_run-instance_method)
+  - [*Docker Run* helpers](http://www.rubydoc.info/gems/dockerspec/Dockerspec/Runner/ConfigHelpers)
   - [*Docker Run* Serverspec resource types](http://serverspec.org/resource_types.html)
   - [Infrataster Resources](http://www.rubydoc.info/gems/infrataster#Resources)
   - [Capybara DSL](http://www.rubydoc.info/gems/capybara#The_DSL)

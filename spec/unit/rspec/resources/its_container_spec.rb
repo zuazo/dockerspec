@@ -72,6 +72,26 @@ describe Dockerspec::RSpec::Resources::ItsContainer do
     end
   end
 
+  context '#container' do
+    let(:example) { 'example' }
+    let(:metadata) { 'metadata' }
+    let(:container) { double('Docker::Container') }
+    let(:compose) do
+      double('Dockerspec::Runner::Compose', container: container)
+    end
+    before do
+      allow(RSpec).to receive(:current_example).and_return(example)
+      allow(example).to receive(:metadata).and_return(metadata)
+    end
+
+    it 'returns the selected container' do
+      expect(Dockerspec::Helper::RSpecExampleHelpers)
+        .to receive(:search_object).once
+        .with(metadata, Dockerspec::Runner::Compose).and_return(compose)
+      expect(subject.container).to eq(container)
+    end
+  end
+
   context '#to_s' do
     it 'returns a description' do
       expect(subject.to_s).to include(container)

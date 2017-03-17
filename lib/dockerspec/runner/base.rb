@@ -19,6 +19,7 @@
 
 require 'dockerspec/exceptions'
 require 'dockerspec/engine_list'
+require 'dockerspec/runner/config_helpers'
 require 'dockerspec/helper/rspec_example_helpers'
 
 module Dockerspec
@@ -28,6 +29,8 @@ module Dockerspec
     # start docker containers.
     #
     class Base
+      include Dockerspec::Runner::ConfigHelpers
+
       #
       # The option key to set when you pass a string instead of a hash of
       # options.

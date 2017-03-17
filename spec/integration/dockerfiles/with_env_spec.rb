@@ -28,6 +28,8 @@ describe 'Build a Docker container with specific environment' do
     env: { MYSQL_ROOT_PASSWORD: password },
     mysql: { user: 'root', password: password }
   ) do
+    its(:stdout) { should include 'MySQL init process done.' }
+
     serverspec_tests do
       describe command('mysqld -V') do
         its(:stdout) { should match(/^mysqld .*MariaDB/i) }

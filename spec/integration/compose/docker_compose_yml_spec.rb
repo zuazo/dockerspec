@@ -24,6 +24,9 @@ describe 'Docker Compose' do
   file = DockerspecTests.data_file('docker-compose.yml')
   describe docker_compose(file, wait: ENV['CI'] ? 90 : 15) do
     its_container(:db, mysql: { user: 'root', password: 'example' }) do
+      its(:stdout) { should include 'MySQL init process done.' }
+      its(:stderr) { should include 'mysqld: ready for connections.' }
+
       serverspec_tests do
         it 'detects the OS family' do
           expect(command('uname -a').stdout).to match(/Debian|Ubuntu/i)
@@ -107,6 +110,9 @@ describe 'Docker Compose' do
     end
 
     its_container(:wordpress) do
+      its(:stdout) { should include '' }
+      its(:stderr) { should include 'WordPress has been successfully copied' }
+
       serverspec_tests do
         it 'detects the OS family' do
           expect(command('uname -a').stdout).to match(/Debian|Ubuntu/i)

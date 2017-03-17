@@ -1,1 +1,3 @@
 FROM alpine:3.2
+
+CMD ["sh", "-c", "echo STDOUT ; echo STDERR >&2 ; sleep 2000"]
