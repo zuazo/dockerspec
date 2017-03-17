@@ -50,4 +50,5 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'yard', '~> 0.8'
   # Used for integration tests:
   s.add_development_dependency 'infrataster-plugin-mysql', '~> 0.2.0'
+  s.add_development_dependency 'rack', '~> 1.0' if RUBY_VERSION < '2.2.2'
 end
