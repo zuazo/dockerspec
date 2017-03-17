@@ -1,8 +1,6 @@
 language: ruby
 
 rvm:
-- 2.0.0
-- 2.1
 - 2.2
 - 2.3
 
@@ -14,16 +12,8 @@ env:
 
 matrix:
   exclude:
-  - rvm: 2.0.0
-    env: SERVERSPEC="true"
-  - rvm: 2.1
-    env: SERVERSPEC="true"
   - rvm: 2.2
     env: SERVERSPEC="true"
-  - rvm: 2.0.0
-    env: INFRATASTER="true"
-  - rvm: 2.1
-    env: INFRATASTER="true"
   - rvm: 2.2
     env: INFRATASTER="true"
 

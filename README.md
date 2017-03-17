@@ -19,7 +19,7 @@ This gem is designed to work out of the box on [Travis CI](https://travis-ci.org
 
 ## Requirements
 
-* Ruby `2` or higher.
+* Ruby `2.2` or higher.
 * Recommended Docker `1.7` or higher.
 
 ## Installation
