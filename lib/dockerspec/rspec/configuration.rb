@@ -24,6 +24,6 @@
 #
 RSpec.configure do |config|
   config.color = true
-  config.formatter = :documentation
-  config.tty = true
+  config.formatter = :documentation if config.formatters.empty?
+  config.tty = $stdout.tty? if config.tty.nil?
 end
