@@ -18,4 +18,3 @@
 #
 
 require 'dockerspec/rspec/resources'
-require 'dockerspec/rspec/configuration'
