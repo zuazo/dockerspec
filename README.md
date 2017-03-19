@@ -11,6 +11,31 @@
 [![Coverage Status](http://img.shields.io/coveralls/zuazo/dockerspec.svg?style=flat)](https://coveralls.io/r/zuazo/dockerspec?branch=master)
 [![Inline docs](http://inch-ci.org/github/zuazo/dockerspec.svg?branch=master&style=flat)](http://inch-ci.org/github/zuazo/dockerspec)
 
+## Table of Contents
+
+- [Description](#description)
+- [Requirements](#requirements)
+- [Installation](#installation)
+- [Documentation](#documentation)
+  - [Presentations](#presentations)
+- [Usage Examples](#usage-examples)
+  - [Run Tests Against a Dockerfile in the Current Directory](#run-tests-against-a-dockerfile-in-the-current-directory)
+  - [Run Tests Against Docker Compose](#run-tests-against-docker-compose)
+  - [Checking Container Logs](#checking-container-logs)
+  - [Retrying Tests That Fail Temporarily](#retrying-tests-that-fail-temporarily)
+  - [Run HTTP Tests Using Infrataster](#run-http-tests-using-infrataster)
+  - [Run HTTP Tests Using Capybara](#run-http-tests-using-capybara)
+  - [Run Database Tests Using `infrataster-plugin-mysql` Gem with Docker Compose](#run-database-tests-using-infrataster-plugin-mysql-gem-with-docker-compose)
+  - [Run Different Tests on Each Platform](#run-different-tests-on-each-platform)
+  - [Real-world Examples](#real-world-examples)
+  - [Prepare Your Ruby Environment](#prepare-your-ruby-environment)
+  - [Travis CI Configuration Example](#travis-ci-configuration-example)
+  - [CircleCI Configuration Example](#circleci-configuration-example)
+- [Testing](#testing)
+- [Contributing](#contributing)
+- [TODO](#todo)
+- [License and Author](#license-and-author)
+
 ## Description
 
 A small Ruby Gem to run RSpec, [Serverspec](http://serverspec.org/), [Infrataster](https://github.com/ryotarai/infrataster) and [Capybara](http://jnicklas.github.io/capybara/) tests against Dockerfiles or Docker images easily.
