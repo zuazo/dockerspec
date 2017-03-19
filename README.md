@@ -11,9 +11,12 @@
 [![Coverage Status](http://img.shields.io/coveralls/zuazo/dockerspec.svg?style=flat)](https://coveralls.io/r/zuazo/dockerspec?branch=master)
 [![Inline docs](http://inch-ci.org/github/zuazo/dockerspec.svg?branch=master&style=flat)](http://inch-ci.org/github/zuazo/dockerspec)
 
+A small Ruby Gem to run RSpec, [Serverspec](http://serverspec.org/), [Infrataster](https://github.com/ryotarai/infrataster) and [Capybara](http://jnicklas.github.io/capybara/) tests against Dockerfiles or Docker images easily.
+
+This gem is designed to work out of the box on [Travis CI](https://travis-ci.org/), [CircleCI](https://circleci.com/) and other similar CI environments.
+
 ## Table of Contents
 
-- [Description](#description)
 - [Requirements](#requirements)
 - [Installation](#installation)
 - [Documentation](#documentation)
@@ -35,12 +38,6 @@
 - [Contributing](#contributing)
 - [TODO](#todo)
 - [License and Author](#license-and-author)
-
-## Description
-
-A small Ruby Gem to run RSpec, [Serverspec](http://serverspec.org/), [Infrataster](https://github.com/ryotarai/infrataster) and [Capybara](http://jnicklas.github.io/capybara/) tests against Dockerfiles or Docker images easily.
-
-This gem is designed to work out of the box on [Travis CI](https://travis-ci.org/), [CircleCI](https://circleci.com/) and other similar CI environments.
 
 ## Requirements
 
