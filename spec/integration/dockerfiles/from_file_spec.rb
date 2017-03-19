@@ -24,7 +24,7 @@ serverspec_tests do
     file = DockerspecTests.data_file('Dockerfile1')
 
     describe docker_build(path: file, tag: 'from_file_spec') do
-      describe docker_run('from_file_spec') do
+      describe docker_run('from_file_spec'), retry: 10 do
         its(:stdout) { should eq "STDOUT\n" }
         its(:stderr) { should eq "STDERR\n" }
 

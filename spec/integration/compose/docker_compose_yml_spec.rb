@@ -25,7 +25,9 @@ describe 'Docker Compose' do
   describe docker_compose(file, wait: ENV['CI'] ? 90 : 15) do
     its_container(:db, mysql: { user: 'root', password: 'example' }) do
       its(:stdout) { should include 'MySQL init process done.' }
-      its(:stderr) { should include 'mysqld: ready for connections.' }
+      its(:stderr, retry: 10) do
+        should include 'mysqld: ready for connections.'
+      end
 
       serverspec_tests do
         it 'detects the OS family' do
@@ -174,7 +176,7 @@ describe 'Docker Compose' do
           it { should be_installed }
         end
 
-        describe process('apache2') do
+        describe process('apache2'), retry: 10 do
           it { should be_running }
           its(:user) { should eq 'root' }
           its(:args) { should match(/-DFOREGROUND/) }

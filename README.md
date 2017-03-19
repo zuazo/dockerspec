@@ -75,27 +75,6 @@ describe 'My Dockerfile' do
 end
 ```
 
-### Checking Container Logs
-
-To check the running container logs content, you can use [the `stdout` and `stderr` helpers](http://www.rubydoc.info/gems/dockerspec/Dockerspec/Runner/ConfigHelpers) inside `docker_run` or `its_container` blocks.
-
-For example:
-
-```ruby
-require 'dockerspec/serverspec'
-
-describe 'My Dockerfile' do
-  describe docker_build('.') do
-    describe docker_run(described_image) do
-      its(:stdout) { should include 'Successfully Started.' }
-      its(:stderr) { should eq '' }
-    end
-  end
-end
-```
-
-See the documentation above for more examples.
-
 ### Run Tests Against Docker Compose
 
 ```ruby
@@ -124,6 +103,56 @@ end
 ```
 
 **Important Warning:** The `docker_compose` resource uses the [`docker-compose-api`](https://rubygems.org/gems/docker-compose-api) Ruby gem to emulate Docker Compose. So, some *docker-compose.yml* configuration options may not be supported yet or may not work exactly the same. Let us know if you find any bug or you need a missing feature. And thanks to [Mauricio Klein](https://github.com/mauricioklein) for all his work by the way!
+
+### Checking Container Logs
+
+To check the running container logs content, you can use [the `stdout` and `stderr` helpers](http://www.rubydoc.info/gems/dockerspec/Dockerspec/Runner/ConfigHelpers) inside `docker_run` or `its_container` blocks.
+
+For example:
+
+```ruby
+require 'dockerspec/serverspec'
+
+describe 'My Dockerfile' do
+  describe docker_build('.') do
+    describe docker_run(described_image) do
+      its(:stdout) { should include 'Successfully Started.' }
+      its(:stderr) { should eq '' }
+    end
+  end
+end
+```
+
+See the documentation above for more examples.
+
+### Retrying Tests That Fail Temporarily
+
+This gem includes the [`rspec-retry`](https://github.com/NoRedInk/rspec-retry) gem. So, you can add `:retry` to the RSpec metadata in order to retry some tests multiple times.
+
+For example:
+
+```ruby
+describe docker_run('mariadb') do
+  its(:stdout, retry: 30) { should include 'MySQL init process done.' }
+end
+```
+
+By default, it will do a sleep of 1 second between each retry. You can adjust it with `:retry_wait`. See [`rspec-retry` documentation](http://www.rubydoc.info/gems/rspec-retry/0.4.5) for more details.
+
+You can also make all tests within a block retry:
+
+```ruby
+describe docker_run('mariadb'), retry: 30 do
+  its(:stdout) { should include 'MySQL init process done.' }
+  its(:stderr) { should include 'MySQL init process done.' }
+
+  describe command('mysqld -V'), retry: 1 do # disable retries here
+    its(:stdout) { should match(/^mysqld .*MariaDB/i) }
+  end
+end
+```
+
+The same applies for `its_container` blocks.
 
 ### Run HTTP Tests Using Infrataster
 

@@ -19,6 +19,7 @@
 
 require 'rspec'
 require 'rspec/its'
+require 'rspec/retry'
 require 'tmpdir'
 require 'erubis'
 require 'dockerspec/docker_gem'

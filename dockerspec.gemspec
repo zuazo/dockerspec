@@ -33,6 +33,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'docker-compose-api', '~> 1.0'
   s.add_dependency 'rspec', '~> 3.0'
   s.add_dependency 'rspec-its', '~> 1.0'
+  s.add_dependency 'rspec-retry', '~> 0.5.3'
   s.add_dependency 'serverspec', '~> 2.24'
   s.add_dependency 'infrataster', '~> 0.3.0'
   s.add_dependency 'specinfra-backend-docker_lxc', '~> 0.2.0'

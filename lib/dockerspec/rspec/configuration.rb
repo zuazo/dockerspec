@@ -26,4 +26,8 @@ RSpec.configure do |config|
   config.color = true
   config.formatter = :documentation if config.formatters.empty?
   config.tty = $stdout.tty? if config.tty.nil?
+
+  # rspec-retry
+  config.verbose_retry = true if ENV['CI'] == 'true'
+  config.default_sleep_interval = 1
 end

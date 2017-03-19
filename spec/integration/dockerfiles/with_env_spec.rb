@@ -28,7 +28,8 @@ describe 'Build a Docker container with specific environment' do
     env: { MYSQL_ROOT_PASSWORD: password },
     mysql: { user: 'root', password: password }
   ) do
-    its(:stdout) { should include 'MySQL init process done.' }
+    its(:stdout, retry: 30) { should include 'MySQL init process done.' }
+    its(:stderr, retry: 30) { should include 'mysqld: ready for connections.' }
 
     serverspec_tests do
       describe command('mysqld -V') do
