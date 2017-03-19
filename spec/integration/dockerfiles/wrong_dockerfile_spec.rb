@@ -20,10 +20,11 @@
 require 'spec_helper'
 
 describe 'With a wrong Dockerfile' do
-  # Until fixed: https://github.com/swipely/docker-api/pull/472
-  xdescribe 'with build errors' do
+  describe 'with build errors' do
     let(:file) { DockerspecTests.data_file('WrongDockerfile') }
     let(:build) { docker_build(path: file, tag: 'wrong_dockerfile_spec') }
+    # Until https://github.com/swipely/docker-api/pull/472 fixed:
+    before { Docker::Image.create('fromImage' => 'alpine:3.2') }
 
     it 'raises docker error' do
       expect { build }.to raise_error Dockerspec::DockerError
