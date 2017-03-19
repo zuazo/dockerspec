@@ -44,6 +44,13 @@ $ bundle
 
 **Warning:** As the gem is in its early development stages, [the API is very likely to break between minor versions](http://semver.org/).
 
+## Documentation Links
+
+- Latest release documentation: http://www.rubydoc.info/gems/dockerspec
+- Master unreleased documentation: http://www.rubydoc.info/github/zuazo/dockerspec
+
+Apart from the official documentation, [Nan Liu](https://github.com/nanliu) recently presented a talk for [Portland Docker user group](https://www.meetup.com/Docker-Portland-OR/events/236739986/) regarding how to use [Dockerspec in a container](http://www.slideshare.net/NanLiu1/trust-but-verify-testing-with-docker-containers).
+
 ## Usage Examples
 
 ### Run Tests Against a Dockerfile in the Current Directory
