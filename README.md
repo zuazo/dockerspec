@@ -49,7 +49,7 @@ $ bundle
 - Latest release documentation: http://www.rubydoc.info/gems/dockerspec
 - Master unreleased documentation: http://www.rubydoc.info/github/zuazo/dockerspec
 
-Documentation for helpers or functions that can be used to generate the test cases:
+Specific documentation sections for resources or functions that can be used to generate the test cases:
 
 - [`docker_build`](http://www.rubydoc.info/gems/dockerspec/Dockerspec/RSpec/Resources#docker_build-instance_method)
   - [*Docker Build* helpers](http://www.rubydoc.info/gems/dockerspec/Dockerspec/Builder/ConfigHelpers)
@@ -61,7 +61,15 @@ Documentation for helpers or functions that can be used to generate the test cas
 - [`docker_compose`](http://www.rubydoc.info/gems/dockerspec/Dockerspec/RSpec/Resources#docker_compose-instance_method)
   - [`its_container`](http://www.rubydoc.info/gems/dockerspec/Dockerspec/RSpec/Resources#its_container-instance_method)
 
-Apart from the official documentation, [Nan Liu](https://github.com/nanliu) recently presented a talk for [Portland Docker user group](https://www.meetup.com/Docker-Portland-OR/events/236739986/) regarding how to use [Dockerspec in a container](http://www.slideshare.net/NanLiu1/trust-but-verify-testing-with-docker-containers).
+### Presentations
+
+Apart from the official documentation, [Nan Liu](https://github.com/nanliu) presented a talk for [Portland Docker user group](https://www.meetup.com/Docker-Portland-OR/events/236739986/) regarding how to use Dockerspec in a container:
+
+- [Trust, but verify | Testing with Docker Containers](http://www.slideshare.net/NanLiu1/trust-but-verify-testing-with-docker-containers)
+
+<a href="https://www.slideshare.net/NanLiu1/trust-but-verify-testing-with-docker-containers">
+  <img src="https://i.gyazo.com/fe45a36c2e329af317482c280a09dfab.png" alt="Trust, but verify | Testing with Docker Containers" width="300px">
+</a>
 
 ## Usage Examples
 
