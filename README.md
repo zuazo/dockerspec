@@ -44,6 +44,25 @@ $ bundle
 
 **Warning:** As the gem is in its early development stages, [the API is very likely to break between minor versions](http://semver.org/).
 
+## Documentation
+
+- Latest release documentation: http://www.rubydoc.info/gems/dockerspec
+- Master unreleased documentation: http://www.rubydoc.info/github/zuazo/dockerspec
+
+Documentation for helpers or functions that can be used to generate the test cases:
+
+- [`docker_build`](http://www.rubydoc.info/gems/dockerspec/Dockerspec/RSpec/Resources#docker_build-instance_method)
+  - [*Docker Build* helpers](http://www.rubydoc.info/gems/dockerspec/Dockerspec/Builder/ConfigHelpers)
+- [`docker_run`](http://www.rubydoc.info/gems/dockerspec/Dockerspec/RSpec/Resources#docker_run-instance_method)
+  - [*Docker Run* helpers](http://www.rubydoc.info/gems/dockerspec/Dockerspec/Runner/ConfigHelpers)
+  - [*Docker Run* Serverspec resource types](http://serverspec.org/resource_types.html)
+  - [Infrataster Resources](http://www.rubydoc.info/gems/infrataster#Resources)
+  - [Capybara DSL](http://www.rubydoc.info/gems/capybara#The_DSL)
+- [`docker_compose`](http://www.rubydoc.info/gems/dockerspec/Dockerspec/RSpec/Resources#docker_compose-instance_method)
+  - [`its_container`](http://www.rubydoc.info/gems/dockerspec/Dockerspec/RSpec/Resources#its_container-instance_method)
+
+Apart from the official documentation, [Nan Liu](https://github.com/nanliu) recently presented a talk for [Portland Docker user group](https://www.meetup.com/Docker-Portland-OR/events/236739986/) regarding how to use [Dockerspec in a container](http://www.slideshare.net/NanLiu1/trust-but-verify-testing-with-docker-containers).
+
 ## Usage Examples
 
 ### Run Tests Against a Dockerfile in the Current Directory
@@ -75,7 +94,7 @@ describe 'My Dockerfile' do
 end
 ```
 
-See [the documentation below](#documentation) for more examples.
+See [the documentation above](#documentation) for more examples.
 
 ### Run Tests Against Docker Compose
 
@@ -290,25 +309,6 @@ describe docker_compose('docker-compose.yml', wait: 60) do
   end
 end
 ```
-
-## Documentation
-
-- Latest release documentation: http://www.rubydoc.info/gems/dockerspec
-- Master unreleased documentation: http://www.rubydoc.info/github/zuazo/dockerspec
-
-Documentation for helpers or functions that can be used to generate the test cases:
-
-- [`docker_build`](http://www.rubydoc.info/gems/dockerspec/Dockerspec/RSpec/Resources#docker_build-instance_method)
-  - [*Docker Build* helpers](http://www.rubydoc.info/gems/dockerspec/Dockerspec/Builder/ConfigHelpers)
-- [`docker_run`](http://www.rubydoc.info/gems/dockerspec/Dockerspec/RSpec/Resources#docker_run-instance_method)
-  - [*Docker Run* helpers](http://www.rubydoc.info/gems/dockerspec/Dockerspec/Runner/ConfigHelpers)
-  - [*Docker Run* Serverspec resource types](http://serverspec.org/resource_types.html)
-  - [Infrataster Resources](http://www.rubydoc.info/gems/infrataster#Resources)
-  - [Capybara DSL](http://www.rubydoc.info/gems/capybara#The_DSL)
-- [`docker_compose`](http://www.rubydoc.info/gems/dockerspec/Dockerspec/RSpec/Resources#docker_compose-instance_method)
-  - [`its_container`](http://www.rubydoc.info/gems/dockerspec/Dockerspec/RSpec/Resources#its_container-instance_method)
-
-Apart from the official documentation, [Nan Liu](https://github.com/nanliu) recently presented a talk for [Portland Docker user group](https://www.meetup.com/Docker-Portland-OR/events/236739986/) regarding how to use [Dockerspec in a container](http://www.slideshare.net/NanLiu1/trust-but-verify-testing-with-docker-containers).
 
 ### Real-world Examples
 
