@@ -20,66 +20,6 @@
 require 'spec_helper'
 
 describe Dockerspec::Helper::RSpecExampleHelpers do
-  context '.search_object' do
-    context 'when the object exists inside the described_class' do
-      let(:klass) { String }
-      let(:object) { klass.new }
-      let(:metadata) { { described_class: object } }
-
-      it 'founds the object' do
-        expect(described_class.search_object(metadata, klass)).to eq(object)
-      end
-    end
-
-    context 'when the object exists inside an example group' do
-      let(:klass) { String }
-      let(:object) { klass.new }
-      let(:metadata) { { example_group: { described_class: object } } }
-
-      it 'founds the object' do
-        expect(described_class.search_object(metadata, klass)).to eq(object)
-      end
-    end
-
-    context 'when the object exists inside parent example group' do
-      let(:klass) { String }
-      let(:object) { klass.new }
-      let(:metadata) do
-        {
-          example_group: { parent_example_group: { described_class: object } }
-        }
-      end
-
-      it 'founds the object' do
-        expect(described_class.search_object(metadata, klass)).to eq(object)
-      end
-    end
-
-    context 'when the object does not exist' do
-      let(:klass) { String }
-      let(:object) { klass.new }
-      let(:metadata) { { random: :stuff } }
-
-      it 'founds the object' do
-        expect(described_class.search_object(metadata, Integer)).to eq(nil)
-      end
-    end
-
-    context 'when the class does not match' do
-      let(:klass) { String }
-      let(:object) { klass.new }
-      let(:metadata) do
-        {
-          example_group: { parent_example_group: { described_class: object } }
-        }
-      end
-
-      it 'founds the object' do
-        expect(described_class.search_object(metadata, Integer)).to eq(nil)
-      end
-    end
-  end
-
   context '.search_objects_with' do
     let(:obj1) { 'dony' }
     let(:obj2) { 'leo' }

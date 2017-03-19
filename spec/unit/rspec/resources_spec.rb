@@ -67,6 +67,7 @@ describe Dockerspec::RSpec::Resources do
         .and_return(runner_class)
       allow(runner_class).to receive(:new).and_return(runner)
       allow(runner).to receive(:run).and_return(runner)
+      allow(runner).to receive(:restore_rspec_context)
     end
 
     it 'creates a Runner' do
@@ -77,6 +78,12 @@ describe Dockerspec::RSpec::Resources do
 
     it 'runs the Runner' do
       expect(runner).to receive(:run).once
+      subject.docker_run(example, opts)
+    end
+
+    it 'restores rspec context' do
+      expect(runner).to receive(:restore_rspec_context).once
+        .with(no_args)
       subject.docker_run(example, opts)
     end
 
@@ -117,7 +124,7 @@ describe Dockerspec::RSpec::Resources do
     end
   end
 
-  context 'its_container' do
+  context '#its_container' do
     let(:container) { 'webapp' }
     let(:compose) do
       double('Dockerspec::Runner::Compose', container_name: container_name)
@@ -127,6 +134,7 @@ describe Dockerspec::RSpec::Resources do
       allow(Dockerspec::Runner::Compose).to receive(:current_instance)
         .and_return(compose)
       allow(compose).to receive(:select_container)
+      allow(compose).to receive(:restore_rspec_context)
       allow(Dockerspec::RSpec::Resources::ItsContainer).to receive(:new)
         .and_return(its_container)
       allow(subject).to receive(:describe)
@@ -151,7 +159,13 @@ describe Dockerspec::RSpec::Resources do
 
     it 'creates Its Container object' do
       expect(Dockerspec::RSpec::Resources::ItsContainer).to receive(:new).once
-        .with(container).and_return(its_container)
+        .with(container, compose).and_return(its_container)
+      subject.its_container(container, opts)
+    end
+
+    it 'restores rspec context' do
+      expect(compose).to receive(:restore_rspec_context).once
+        .with(no_args)
       subject.its_container(container, opts)
     end
 

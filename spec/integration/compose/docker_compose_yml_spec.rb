@@ -30,6 +30,18 @@ describe 'Docker Compose' do
       end
 
       serverspec_tests do
+        # Issue #2: https://github.com/zuazo/dockerspec/issues/2
+        case os[:family]
+        when 'debian'
+          it 'is Debian' do
+            expect(file('/etc/debian_version')).to exist
+          end
+        else
+          it 'Wrong OS' do
+            raise "Wrong OS: #{os[:family]}"
+          end
+        end
+
         it 'detects the OS family' do
           expect(command('uname -a').stdout).to match(/Debian|Ubuntu/i)
           expect(file('/etc/alpine-release').exists?).to be false
@@ -197,7 +209,7 @@ describe 'Docker Compose' do
       end
 
       infrataster_tests do
-        describe server(described_container) do
+        describe server(described_container), retry: 30 do
           describe http('/wp-admin/install.php') do
             it 'responds content including "Wordpress Installation"' do
               expect(response.body).to match(/WordPress .* Installation/i)
@@ -213,6 +225,18 @@ describe 'Docker Compose' do
 
     its_container(:alpine) do
       serverspec_tests do
+        # Issue #2: https://github.com/zuazo/dockerspec/issues/2
+        case os[:family]
+        when 'alpine'
+          it 'is Alpine' do
+            expect(file('/etc/alpine-release')).to exist
+          end
+        else
+          it 'Wrong OS' do
+            raise "Wrong OS: #{os[:family]}"
+          end
+        end
+
         it 'detects the OS family' do
           expect(file('/etc/alpine-release').exists?).to be true
           expect(property[:os][:family]).to eq 'alpine'

@@ -28,6 +28,22 @@ serverspec_tests do
         its(:stdout) { should eq "STDOUT\n" }
         its(:stderr) { should eq "STDERR\n" }
 
+        # Issue #2: https://github.com/zuazo/dockerspec/issues/2
+        case os[:family]
+        when 'debian'
+          it 'is Debian' do
+            expect(file('/etc/debian_version')).to exist
+          end
+        when 'alpine'
+          it 'is Alpine' do
+            expect(file('/etc/alpine-release')).to exist
+          end
+        else
+          it 'Unknown OS' do
+            raise "Unknown OS: #{os[:family]}"
+          end
+        end
+
         describe package('alpine-base') do
           it { should be_installed }
         end

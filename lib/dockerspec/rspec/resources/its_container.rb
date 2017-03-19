@@ -54,34 +54,26 @@ For example:
         # Constructs a `its_container` object.
         #
         # @param container [String] The name of the container.
+        # @param compose [Dockerspec::Runner::Compose] The compose object we
+        #   working with.
         #
         # @return [Dockerspec::RSpec::Resource::ItsContainer] The
         #   `its_container` object.
         #
         # @api public
         #
-        def initialize(container)
+        def initialize(container, compose)
           @container = container
+          @compose = compose
         end
 
         #
-        # Gets the compose object from the RSpec metadata.
+        # Restores the testing context.
         #
-        # @return [Dockerspec::Runner::Compose] The compose object.
-        #
-        # @api private
-        #
-        def compose_from_metadata
-          metadata = ::RSpec.current_example.metadata
-          Helper::RSpecExampleHelpers
-            .search_object(metadata, Dockerspec::Runner::Compose)
-        end
-
-        #
-        # Restores the testing context from the RSpec metadata.
-        #
-        # Searches for {Dockerspec::Runner::Compose} objects in the RSpec
-        # metadata and restores their context to run the tests.
+        # This is required for tests to run correctly if we are testing
+        # different containers within the same tests. That is because RSpec has
+        # two stages, one in which it generates the tests and another in which
+        # it runs them.
         #
         # This is called from the `before` block in the
         # *lib/dockerspec/runner/base.rb* file:
@@ -101,10 +93,8 @@ For example:
         # @api public
         #
         def restore_rspec_context
-          compose = compose_from_metadata
-          raise ItsContainerError, NO_DOCKER_COMPOSE_MESSAGE if compose.nil?
-          compose.restore_rspec_context
-          compose.select_container(@container)
+          @compose.restore_rspec_context
+          @compose.select_container(@container)
         end
 
         #
@@ -121,8 +111,7 @@ For example:
         # @api public
         #
         def container
-          compose = compose_from_metadata
-          compose.container
+          @compose.container
         end
 
         #

@@ -318,6 +318,39 @@ describe docker_compose('docker-compose.yml', wait: 60) do
 end
 ```
 
+### Run Different Tests on Each Platform
+
+Sometimes, you may want to be able to run different tests depending on the platform. You can use Serverspec's `os` helper method for that:
+
+```ruby
+require 'dockerspec/serverspec'
+
+describe docker_build('.', tag: 'mywebapp') do
+  describe docker_run('mywebapp') do
+    case os[:family]
+    when 'debian'
+
+      describe file('/etc/debian_version') do
+        it { should exist }
+      end
+
+      # [...]
+
+    when 'alpine'
+
+      describe file('/etc/alpine-release') do
+        it { should exist }
+      end
+
+      # [...]
+
+    end
+  end
+end
+```
+
+For more details, see [Serverspec documenation on how to get OS information](http://serverspec.org/advanced_tips.html#how-to-get-os-information).
+
 ### Real-world Examples
 
 * [`alpine-tor`](https://github.com/zuazo/alpine-tor-docker) image ([*spec/*](https://github.com/zuazo/alpine-tor-docker/tree/master/spec), [*Gemfile*](https://github.com/zuazo/alpine-tor-docker/tree/master/Gemfile), [*.travis.yml*](https://github.com/zuazo/alpine-tor-docker/tree/master/.travis.yml)).

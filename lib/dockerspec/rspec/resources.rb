@@ -356,6 +356,7 @@ module Dockerspec
       def docker_run(*opts)
         runner = Dockerspec::Configuration.docker_runner.new(*opts)
         runner.run
+        runner.restore_rspec_context
         described_container(runner.container_name)
         runner
       end
@@ -514,8 +515,9 @@ module Dockerspec
         end
         container_opts = opts[0].is_a?(Hash) ? opts[0] : {}
         compose.select_container(container, container_opts)
+        compose.restore_rspec_context
         described_container(compose.container_name)
-        describe(ItsContainer.new(container), *opts, &block)
+        describe(ItsContainer.new(container, compose), *opts, &block)
       end
 
       #

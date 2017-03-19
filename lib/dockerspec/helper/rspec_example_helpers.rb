@@ -54,25 +54,6 @@ module Dockerspec
       end
 
       #
-      # Searches for an object in the description of the parent RSpec examples.
-      #
-      # @param metadata [Hash] RSpec metadata.
-      # @param klass [Class] Type of object to search.
-      #
-      # @return [Object] Returns the object if found. `nil` if not found.
-      #
-      # @api public
-      #
-      def self.search_object(metadata, klass)
-        return nil if metadata.nil?
-        if metadata[:described_class].is_a?(klass)
-          metadata[:described_class]
-        elsif metadata_has_parent?(metadata)
-          search_object(metadata_parent(metadata), klass)
-        end
-      end
-
-      #
       # Searches for an object in the description of the parent RSpec examples
       # that implements a specific method.
       #
