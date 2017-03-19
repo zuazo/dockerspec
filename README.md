@@ -75,6 +75,8 @@ describe 'My Dockerfile' do
 end
 ```
 
+See [the documentation below](#documentation) for more examples.
+
 ### Run Tests Against Docker Compose
 
 ```ruby
@@ -122,8 +124,6 @@ describe 'My Dockerfile' do
   end
 end
 ```
-
-See the documentation above for more examples.
 
 ### Retrying Tests That Fail Temporarily
 
