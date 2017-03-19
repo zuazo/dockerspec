@@ -273,6 +273,8 @@ module Dockerspec
     # generates the temporary Dockerfile.
     #
     # @param string [String] The Dockerfile content.
+    # @param dir [String] The directory to copy the files from. Files that are
+    #   required by the Dockerfile passed in *string*.
     #
     # @return void
     #
