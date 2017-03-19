@@ -48,7 +48,7 @@ module Dockerspec
       #     its(:size) { should be < 20 * 2**20 } # 20M
       #   end
       #
-      # @return [Fixnum] The image size in bytes.
+      # @return [Integer] The image size in bytes.
       #
       # @api public
       #

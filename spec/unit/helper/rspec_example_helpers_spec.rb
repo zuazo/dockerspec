@@ -61,7 +61,7 @@ describe Dockerspec::Helper::RSpecExampleHelpers do
       let(:metadata) { { random: :stuff } }
 
       it 'founds the object' do
-        expect(described_class.search_object(metadata, Fixnum)).to eq(nil)
+        expect(described_class.search_object(metadata, Integer)).to eq(nil)
       end
     end
 
@@ -75,7 +75,7 @@ describe Dockerspec::Helper::RSpecExampleHelpers do
       end
 
       it 'founds the object' do
-        expect(described_class.search_object(metadata, Fixnum)).to eq(nil)
+        expect(described_class.search_object(metadata, Integer)).to eq(nil)
       end
     end
   end

@@ -188,7 +188,7 @@ module Dockerspec
       #   used when the `:template` source is used.
       # @option opts [String] :tag Repository tag to be applied to the resulting
       #   image.
-      # @option opts [Fixnum, Symbol] :log_level Sets the docker library
+      # @option opts [Integer, Symbol] :log_level Sets the docker library
       #   verbosity level. Possible values:
       #    `:silent` or `0` (no output),
       #    `:ci` or `1` (enables some outputs recommended for CI environments),

@@ -31,7 +31,7 @@ module Dockerspec
       #
       # Creates a logger object.
       #
-      # @param type [Fixnum, Symbol] The logger to create. Possible values:
+      # @param type [Integer, Symbol] The logger to create. Possible values:
       #    `:silent` or `0` (no output),
       #    `:ci` or `1` (enables some outputs recommended for CI environments),
       #    `:info` or `2` (gives information about main build steps),
