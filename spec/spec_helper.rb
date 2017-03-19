@@ -43,7 +43,8 @@ RSpec.configure do |config|
   config.color = true
   config.tty = true
 
-  config.include DockerspecTests
+  config.extend DockerspecTests
 end
 
+include DockerspecTests
 DockerspecTests.init_engines

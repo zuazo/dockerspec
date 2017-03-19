@@ -19,7 +19,7 @@
 
 require 'spec_helper'
 
-path = DockerspecTests.data_dir
+path = DockerspecTests.fixture_dir
 
 serverspec_tests do
   describe docker_build(path: path) do

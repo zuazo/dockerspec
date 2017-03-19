@@ -18,7 +18,7 @@
 #
 
 module DockerspecTests
-  def self.serverspec_engine
+  def serverspec_engine
     Dockerspec::Configuration.docker_runner =
       Dockerspec::Runner::Serverspec::Docker
     Dockerspec::Configuration.compose_runner =
@@ -26,26 +26,26 @@ module DockerspecTests
     Dockerspec::Configuration.engines.replace([Dockerspec::Engine::Specinfra])
   end
 
-  def self.infrataster_engine
+  def infrataster_engine
     Dockerspec::Configuration.docker_runner = Dockerspec::Runner::Docker
     Dockerspec::Configuration.compose_runner = Dockerspec::Runner::Compose
     Dockerspec::Configuration.engines.replace([Dockerspec::Engine::Infrataster])
   end
 
-  def self.default_engines
+  def default_engines
     serverspec_engine
     Dockerspec::Configuration.engines.push(Dockerspec::Engine::Infrataster)
   end
 
-  def self.engine(name)
+  def engine(name)
     send("#{name}_engine")
   end
 
-  def self.all_engines_list
+  def all_engines_list
     %i(serverspec infrataster)
   end
 
-  def self.init_engines
+  def init_engines
     unless all_engines_list.any? { |x| ENV.key?(x.to_s.upcase) }
       default_engines
       return
@@ -56,16 +56,16 @@ module DockerspecTests
     end
   end
 
-  def self.data_dir
-    File.join(File.dirname(__FILE__), '..', 'data')
+  def fixture_dir
+    File.join(File.dirname(__FILE__), '..', 'fixtures')
   end
 
-  def self.data_file(file)
-    File.join(DockerspecTests.data_dir, file)
+  def fixture_file(file)
+    File.join(DockerspecTests.fixture_dir, file)
   end
 
-  def self.error_example
-    file = File.join(DockerspecTests.data_dir, 'error_example.log')
+  def error_example
+    file = File.join(DockerspecTests.fixture_dir, 'error_example.log')
     IO.read(file)
   end
 

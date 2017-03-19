@@ -20,9 +20,7 @@
 require 'spec_helper'
 
 describe Dockerspec::Builder::Matchers do
-  path = File.join(File.dirname(__FILE__), '..', '..', 'data')
-
-  context docker_build(path: path) do
+  context docker_build(path: fixture_dir) do
     context ':string predicate type' do
       context 'failure message' do
         let(:test) { expect(subject).to have_maintainer 'who?' }

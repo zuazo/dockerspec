@@ -21,7 +21,7 @@ require 'spec_helper'
 
 serverspec_tests do
   describe 'Build a Dockerfile from a template' do
-    template = DockerspecTests.data_file('Dockerfile1.erb')
+    template = DockerspecTests.fixture_file('Dockerfile1.erb')
 
     describe docker_build(template: template, tag: 'from_template_spec') do
       describe docker_run('from_template_spec') do

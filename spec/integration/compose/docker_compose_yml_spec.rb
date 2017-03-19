@@ -21,7 +21,7 @@ require 'spec_helper'
 require 'infrataster-plugin-mysql'
 
 describe 'Docker Compose' do
-  file = DockerspecTests.data_file('docker-compose.yml')
+  file = DockerspecTests.fixture_file('docker-compose.yml')
   describe docker_compose(file, wait: ENV['CI'] ? 90 : 15) do
     its_container(:db, mysql: { user: 'root', password: 'example' }) do
       its(:stdout) { should include 'MySQL init process done.' }

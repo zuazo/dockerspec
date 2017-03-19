@@ -19,7 +19,7 @@
 
 require 'spec_helper'
 
-path = DockerspecTests.data_dir
+path = DockerspecTests.fixture_dir
 image = ::Docker::Image.build_from_dir(path)
 
 serverspec_tests do
