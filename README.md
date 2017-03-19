@@ -49,7 +49,7 @@ $ bundle
 - Latest release documentation: http://www.rubydoc.info/gems/dockerspec
 - Master unreleased documentation: http://www.rubydoc.info/github/zuazo/dockerspec
 
-Specific documentation sections for resources or functions that can be used to generate the test cases:
+Specific documentation sections for resources or functions that can be used to generate test cases:
 
 - [`docker_build`](http://www.rubydoc.info/gems/dockerspec/Dockerspec/RSpec/Resources#docker_build-instance_method)
   - [*Docker Build* helpers](http://www.rubydoc.info/gems/dockerspec/Dockerspec/Builder/ConfigHelpers)
@@ -380,6 +380,29 @@ $ mkdir spec
 ```
 
 #### 3. Add your tests to a file with the *spec/myapp_spec.rb* format:
+
+With this gem, you can use both [Serverspec](http://serverspec.org/) and [Infrataster](https://github.com/ryotarai/infrataster) tests.
+
+If you just want to use [Serverspec](http://serverspec.org/) tests:
+
+```ruby
+require 'dockerspec/serverspec'
+```
+
+If you just want to use [Infrataster](https://github.com/ryotarai/infrataster) tests:
+
+```ruby
+require 'dockerspec/infrataster'
+```
+
+But, of course, you can use both types of tests if you want:
+
+```ruby
+require 'dockerspec/serverspec'
+require 'dockerspec/infrataster'
+```
+
+For example, you can create a file in *spec/myapp_spec.rb* with the following content:
 
 ```ruby
 # spec/myapp_spec.rb
