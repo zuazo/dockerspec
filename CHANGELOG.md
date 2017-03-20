@@ -27,6 +27,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 ### Documentation Changes in Unreleased
 - Document `dir` parameter in `Builder#build_from_string`.
 - CHANGELOG: Follow "Keep a CHANGELOG".
+- Add GitHub templates.
 - README:
   - Document how to require the gem.
   - Add Presentations section.
