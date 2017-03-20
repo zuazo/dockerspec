@@ -25,5 +25,5 @@ module Dockerspec
   #
   # Dockerspec Ruby Gem version.
   #
-  VERSION = '0.4.1.dev'.freeze
+  VERSION = '0.4.1'.freeze
 end

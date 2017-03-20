@@ -4,6 +4,10 @@ All notable changes to the [`dockerspec`](https://rubygems.org/gems/dockerspec/)
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## [0.4.1] - 2017-03-21
+### Fixed in 0.4.1
+- README: Fix latest dockerspec version in the instructions.
+
 ## [0.4.0] - 2017-03-20
 [![Travis CI master Build Status](http://img.shields.io/travis/zuazo/dockerspec.svg?style=flat)](https://travis-ci.org/zuazo/dockerspec)
 
@@ -88,7 +92,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 - Initial release of `dockerspec`.
 
-[Unreleased]: https://github.com/zuazo/dockerspec/compare/0.4.0...HEAD
+[Unreleased]: https://github.com/zuazo/dockerspec/compare/0.4.1...HEAD
+[0.4.1]: https://github.com/zuazo/dockerspec/compare/0.4.0...0.4.1
 [0.4.0]: https://github.com/zuazo/dockerspec/compare/0.3.0...0.4.0
 [0.3.0]: https://github.com/zuazo/dockerspec/compare/0.2.0...0.3.0
 [0.2.0]: https://github.com/zuazo/dockerspec/compare/0.1.0...0.2.0
