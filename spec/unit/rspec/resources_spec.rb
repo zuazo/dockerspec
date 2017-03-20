@@ -99,7 +99,12 @@ describe Dockerspec::RSpec::Resources do
 
   context '#docker_compose' do
     let(:runner_class) { Dockerspec::Runner::Compose }
-    let(:runner) { double(runner_class.to_s, container_name: container_name) }
+    let(:runner_desc) { 'my runner' }
+    let(:runner) do
+      double(
+        runner_class.to_s, container_name: container_name, to_s: runner_desc
+      )
+    end
     let(:example) { 'example' }
     before do
       allow(Dockerspec::Configuration).to receive(:compose_runner)
@@ -119,8 +124,8 @@ describe Dockerspec::RSpec::Resources do
       subject.docker_compose(example, opts)
     end
 
-    it 'returns the runner' do
-      expect(subject.docker_compose(example, opts)).to eq runner
+    it 'returns the runner description' do
+      expect(subject.docker_compose(example, opts)).to eq runner_desc
     end
   end
 
@@ -133,10 +138,9 @@ describe Dockerspec::RSpec::Resources do
     before do
       allow(Dockerspec::Runner::Compose).to receive(:current_instance)
         .and_return(compose)
-      allow(compose).to receive(:select_container)
-      allow(compose).to receive(:restore_rspec_context)
       allow(Dockerspec::RSpec::Resources::ItsContainer).to receive(:new)
         .and_return(its_container)
+      allow(its_container).to receive(:restore_rspec_context)
       allow(subject).to receive(:describe)
     end
 
@@ -146,26 +150,15 @@ describe Dockerspec::RSpec::Resources do
       subject.its_container(container)
     end
 
-    it 'selects the container' do
-      expect(compose).to receive(:select_container).once.with(container, {})
-      subject.its_container(container)
-    end
-
-    it 'passes the options to the container selection' do
-      opts = { family: 'debian' }
-      expect(compose).to receive(:select_container).once.with(container, opts)
-      subject.its_container(container, opts)
-    end
-
     it 'creates Its Container object' do
-      expect(Dockerspec::RSpec::Resources::ItsContainer).to receive(:new).once
+      expect(Dockerspec::RSpec::Resources::ItsContainer).to receive(:new)
         .with(container, compose).and_return(its_container)
       subject.its_container(container, opts)
     end
 
     it 'restores rspec context' do
-      expect(compose).to receive(:restore_rspec_context).once
-        .with(no_args)
+      expect(its_container).to receive(:restore_rspec_context).once
+        .with(opts)
       subject.its_container(container, opts)
     end
 

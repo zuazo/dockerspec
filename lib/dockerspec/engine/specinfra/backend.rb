@@ -66,8 +66,11 @@ module Dockerspec
         # @api public
         #
         def restore
-          instance_set(@saved_backend_instance)
-          ::Specinfra.configuration.backend = @saved_backend_name
+          backend_class.instance_set(@saved_backend_instance)
+          if ::Specinfra.configuration.backend != @saved_backend_name
+            backend_class.host_reset
+            ::Specinfra.configuration.backend = @saved_backend_name
+          end
         end
 
         #
@@ -98,7 +101,7 @@ module Dockerspec
         # @api public
         #
         def reset
-          instance_set(nil)
+          backend_class.instance_set(nil)
         end
 
         #
@@ -116,22 +119,6 @@ module Dockerspec
         end
 
         protected
-
-        #
-        # Sets the Specinfra backend.
-        #
-        # Used by {.load}.
-        #
-        # @param instance [Specinfra::Backend::Base] The Specinfra backend
-        #   object.
-        #
-        # @return void
-        #
-        # @api private
-        #
-        def instance_set(instance)
-          backend_class.instance_set(instance)
-        end
 
         #
         # Returns the current Specinfra backend object.

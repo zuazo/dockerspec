@@ -419,7 +419,7 @@ module Dockerspec
       # @option opts [Symbol] :backend (calculated) Docker backend to use:
       #   `:docker_compose`, `:docker_compose_lxc`.
       #
-      # @return [Dockerspec::Runner::Compose] Runner object.
+      # @return [String] A description of the object.
       #
       # @raise [Dockerspec::DockerRunArgumentError] Raises this exception when
       #   some required fields are missing.
@@ -434,6 +434,10 @@ module Dockerspec
       def docker_compose(*opts)
         runner = Dockerspec::Configuration.compose_runner.new(*opts)
         runner.run
+        # Disable storing Runner object on RSpec metadata, to avoid calling its
+        # {Runner#restore_rspec_context} method that it is also called in
+        # {ItsContainer#restore_rspec_context}:
+        runner.to_s
       end
 
       #
@@ -501,7 +505,9 @@ module Dockerspec
       #   `:alpine`, `:arch`, `:coreos`, `:debian`, `:gentoo`, `:nixos`,
       #   `:plamo`, `:poky`, `:redhat`, `:suse`.
       #
-      # @return [Dockerspec::Runner::Compose] Runner object.
+      # @yield [] the block to run with the tests.
+      #
+      # @return void
       #
       # @raise [Dockerspec::DockerComposeError] Raises this exception when
       #   you call `its_container` without calling `docker_compose`.
@@ -514,10 +520,10 @@ module Dockerspec
           raise ItsContainerError, ItsContainer::NO_DOCKER_COMPOSE_MESSAGE
         end
         container_opts = opts[0].is_a?(Hash) ? opts[0] : {}
-        compose.select_container(container, container_opts)
-        compose.restore_rspec_context
+        its_container = ItsContainer.new(container, compose)
+        its_container.restore_rspec_context(container_opts)
         described_container(compose.container_name)
-        describe(ItsContainer.new(container, compose), *opts, &block)
+        describe(its_container, *opts, &block)
       end
 
       #

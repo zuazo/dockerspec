@@ -92,9 +92,9 @@ For example:
         #
         # @api public
         #
-        def restore_rspec_context
+        def restore_rspec_context(opts = nil)
+          @compose.select_container(@container, opts)
           @compose.restore_rspec_context
-          @compose.select_container(@container)
         end
 
         #

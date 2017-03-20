@@ -48,10 +48,18 @@ describe Dockerspec::Engine::Specinfra::Backend do
       let(:saved_instance) { double('instance') }
       before do
         subject.instance_variable_set(:@saved_backend_instance, saved_instance)
+        allow(backend_class).to receive(:instance_set)
+        allow(backend_class).to receive(:host_reset)
+        ::Specinfra.configuration.backend = nil
       end
 
       it 'restores the backend' do
         expect(backend_class).to receive(:instance_set).with(saved_instance)
+        subject.restore
+      end
+
+      it 'resets the host' do
+        expect(backend_class).to receive(:host_reset)
         subject.restore
       end
     end

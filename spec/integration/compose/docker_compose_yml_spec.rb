@@ -114,7 +114,7 @@ describe 'Docker Compose' do
       infrataster_tests do
         describe server(described_container) do
           describe mysql_query('SHOW STATUS') do
-            it 'returns positive uptime' do
+            it 'returns positive uptime', retry: 30 do
               row = results.find { |r| r['Variable_name'] == 'Uptime' }
               expect(row['Value'].to_i).to be > 0
             end

@@ -59,21 +59,20 @@ module Dockerspec
       #
       # @param metadata [Hash] RSpec metadata.
       # @param meth [Symbol] The method name.
-      # @param arity [Integer] The arity of the method.
       #
       # @return [Array<Object>] Returns the objects list.
       #
       # @api public
       #
-      def self.search_objects_with(metadata, meth, arity)
+      def self.search_objects_with(metadata, meth)
         o_ary = []
         return o_ary if metadata.nil?
         if metadata[:described_class].respond_to?(meth) &&
-           metadata[:described_class].method(meth).arity == arity
+           metadata[:described_class] != self
           o_ary << metadata[:described_class]
         end
         return o_ary unless metadata_has_parent?(metadata)
-        search_objects_with(metadata_parent(metadata), meth, arity) + o_ary
+        (search_objects_with(metadata_parent(metadata), meth) + o_ary).uniq
       end
 
       #
@@ -86,7 +85,7 @@ module Dockerspec
       #   RSpec.configure do |c|
       #     c.before(:each) do
       #       metadata = RSpec.current_example.metadata
-      #       Dockerspec::Runner::Base.restore(metadata)
+      #       Dockerspec::Runner::Base.restore_rspec_context(metadata)
       #     end
       #   end
       #
@@ -101,7 +100,7 @@ module Dockerspec
       def self.restore_rspec_context(metadata)
         o_ary =
           Helper::RSpecExampleHelpers
-          .search_objects_with(metadata, :restore_rspec_context, 0)
+          .search_objects_with(metadata, :restore_rspec_context)
         o_ary.each(&:restore_rspec_context)
       end
     end

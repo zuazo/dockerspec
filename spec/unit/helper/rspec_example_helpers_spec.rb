@@ -38,13 +38,13 @@ describe Dockerspec::Helper::RSpecExampleHelpers do
 
     it 'returns found objects in reverse order' do
       expect(
-        described_class.search_objects_with(metadata, :strip, 0)
+        described_class.search_objects_with(metadata, :strip)
       ).to eq([obj1, obj2].reverse)
     end
 
     it 'returns no objects when not found' do
       expect(
-        described_class.search_objects_with(metadata, :nonexistent, 0)
+        described_class.search_objects_with(metadata, :nonexistent)
       ).to eq([])
     end
   end
@@ -55,7 +55,7 @@ describe Dockerspec::Helper::RSpecExampleHelpers do
     before do
       allow(Dockerspec::Helper::RSpecExampleHelpers)
         .to receive(:search_objects_with)
-        .with(metadata, :restore_rspec_context, 0)
+        .with(metadata, :restore_rspec_context)
         .and_return([runner])
     end
 
