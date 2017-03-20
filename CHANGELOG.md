@@ -4,6 +4,8 @@ All notable changes to the [`dockerspec`](https://rubygems.org/gems/dockerspec/)
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## [Unreleased]
+
 ## [0.4.0] - 2017-03-20
 [![Travis CI master Build Status](http://img.shields.io/travis/zuazo/dockerspec.svg?style=flat)](https://travis-ci.org/zuazo/dockerspec)
 
