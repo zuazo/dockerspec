@@ -55,7 +55,7 @@ $ gem install dockerspec
 Or you can add this line to the *Gemfile* of your application:
 
 ```ruby
-gem 'dockerspec', '~> 0.4.0'
+gem 'dockerspec', '~> 0.4.1'
 ```
 
 And then execute:
@@ -392,7 +392,7 @@ If you are new to Ruby, you can follow these steps:
 
 source 'https://rubygems.org'
 
-gem 'dockerspec', '~> 0.3.0'
+gem 'dockerspec', '~> 0.4.1'
 ```
 
 #### 2. Create the *spec/* directory:
