@@ -4,27 +4,27 @@ All notable changes to the [`dockerspec`](https://rubygems.org/gems/dockerspec/)
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and this project adheres to [Semantic Versioning](http://semver.org/).
 
-## [Unreleased]
+## [0.4.0] - 2017-03-20
 [![Travis CI master Build Status](http://img.shields.io/travis/zuazo/dockerspec.svg?style=flat)](https://travis-ci.org/zuazo/dockerspec)
 
-### Added in Unreleased
+### Added in 0.4.0
 - Integrate with [rspec-retry](https://github.com/NoRedInk/rspec-retry) gem.
 - Docker logs support ([issue #3](https://github.com/zuazo/dockerspec/issues/3), thanks [@axi43](https://github.com/axi43) for the idea).
 
-### Changed in Unreleased
+### Changed in 0.4.0
 - Let user choose RSpec formatter ([issue #4](https://github.com/zuazo/dockerspec/issues/4), thanks [Luis Sagastume](https://github.com/zuazo/dockerspec/pull/4) for the help).
 
-### Removed in Unreleased
+### Removed in 0.4.0
 - Drop Ruby `< 2.2` support.
 
-### Fixed in Unreleased
+### Fixed in 0.4.0
 - Be able to use os detection within test blocks ([issue #2](https://github.com/zuazo/dockerspec/issues/2), **special thanks to [Nan Liu](https://github.com/nanliu)** for his help and [his astonishing presentation](https://www.slideshare.net/NanLiu1/trust-but-verify-testing-with-docker-containers)).
 - Use `Integer` instead of `Fixnum`.
 
-### Improved in Unreleased
+### Improved in 0.4.0
 - `ItsContainer`: rename container_name variable to avoid confussion.
 
-### Documentation Changes in Unreleased
+### Documentation Changes in 0.4.0
 - Document `dir` parameter in `Builder#build_from_string`.
 - CHANGELOG: Follow "Keep a CHANGELOG".
 - Add GitHub templates.
@@ -88,6 +88,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 - Initial release of `dockerspec`.
 
-[Unreleased]: https://github.com/zuazo/dockerspec/compare/0.3.0...HEAD
+[Unreleased]: https://github.com/zuazo/dockerspec/compare/0.4.0...HEAD
+[0.4.0]: https://github.com/zuazo/dockerspec/compare/0.3.0...0.4.0
 [0.3.0]: https://github.com/zuazo/dockerspec/compare/0.2.0...0.3.0
 [0.2.0]: https://github.com/zuazo/dockerspec/compare/0.1.0...0.2.0
