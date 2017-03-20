@@ -53,7 +53,7 @@ For example:
         #
         # Constructs a `its_container` object.
         #
-        # @param container [String] The name of the container.
+        # @param container_name [String] The name of the container.
         # @param compose [Dockerspec::Runner::Compose] The compose object we
         #   working with.
         #
@@ -62,8 +62,8 @@ For example:
         #
         # @api public
         #
-        def initialize(container, compose)
-          @container = container
+        def initialize(container_name, compose)
+          @container_name = container_name
           @compose = compose
         end
 
@@ -93,7 +93,7 @@ For example:
         # @api public
         #
         def restore_rspec_context(opts = nil)
-          @compose.select_container(@container, opts)
+          @compose.select_container(@container_name, opts)
           @compose.restore_rspec_context
         end
 
@@ -122,7 +122,7 @@ For example:
         # @api public
         #
         def to_s
-          "\"#{@container}\" container"
+          "\"#{@container_name}\" container"
         end
       end
     end
