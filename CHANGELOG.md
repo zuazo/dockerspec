@@ -5,13 +5,16 @@ All notable changes to the [`dockerspec`](https://rubygems.org/gems/dockerspec/)
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
+[![Travis CI master Build Status](http://img.shields.io/travis/zuazo/dockerspec.svg?style=flat)](https://travis-ci.org/zuazo/dockerspec)
 
 ## [0.4.1] - 2017-03-21
+[![Travis CI 0.4.1 Build Status](http://img.shields.io/travis/zuazo/dockerspec/0.4.1.svg?style=flat)](https://travis-ci.org/zuazo/dockerspec)
+
 ### Fixed in 0.4.1
 - README: Fix latest dockerspec version in the instructions.
 
 ## [0.4.0] - 2017-03-20
-[![Travis CI master Build Status](http://img.shields.io/travis/zuazo/dockerspec.svg?style=flat)](https://travis-ci.org/zuazo/dockerspec)
+[![Travis CI 0.4.0 Build Status](http://img.shields.io/travis/zuazo/dockerspec/0.4.0.svg?style=flat)](https://travis-ci.org/zuazo/dockerspec)
 
 ### Added in 0.4.0
 - Integrate with [rspec-retry](https://github.com/NoRedInk/rspec-retry) gem.
