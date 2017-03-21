@@ -201,7 +201,7 @@ describe docker_run('mariadb'), retry: 30 do
 end
 ```
 
-The same applies for `its_container` blocks.
+The same applies to `its_container` blocks.
 
 ### Run HTTP Tests Using Infrataster
 
