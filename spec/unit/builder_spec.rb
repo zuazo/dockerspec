@@ -127,6 +127,23 @@ describe Dockerspec::Builder do
           subject.build
         end
       end
+
+      context 'string_build_path option' do
+        let(:subject) do
+          described_class.new(string: string, string_build_path: '/tmp')
+        end
+
+        it 'Handles build with string_build_path specified' do
+          expect(FileUtils).to receive(:cp_r).with('/tmp/.', tmpdir)
+          subject.build
+        end
+
+        it 'Uses the current directory if no value is passed' do
+          subject = described_class.new(string: string)
+          expect(FileUtils).to receive(:cp_r).with('./.', tmpdir)
+          subject.build
+        end
+      end
     end
 
     context 'passing a file to the path option' do
