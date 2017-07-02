@@ -64,6 +64,10 @@ module Dockerspec
     #   environment variable and uses `'.'` if it is not set.
     # @option opts [String] :string Use this string as *Dockerfile* instead of
     #   `:path`. Not set by default.
+    # @option opts [String] :string_build_path Used to specify the path that is
+    #    used for the docker build of a string *Dockerfile*. This enables ADD
+    #    statements in the Dockerfile to access files that are outside of .
+    #    Not set by default and overrides the default '.'
     # @option opts [String] :template Use this [Erubis]
     #   (http://www.kuwata-lab.com/erubis/users-guide.html) template file as
     #   *Dockerfile*.
@@ -274,13 +278,16 @@ module Dockerspec
     #
     # @param string [String] The Dockerfile content.
     # @param dir [String] The directory to copy the files from. Files that are
-    #   required by the Dockerfile passed in *string*.
+    #   required by the Dockerfile passed in *string*. If not passed, then
+    #   the 'string_build_path' option is used. If that is not used, '.' is
+    #   assumed.
     #
     # @return void
     #
     # @api private
     #
     def build_from_string(string, dir = '.')
+      dir = @options[:string_build_path] if @options[:string_build_path]
       Dir.mktmpdir do |tmpdir|
         FileUtils.cp_r("#{dir}/.", tmpdir)
         dockerfile = File.join(tmpdir, 'Dockerfile')

@@ -94,5 +94,21 @@ serverspec_tests do
         end
       end
     end
+    context 'With string_build_path' do
+      Dir.mktmpdir do |dir|
+        File.write("#{dir}/test", 'rspec integration tests')
+        dockerfile_string = "FROM nginx:1.9\nADD test /test"
+        describe docker_build(
+          string: dockerfile_string,
+          string_build_path: dir) do
+          describe docker_run(described_image) do
+            describe command('cat /test') do
+              its(:stdout) { should match(/rspec integration tests/) }
+              its(:exit_status) { should eq 0 }
+            end
+          end
+        end
+      end
+    end
   end
 end
