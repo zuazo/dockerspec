@@ -502,6 +502,7 @@ See [TODO.md](https://github.com/zuazo/dockerspec/blob/master/TODO.md).
 |                      |                                          |
 |:---------------------|:-----------------------------------------|
 | **Author:**          | [Xabier de Zuazo](https://github.com/zuazo) (<xabier@zuazo.org>)
+| **Contributor:**     | [John Meichle](https://github.com/jmeichle)
 | **Copyright:**       | Copyright (c) 2015-2016 Xabier de Zuazo
 | **License:**         | Apache License, Version 2.0
 
