@@ -53,5 +53,6 @@ Specinfra::Backend::Base.class_eval do
   #
   def self.host_reset
     property[:host_inventory] = property[:os] = nil
+    Specinfra.backend.instance_variable_set(:@os_info, nil)
   end
 end
