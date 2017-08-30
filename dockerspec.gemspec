@@ -10,7 +10,7 @@ require 'dockerspec/version'
 Gem::Specification.new do |s|
   s.name = 'dockerspec'
   s.version = ::Dockerspec::VERSION
-  s.date = '2017-03-21'
+  s.date = '2017-08-30'
   s.platform = Gem::Platform::RUBY
   s.summary = 'Dockerspec'
   s.description =

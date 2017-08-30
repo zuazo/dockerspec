@@ -7,6 +7,16 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 ## [Unreleased]
 [![Travis CI master Build Status](http://img.shields.io/travis/zuazo/dockerspec.svg?style=flat)](https://travis-ci.org/zuazo/dockerspec)
 
+## [0.5.0] - 2017-08-30
+[![Travis CI 0.5.0 Build Status](http://img.shields.io/travis/zuazo/dockerspec/0.5.0.svg?style=flat)](https://travis-ci.org/zuazo/dockerspec)
+
+### Added in 0.5.0
+- Support specifying a build path when building images from a string ([issue #13](https://github.com/zuazo/dockerspec/issues/13), thanks [John Meichle](https://github.com/jmeichle)).
+
+### Fixed in 0.5.0
+- Fix OS detection with Specinfra `2.71`.
+- README: Fix small grammar error.
+
 ## [0.4.1] - 2017-03-21
 [![Travis CI 0.4.1 Build Status](http://img.shields.io/travis/zuazo/dockerspec/0.4.1.svg?style=flat)](https://travis-ci.org/zuazo/dockerspec)
 
@@ -97,7 +107,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 - Initial release of `dockerspec`.
 
-[Unreleased]: https://github.com/zuazo/dockerspec/compare/0.4.1...HEAD
+[Unreleased]: https://github.com/zuazo/dockerspec/compare/0.5.0...HEAD
+[0.5.0]: https://github.com/zuazo/dockerspec/compare/0.4.1...0.5.0
 [0.4.1]: https://github.com/zuazo/dockerspec/compare/0.4.0...0.4.1
 [0.4.0]: https://github.com/zuazo/dockerspec/compare/0.3.0...0.4.0
 [0.3.0]: https://github.com/zuazo/dockerspec/compare/0.2.0...0.3.0
